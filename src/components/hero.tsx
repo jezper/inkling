@@ -2,12 +2,12 @@ import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative bg-background-deep px-4 pb-20 pt-32 sm:px-6 sm:pb-24 sm:pt-36">
+    <section className="relative bg-background-deep px-4 pb-20 pt-40 sm:px-6 sm:pb-24 sm:pt-44">
       <div className="mx-auto w-full max-w-2xl text-center">
         <h1
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.5rem, 8vw, 5.5rem)",
+            fontSize: "clamp(2.25rem, 5.5vw, 4rem)",
             fontWeight: 700,
             lineHeight: 0.92,
             letterSpacing: "-0.05em",
