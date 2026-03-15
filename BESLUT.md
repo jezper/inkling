@@ -15,6 +15,30 @@
 
 ---
 
+## 2026-03-15 — Landing page layout: centrerad komposition (Product Designer)
+
+**Kontext:** Användaren flaggade: för mycket vitt, för lite innehåll i förhållande till layout, hero tar hela viewporten men innehållet är kompakt, vänsterställning skapar tom högerhalva, chapter label "— Anställningsavtal" ska tas bort.
+
+**Beslut:**
+- Hero: `min-h-dvh` + `justify-center` ersatt med tight padding (`pt-32 pb-20`). Sidan ska inte behöva fylla en viewport — innehållet avgör höjden.
+- Hero: Layout ändrad från vänsterställd (`max-w-5xl`, text i `max-w-lg`) till centrerad (`max-w-2xl`, `text-center`). CTA-knapp centrerad med `items-center`.
+- Hero: Pris-grid centrerad (`mx-auto max-w-540px`), behåller `text-left` internt för läsbarhet.
+- Header: Logo centrerad (`justify-center`). En one-action-produkt utan navigation signalerar fokus bäst med centrerad identitet.
+- Hero: Chapter label "— Anställningsavtal" borttagen per användarens explicita instruktion. `sr-only`-texten i H1 ("Anställningsavtal —") behålls för tillgänglighet.
+- Hero: Vertikal dekorationslinje (`left-[120px]`) borttagen — hörde hemma i den editoriala vänstermodellen, inte i centrerad layout.
+- HowItWorks: Section-rubrik "Process" centrerad för koherens med hero.
+
+**Motivering:** Centrerad layout passar en one-action-produkt med en tydlig CTA bättre än editorial/Bloomberg-Terminal-estetik. Med ett enda budskap ("kolla ditt avtal") är symmetri konverteringsoptimalt — användarens blick dras direkt till CTA utan att behöva söka igenom whitespace. `min-h-dvh` är ett mönster för hero-slides med mycket innehåll eller bakgrundsvisualer — det passar inte en textbaserad hero med kompakt innehåll.
+
+**Alternativ som valdes bort:**
+- Behålla vänsterställd editorial layout — skapar tom högerhalva på ≥1024px, motverkar konvertering
+- Lägga till mer innehåll i hero för att fylla viewporten — "tillräckligt lite är en feature", fyllnadsinnehåll ökar kognitiv belastning
+- Dark hero-sektion med accentbakgrund — utvärderades inte aktivt men designsystemet är konsekvent på ljus bakgrund
+
+**Påverkar:** `src/components/hero.tsx`, `src/components/header.tsx`, `src/components/how-it-works.tsx`
+
+---
+
 ## 2026-03-15 — Visuell redesign av full-report (Product Designer)
 
 **Kontext:** Användartestfeedback: sektionerna ser för lika ut, resurser är visuellt likvärdiga med kärnan, "nästa steg" upplevs som obligatorisk checklista, saknas filtermekanism för många flaggor.
@@ -122,6 +146,17 @@ Följande är INTE förutbestämda. Respektive expertroll beslutar och dokumente
 - Subheading mellan H1 och undertext: Tre textnivåer innan CTA är scanning-kostnad.
 
 **Påverkar:** `src/components/hero.tsx`
+
+---
+
+## Öppna förslag — Copywriter
+
+### Förbättringsförslag — Copywriter
+**Nuläge:** BRAND.md §Tonalitet föreskriver "Lugn. Aldrig alarmistisk, aldrig säljig." som generell röstregel.
+**Problem:** "Lugn" är inte synonymt med "trovärdigt" — det är ett antagande om vad som skapar förtroende. För primärpersonan (25–30 år, nytt jobberbjudande, skriver under inom dagar) är en röst som är utom synk med situationens faktiska stress ett trovärdighetsbrott, inte en trygghetssignal. Spelrummet att spegla mottagarens situation — utan att exploatera den — är mervärdesskapande, inte alarmistiskt.
+**Förslag:** BRAND.md §Tonalitet kompletteras med: "I hero och paywall: tillåtet att spegla mottagarens faktiska sinnesstämning. Skillnad görs mellan alarmism (exploaterar rädsla) och igenkänning (bekräftar situation). Igenkänning är varumärkesbyggande."
+**Motivering:** "Lugn" skapar bäst förtroende när mottagaren redan är lugn. Målgruppen är det inte — de har tre dagar och en PDF de inte förstår. En röst som speglar det är inte säljig; den är trovärdig. Aesop-halvan av referensen "Aesop × Bloomberg Terminal" vilar på igenkänning, inte på distans.
+**Påverkar:** BRAND.md §Tonalitet, `src/components/hero.tsx` (copy)
 
 ---
 

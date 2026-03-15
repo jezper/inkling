@@ -27,6 +27,18 @@
 | 15 | Deploy | ⬜ |
 
 ## Senaste session
+**2026-03-15 — Landing page layout: centrerad komposition (Product Designer)**
+
+Hero omskriven till centrerad layout. Chapter label borttagen. Header centrerad. Pris-grid och CTA centrerade. `min-h-dvh` ersatt med tight padding. Vertikal dekorationslinje borttagen. HowItWorks-rubrik centrerad.
+
+**Ändrade filer:**
+- `src/components/hero.tsx` — Centrerad layout, borttagen chapter label och dekorationslinje, `min-h-dvh` → tight padding
+- `src/components/header.tsx` — Logo centrerad via `justify-center`
+- `src/components/how-it-works.tsx` — Section-rubrik "Process" centrerad
+
+---
+
+## Senaste session (föregående)
 **2026-03-15 — Visuell redesign av full-report (Product Designer)**
 
 Rapporten omstrukturerad med distinkt visuell identitet per sektion. Filtermekanism för flaggor tillagd. "Nästa steg" omdöpt och omformaterat.

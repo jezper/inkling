@@ -3,6 +3,7 @@ export function HowItWorks() {
     <section className="border-t-2 border-foreground-heading px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-5xl">
         <h2
+          className="text-center"
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: "var(--text-xs)",

@@ -7,7 +7,7 @@ export function Header() {
       style={{ borderBottom: "1px solid var(--border)" }}
     >
       <div
-        className="mx-auto flex max-w-5xl items-center"
+        className="flex items-center justify-center"
         style={{ padding: "1rem 1.5rem" }}
       >
         <a
