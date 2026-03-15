@@ -575,8 +575,22 @@ function ResultView({ result, previousResult, onReset, onReanalyze }: {
         </p>
         <button
           onClick={onReanalyze}
-          className="btn-accent"
-          style={{ marginTop: "1rem", padding: "0.7rem 1.5rem", fontSize: "var(--text-sm)", backgroundColor: "var(--color-text-primary)" }}
+          style={{
+            marginTop: "1rem",
+            padding: "0.7rem 1.5rem",
+            fontSize: "var(--text-sm)",
+            fontFamily: "var(--font-display)",
+            fontWeight: 600,
+            letterSpacing: "0.02em",
+            color: "var(--color-text-primary)",
+            backgroundColor: "transparent",
+            border: "1px solid var(--color-text-primary)",
+            borderRadius: "var(--radius-md)",
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.5rem",
+          }}
         >
           Ladda upp nytt utkast
         </button>

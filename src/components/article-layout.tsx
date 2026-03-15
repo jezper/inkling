@@ -132,6 +132,12 @@ const GLOBAL_STYLES = `
   .article-prose a:hover {
     color: var(--color-accent-600);
   }
+  /* btn-accent inside prose — prose link color would otherwise override #fff via higher specificity */
+  .article-prose a.btn-accent,
+  .article-prose a.btn-accent:hover {
+    color: #fff;
+    text-decoration: none;
+  }
   /* Law citation / statutory quote */
   .article-prose blockquote {
     margin: 1.75rem 0;
