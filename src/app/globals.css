@@ -171,7 +171,18 @@ body {
   font-weight: 600;
   letter-spacing: 0.02em;
   border-radius: var(--radius-md);
+  border: none;
+  text-decoration: none;
   transition: all var(--duration-fast) var(--ease-in-out);
+}
+/* Explicit override — prevents prose link rules (.article-prose a) from
+   winning via higher specificity and rendering btn-accent text invisible. */
+a.btn-accent,
+button.btn-accent,
+a.btn-accent:hover,
+a.btn-accent:visited {
+  color: #fff;
+  text-decoration: none;
 }
 .btn-accent:hover {
   background-color: var(--color-accent-600);
@@ -220,7 +231,7 @@ body {
   grid-template-columns: 1fr auto 1fr;
   align-items: stretch;
 }
-@media (max-width: 399px) {
+@media (max-width: 519px) {
   .hero-price-grid {
     grid-template-columns: 1fr;
   }
