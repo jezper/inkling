@@ -2,88 +2,62 @@ import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-dvh flex-col justify-center bg-background-deep px-4 pb-16 pt-28 sm:px-6">
-      {/* Vertikal linje */}
-      <div
-        className="pointer-events-none absolute bottom-0 left-[120px] top-0 hidden w-px bg-border xl:block"
-        aria-hidden="true"
-      />
-
-      <div className="mx-auto w-full max-w-5xl">
-        {/* Chapter label — anställningsavtal i display-skala.
-            Ersätter 13px eyebrow som var för liten för att registreras pre-attentivt.
-            JetBrains Mono markerar annotation (inte heading), men i storlek som
-            matchar H1:ns optiska tyngd. Bloomberg Terminal-logiken: ämne → headline. */}
-        <p
-          aria-hidden="true"
-          style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: "clamp(0.6rem, 1.6vw, 0.85rem)",
-            fontWeight: 500,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "var(--color-text-subtle)",
-            marginBottom: "0.75rem",
-          }}
-        >
-          — Anställningsavtal
-        </p>
-
+    <section className="relative bg-background-deep px-4 pb-20 pt-32 sm:px-6 sm:pb-24 sm:pt-36">
+      <div className="mx-auto w-full max-w-2xl text-center">
         <h1
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.75rem, 9vw, 6.5rem)",
+            fontSize: "clamp(2.5rem, 8vw, 5.5rem)",
             fontWeight: 700,
             lineHeight: 0.92,
             letterSpacing: "-0.05em",
             color: "var(--color-text-primary)",
           }}
         >
-          <span className="sr-only">Anställningsavtal — </span>
           Grattis till jobbet.
           <br />
           <span style={{ color: "var(--color-accent-text)" }}>Vet du vad du tackar ja till?</span>
         </h1>
 
-        <div className="mt-10 max-w-lg">
-          <p className="text-base leading-relaxed text-foreground-muted">
-            Konkurrensförbud, övertidsklausuler, uppsägningstider — det
-            som avgör dina villkor de kommande åren gömmer sig i
-            finstilt. Vi jämför varje punkt mot lag, marknadspraxis och
-            lönedata för din yrkesgrupp. Du får svart på vitt vad som
-            håller och vad du borde ta upp innan du skriver under.
-          </p>
+        <p
+          className="mx-auto mt-7 leading-relaxed text-foreground-muted"
+          style={{ maxWidth: "480px", fontSize: "var(--text-base)" }}
+        >
+          Konkurrensförbud, övertidsklausuler, uppsägningstider — det
+          som avgör dina villkor de kommande åren gömmer sig i
+          finstilt. Vi jämför varje punkt mot lag, marknadspraxis och
+          lönedata för din yrkesgrupp.
+        </p>
 
-          <div className="mt-8 flex flex-col items-start gap-3">
-            <a
-              href="#upload"
-              className="btn-accent group"
-              style={{ padding: "0.9rem 2rem", fontSize: "var(--text-base)" }}
-            >
-              Kolla ditt avtal
-              <ArrowRight
-                className="h-5 w-5 transition-transform duration-100 group-hover:translate-x-0.5"
-                strokeWidth={2}
-                aria-hidden="true"
-              />
-            </a>
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "var(--text-xs)",
-                color: "var(--color-text-muted)",  /* #47474F — 8.5:1 på vit, AAA */
-                letterSpacing: "0.04em",
-              }}
-            >
-              din fil stannar hos dig · inga uppgifter lagras
-            </span>
-          </div>
+        <div className="mt-8 flex flex-col items-center gap-3">
+          <a
+            href="#upload"
+            className="btn-accent group"
+            style={{ padding: "0.9rem 2rem", fontSize: "var(--text-base)" }}
+          >
+            Kolla ditt avtal
+            <ArrowRight
+              className="h-5 w-5 transition-transform duration-100 group-hover:translate-x-0.5"
+              strokeWidth={2}
+              aria-hidden="true"
+            />
+          </a>
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "var(--text-xs)",
+              color: "var(--color-text-muted)",
+              letterSpacing: "0.04em",
+            }}
+          >
+            din fil stannar hos dig · inga uppgifter lagras
+          </span>
         </div>
 
         {/* Pris — sekventiellt flöde, inte pricing tiers */}
         <div
-          className="mt-12"
-          style={{ maxWidth: "580px", borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}
+          className="mt-12 mx-auto"
+          style={{ maxWidth: "540px", borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}
         >
           <div
             style={{
@@ -94,14 +68,14 @@ export function Hero() {
             className="hero-price-grid"
           >
             {/* Steg 1 — alltid gratis */}
-            <div style={{ padding: "1.25rem 1.5rem" }}>
+            <div style={{ padding: "1.25rem 1.5rem" }} className="text-left">
               <p
                 style={{
                   fontFamily: "var(--font-mono)",
                   fontSize: "var(--text-xs)",
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
-                  color: "var(--color-text-muted)",  /* #47474F — AAA */
+                  color: "var(--color-text-muted)",
                   marginBottom: "0.5rem",
                 }}
               >
@@ -155,14 +129,14 @@ export function Hero() {
             </div>
 
             {/* Steg 2 — full rapport */}
-            <div style={{ padding: "1.25rem 1.5rem" }}>
+            <div style={{ padding: "1.25rem 1.5rem" }} className="text-left">
               <p
                 style={{
                   fontFamily: "var(--font-mono)",
                   fontSize: "var(--text-xs)",
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
-                  color: "var(--color-accent-text)",  /* #A82E14 — 7.1:1 på vit, AAA. Tidigare #E63E1E = 4.22:1, underkänt AA */
+                  color: "var(--color-accent-text)",
                   marginBottom: "0.5rem",
                 }}
               >
@@ -184,7 +158,7 @@ export function Hero() {
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "var(--text-xs)",
-                    color: "var(--color-text-muted)",  /* #47474F — AAA */
+                    color: "var(--color-text-muted)",
                   }}
                 >
                   en gång, klart
