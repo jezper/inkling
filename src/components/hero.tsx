@@ -1,0 +1,203 @@
+import { ArrowRight } from "lucide-react";
+
+export function Hero() {
+  return (
+    <section className="relative flex min-h-dvh flex-col justify-center bg-background-deep px-4 pb-16 pt-28 sm:px-6">
+      {/* Vertikal linje */}
+      <div
+        className="pointer-events-none absolute bottom-0 left-[120px] top-0 hidden w-px bg-border lg:block"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto w-full max-w-5xl">
+        {/* Chapter label — anställningsavtal i display-skala.
+            Ersätter 13px eyebrow som var för liten för att registreras pre-attentivt.
+            JetBrains Mono markerar annotation (inte heading), men i storlek som
+            matchar H1:ns optiska tyngd. Bloomberg Terminal-logiken: ämne → headline. */}
+        <p
+          aria-hidden="true"
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "clamp(0.6rem, 1.6vw, 0.85rem)",
+            fontWeight: 500,
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            color: "var(--color-text-subtle)",
+            marginBottom: "0.75rem",
+          }}
+        >
+          — Anställningsavtal
+        </p>
+
+        <h1
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(2.75rem, 9vw, 6.5rem)",
+            fontWeight: 700,
+            lineHeight: 0.92,
+            letterSpacing: "-0.05em",
+            color: "var(--color-text-primary)",
+          }}
+        >
+          <span className="sr-only">Anställningsavtal — </span>
+          Vet du vad
+          <br />
+          <span style={{ color: "var(--color-accent-text)" }}>du skriver under på?</span>
+          {/* --color-accent-text = #A82E14, 7.1:1 på vit — uppfyller AAA för stor text.
+              Tidigare --color-accent-500 = #E63E1E = 4.22:1, underkänt AAA även för stor text. */}
+        </h1>
+
+        <div className="mt-10 max-w-lg">
+          <p className="text-base leading-relaxed text-foreground-muted">
+            Du har fått ett erbjudande och ska skriva under inom dagar.
+            Analysen går igenom varje klausul mot svensk lag och visar
+            vad som är rimligt, vad som sticker ut och vad du faktiskt
+            kan ifrågasätta.
+          </p>
+
+          <div className="mt-8 flex flex-col items-start gap-3">
+            <a
+              href="#upload"
+              className="btn-accent group"
+              style={{ padding: "0.9rem 2rem", fontSize: "var(--text-base)" }}
+            >
+              Ladda upp ditt avtal
+              <ArrowRight
+                className="h-5 w-5 transition-transform duration-100 group-hover:translate-x-0.5"
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+            </a>
+            <span
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "var(--text-xs)",
+                color: "var(--color-text-muted)",  /* #47474F — 8.5:1 på vit, AAA */
+                letterSpacing: "0.04em",
+              }}
+            >
+              din fil stannar hos dig · inga uppgifter lagras
+            </span>
+          </div>
+        </div>
+
+        {/* Pris — sekventiellt flöde, inte pricing tiers */}
+        <div
+          className="mt-12"
+          style={{ maxWidth: "580px", borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}
+        >
+          <div
+            style={{
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius-lg)",
+              overflow: "hidden",
+            }}
+            className="hero-price-grid"
+          >
+            {/* Steg 1 — alltid gratis */}
+            <div style={{ padding: "1.25rem 1.5rem" }}>
+              <p
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "var(--text-xs)",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "var(--color-text-muted)",  /* #47474F — AAA */
+                  marginBottom: "0.5rem",
+                }}
+              >
+                01 · Alltid gratis
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "var(--text-2xl)",
+                  fontWeight: 700,
+                  letterSpacing: "-0.03em",
+                  color: "var(--color-text-primary)",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                Snabbkoll
+              </p>
+              <p className="text-sm leading-snug text-foreground-muted">
+                Sammanfattning och helhetsbedömning
+              </p>
+            </div>
+
+            {/* Separator — pil */}
+            <div
+              className="hero-price-separator"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "0 0.5rem",
+                borderLeft: "1px solid var(--border)",
+                borderRight: "1px solid var(--border)",
+              }}
+              aria-hidden="true"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                style={{ color: "var(--color-text-subtle)", flexShrink: 0 }}
+              >
+                <path
+                  d="M1 6h10M7 2l4 4-4 4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="square"
+                  strokeLinejoin="miter"
+                />
+              </svg>
+            </div>
+
+            {/* Steg 2 — full rapport */}
+            <div style={{ padding: "1.25rem 1.5rem" }}>
+              <p
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "var(--text-xs)",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "var(--color-accent-text)",  /* #A82E14 — 7.1:1 på vit, AAA. Tidigare #E63E1E = 4.22:1, underkänt AA */
+                  marginBottom: "0.5rem",
+                }}
+              >
+                02 · Full rapport
+              </p>
+              <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem", marginBottom: "0.5rem" }}>
+                <p
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "var(--text-2xl)",
+                    fontWeight: 700,
+                    letterSpacing: "-0.03em",
+                    color: "var(--color-text-primary)",
+                  }}
+                >
+                  99 kr
+                </p>
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "var(--text-xs)",
+                    color: "var(--color-text-muted)",  /* #47474F — AAA */
+                  }}
+                >
+                  en gång, klart
+                </span>
+              </div>
+              <p className="text-sm leading-snug text-foreground-muted">
+                Vad som är rimligt, vad som sticker ut och varför. Omgranskning ingår.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

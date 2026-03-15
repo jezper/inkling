@@ -1,0 +1,154 @@
+{
+  "_meta": {
+    "version": "1.1",
+    "datum": "2026-03-15",
+    "roll": "Copywriter",
+    "status": "Klar för Legal Reviewer",
+    "noteringar": "V1.1: Utökad analysscope (marknadsjämförelse, klarspråk, avvikelsepunkter). Pris uppdaterat till 349 kr. Tre inkonsistenser från BESLUT.md §2026-03-14 åtgärdade: avslutande_cta.undertext, seo_meta.startsida.title och paywall-intro. Se BESLUT.md §Öppna förslag för förbättringsförslag om BRAND.md §Tonalitet."
+  },
+
+  "hero": {
+    "rubrik": "Ditt avtal, mot lagen.",
+    "undertext": "Sex lagar mot ditt avtal. Vad som är vanligt bland liknande roller. Och vad varje klausul faktiskt innebär.",
+    "cta_knapp": "Granska mitt avtal",
+    "cta_stodtext": "~60 sek · dokumentet lämnar aldrig din enhet"
+  },
+
+  "pris": {
+    "sammanfattning": "0 kr",
+    "full_rapport": "349 kr",
+    "modell": "Engångsbetalning"
+  },
+
+  "trust": {
+    "rubrik_sektion": null,
+    "kort": [
+      {
+        "id": "privacy",
+        "rubrik": "Dokumentet stannar hos dig",
+        "beskrivning": "Avtalet bearbetas direkt i din webbläsare. Det lämnar aldrig din enhet och lagras ingenstans."
+      },
+      {
+        "id": "ingen_registrering",
+        "rubrik": "Inget konto behövs",
+        "beskrivning": "Ladda upp, få analys, gå vidare. Ingen e-postadress, inget lösenord, ingen prenumeration att glömma bort att avsluta."
+      },
+      {
+        "id": "information_inte_radgivning",
+        "rubrik": "Information, inte juridik",
+        "beskrivning": "Vi jämför ditt avtal mot vad lagen faktiskt anger — och visar vad som stämmer, vad som avviker och var du kan läsa mer."
+      }
+    ]
+  },
+
+  "sa_fungerar_det": {
+    "rubrik_sektion": "Tre steg, en minut",
+    "steg": [
+      {
+        "nummer": 1,
+        "rubrik": "Ladda upp",
+        "beskrivning": "Avtalet läses i din webbläsare. Namn, personnummer och kontaktuppgifter rensas. Originalet lämnar aldrig din enhet."
+      },
+      {
+        "nummer": 2,
+        "rubrik": "Lag och marknad",
+        "beskrivning": "LAS, Semesterlagen och tre andra lagar — avvikelse för avvikelse. Plus vad som är vanligt bland liknande roller och vad varje formulering faktiskt innebär."
+      },
+      {
+        "nummer": 3,
+        "rubrik": "Du bestämmer",
+        "beskrivning": "Fakta, inte råd. Du vet vad lagen anger, vad som är vanligt på marknaden och vad varje klausul betyder i praktiken."
+      }
+    ]
+  },
+
+  "vad_analysen_granskar": {
+    "rubrik_sektion": "Det här tittar analysen på",
+    "undertext": "Analysen jämför ditt avtal mot LAS, Semesterlagen, Arbetstidslagen och tre andra lagar. Den visar också vad som är vanligt bland liknande roller och vad varje klausul faktiskt innebär.",
+    "kategorier": [
+      "Anställningsform",
+      "Provanställning",
+      "Uppsägningstid",
+      "Konkurrensklausul",
+      "Semester och ledighet",
+      "Arbetstid",
+      "Sekretess",
+      "Lön och förmåner"
+    ]
+  },
+
+  "avslutande_cta": {
+    "rubrik": "Redo att förstå ditt avtal?",
+    "undertext": "Det tar ungefär en minut. Den fullständiga rapporten kostar 349 kr.",
+    "cta_knapp": "Granska mitt avtal"
+  },
+
+  "footer_disclaimer": {
+    "text": "Analysen är information, inte juridisk rådgivning. Den jämför avtalstext mot gällande lag och lyfter avvikelser — men ersätter inte en jurist om du behöver vägledning i ett specifikt ärende."
+  },
+
+  "felmeddelanden": {
+    "pdf_kan_inte_parsas": {
+      "text": "Vi kunde inte läsa dokumentet.",
+      "atgard": "Prova en annan PDF eller kontrollera att filen inte är lösenordsskyddad."
+    },
+    "api_timeout": {
+      "text": "Analysen tog för lång tid.",
+      "atgard": "Försök igen — det brukar gå snabbare vid ett nytt försök."
+    },
+    "ogiltigt_svar": {
+      "text": "Något gick fel på vår sida.",
+      "atgard": "Försök igen om en stund."
+    },
+    "email_misslyckas": {
+      "text": "Rapporten visas nedan, men vi kunde inte skicka e-post den här gången.",
+      "atgard": "Spara eller skriv ut sidan om du vill ha en kopia."
+    },
+    "noll_pii": {
+      "text": "Inga personuppgifter hittades i dokumentet.",
+      "atgard": "Dubbelkolla gärna att rätt fil är vald — sedan kan du fortsätta."
+    }
+  },
+
+  "consent_steg": {
+    "rubrik": "Innan vi kör igång",
+    "beskrivning": "Avtalet bearbetas i din webbläsare. Personuppgifter rensas automatiskt och ingenting lagras.",
+    "detaljer": "Vi skickar endast avtalstexten — utan namn, personnummer eller kontaktuppgifter — för analys. Texten sparas inte efter att svaret returnerats.",
+    "bekrafta_knapp": "Jag förstår — starta analysen",
+    "avbryt_lank": "Avbryt"
+  },
+
+  "paywall": {
+    "rubrik": "Fullständig rapport",
+    "intro": "Sammanfattningen ovan visar vad analysen hittade. Den fullständiga rapporten innehåller varje avvikelse med lagrum, vad avtalet anger och vad lagen kräver — plus vad varje klausul faktiskt innebär och hur villkoren förhåller sig till vad som är vanligt i din yrkeskategori.",
+    "lista_inkluderat": [
+      "Alla avvikelser med exakta lagrum",
+      "Formulering från ditt avtal bredvid lagens krav",
+      "Klartext: vad varje klausul innebär i praktiken",
+      "Marknadsjämförelse: vad som är vanligt bland liknande roller",
+      "Avvikelsepunkter: vad som sticker ut mot lag och marknadspraxis",
+      "PDF att spara eller dela"
+    ],
+    "pris": "349 kr",
+    "garanti_text": "Ingen prenumeration. Engångsbetalning för det här avtalet.",
+    "cta_knapp": "Hämta fullständig rapport",
+    "cta_stodtext": "Betalning hanteras av Stripe. Vi lagrar inga kortuppgifter."
+  },
+
+  "seo_meta": {
+    "startsida": {
+      "title": "Granska ditt anställningsavtal — se vad lagen säger",
+      "description": "Ladda upp ditt anställningsavtal och se hur det stämmer mot LAS och svenska arbetsrättsregler. Ingen registrering, dokumentet lämnar inte din enhet."
+    },
+    "resultatvy": {
+      "title": "Din avtalsanalys — Clause & Effect",
+      "description": "Se vad ditt anställningsavtal anger och hur det förhåller sig till svensk arbetsrätt, punkt för punkt."
+    }
+  },
+
+  "disclaimer_tre_platser": {
+    "footer": "Analysen är information, inte juridisk rådgivning. Den jämför avtalstext mot gällande lag och lyfter avvikelser — men ersätter inte en jurist om du behöver vägledning i ett specifikt ärende.",
+    "rapport_topp": "Det här är en informationsanalys. Den citerar vad lagen anger och vad avtalet anger — dra inga juridiska slutsatser utan att rådgöra med en jurist om du är osäker.",
+    "rapport_botten": "Analysen grundar sig på LAS, Semesterlagen, Arbetstidslagen, Diskrimineringslagen och Föräldraledighetslagen. Kollektivavtal ingår inte och kan påverka vad som gäller i din situation. Marknadsjämförelserna är baserade på aggregerade branschnormer och är inte juridiskt bindande underlag."
+  }
+}
