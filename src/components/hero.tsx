@@ -5,7 +5,7 @@ export function Hero() {
     <section className="relative flex min-h-dvh flex-col justify-center bg-background-deep px-4 pb-16 pt-28 sm:px-6">
       {/* Vertikal linje */}
       <div
-        className="pointer-events-none absolute bottom-0 left-[120px] top-0 hidden w-px bg-border lg:block"
+        className="pointer-events-none absolute bottom-0 left-[120px] top-0 hidden w-px bg-border xl:block"
         aria-hidden="true"
       />
 
