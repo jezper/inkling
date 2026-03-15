@@ -40,19 +40,18 @@ export function Hero() {
           }}
         >
           <span className="sr-only">Anställningsavtal — </span>
-          Vet du vad
+          Grattis till jobbet.
           <br />
-          <span style={{ color: "var(--color-accent-text)" }}>du skriver under på?</span>
-          {/* --color-accent-text = #A82E14, 7.1:1 på vit — uppfyller AAA för stor text.
-              Tidigare --color-accent-500 = #E63E1E = 4.22:1, underkänt AAA även för stor text. */}
+          <span style={{ color: "var(--color-accent-text)" }}>Vet du vad du tackar ja till?</span>
         </h1>
 
         <div className="mt-10 max-w-lg">
           <p className="text-base leading-relaxed text-foreground-muted">
-            Du har fått ett erbjudande och ska skriva under inom dagar.
-            Analysen går igenom varje klausul mot svensk lag och visar
-            vad som är rimligt, vad som sticker ut och vad du faktiskt
-            kan ifrågasätta.
+            Konkurrensförbud, övertidsklausuler, uppsägningstider — det
+            som avgör dina villkor de kommande åren gömmer sig i
+            finstilt. Vi jämför varje punkt mot lag, marknadspraxis och
+            lönedata för din yrkesgrupp. Du får svart på vitt vad som
+            håller och vad du borde ta upp innan du skriver under.
           </p>
 
           <div className="mt-8 flex flex-col items-start gap-3">
@@ -61,7 +60,7 @@ export function Hero() {
               className="btn-accent group"
               style={{ padding: "0.9rem 2rem", fontSize: "var(--text-base)" }}
             >
-              Ladda upp ditt avtal
+              Kolla ditt avtal
               <ArrowRight
                 className="h-5 w-5 transition-transform duration-100 group-hover:translate-x-0.5"
                 strokeWidth={2}
