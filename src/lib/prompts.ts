@@ -55,13 +55,15 @@ SAKNADE VILLKOR — KRITISKT:
 
 SAKNADE VILLKOR SOM FLAGGOR — VIKTIGT:
 - Om ett kritiskt villkor saknas, skapa en FLAGGA (inte bara en saknat_villkor-post).
-- Dessa saknade villkor ska vara flaggor med allvarlighet "medel" och kategori "saknas":
-  * Lön saknas → "medel" — "Avtalet anger ingen lön. Det är ovanligt och innebär att lönen inte är avtalad."
-  * Semester saknas → "medel" — "Antal semesterdagar anges inte. Semesterlagen ger 25 dagar, men många arbetsgivare erbjuder fler."
-  * Tjänstepension saknas → "medel" — "Tjänstepension nämns inte. De flesta arbetsgivare i Sverige erbjuder tjänstepension via kollektivavtal eller eget avtal."
-  * Uppsägningstid saknas → "medel" — "Uppsägningstid specificeras inte. LAS-minimikrav gäller som default."
-  * Övertid saknas/ingår i lön → "medel" — "Övertidsersättning nämns inte eller ingår i lönen. Det kan innebära obetalt merarbete."
-- Dessa ska ha klartext, lagrum och frågor_att_ställa precis som vanliga flaggor.
+- Allvarligheten beror på konsekvensen för arbetstagaren:
+
+  * Lön saknas → "hög" kategori "saknas" — Avtal utan skriftligt lönebelopp ger inget rättsligt skydd utanför kollektivavtal. Allvarligt.
+  * Övertid "ingår i lönen" eller saknas helt → "hög" kategori "saknas" — Generella all-in-klausuler har underkänts av AD. Kan innebära betydande obetalt merarbete.
+  * Tjänstepension saknas → "medel" kategori "saknas" — Inget lagkrav, men ca 90% av svenska arbetsgivare erbjuder tjänstepension. Stor ekonomisk konsekvens över tid.
+  * Semester saknas → "info" kategori "saknas" — Semesterlagen §4 ger 25 dagar oavsett vad avtalet säger. Inte farligt, men värt att notera.
+  * Uppsägningstid saknas → "info" kategori "saknas" — LAS §11 minimikrav gäller som default. Inte problematiskt.
+
+- Alla dessa ska ha klartext, lagrum och frågor_att_ställa precis som vanliga flaggor.
 - De ska OCKSÅ listas i saknade_villkor-arrayen.
 - Övriga saknade villkor (arbetsplats, sjuklön, etc.) behöver bara finnas i saknade_villkor-arrayen.
 
