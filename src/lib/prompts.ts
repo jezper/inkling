@@ -58,8 +58,8 @@ SAKNADE VILLKOR SOM FLAGGOR — VIKTIGT:
 - Allvarligheten beror på konsekvensen för arbetstagaren:
 
   * Lön saknas → "hög" kategori "saknas" — Avtal utan skriftligt lönebelopp ger inget rättsligt skydd utanför kollektivavtal. Allvarligt.
-  * Övertid "ingår i lönen" eller saknas helt → "hög" kategori "saknas" — Generella all-in-klausuler har underkänts av AD. Kan innebära betydande obetalt merarbete.
-  * Tjänstepension saknas → "medel" kategori "saknas" — Inget lagkrav, men ca 90% av svenska arbetsgivare erbjuder tjänstepension. Stor ekonomisk konsekvens över tid.
+  * Övertid "ingår i lönen" eller saknas helt → "info" kategori "saknas" — Vanligt i svenska tjänstemannaavtal, särskilt vid förtroendearbetstid. Nämn att det innebär att övertid inte ersätts separat, men att det inte är ovanligt.
+  * Tjänstepension saknas → "hög" kategori "saknas" — Över 90% av svenska arbetstagare har tjänstepension. Att sakna det är en mycket stor ekonomisk förlust — ofta hundratusentals kronor över ett yrkesliv. Flagga tydligt.
   * Semester saknas → "info" kategori "saknas" — Semesterlagen §4 ger 25 dagar oavsett vad avtalet säger. Inte farligt, men värt att notera.
   * Uppsägningstid saknas → "info" kategori "saknas" — LAS §11 minimikrav gäller som default. Inte problematiskt.
 
