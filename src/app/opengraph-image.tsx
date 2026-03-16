@@ -10,7 +10,15 @@ export const size = {
 };
 export const contentType = "image/png";
 
-export default function Image() {
+async function loadFont() {
+  const res = await fetch(
+    "https://fonts.gstatic.com/s/spacegrotek/v16/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.ttf",
+  );
+  return res.arrayBuffer();
+}
+
+export default async function Image() {
+  const fontData = await loadFont();
   return new ImageResponse(
     (
       <div
@@ -23,6 +31,7 @@ export default function Image() {
           justifyContent: "center",
           padding: "80px 90px",
           gap: "32px",
+          fontFamily: "Space Grotesk",
         }}
       >
         <div style={{ display: "flex", fontSize: "36px" }}>
@@ -59,6 +68,15 @@ export default function Image() {
         </div>
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+      fonts: [
+        {
+          name: "Space Grotesk",
+          data: fontData,
+          style: "normal",
+        },
+      ],
+    },
   );
 }

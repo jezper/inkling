@@ -60,7 +60,7 @@ const faqSchema = {
       name: "Vad kostar det?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Snabbkollen är gratis. Full rapport kostar 99 kr. En engångskostnad, ingen prenumeration.",
+        text: "Snabbkollen är gratis. Full rapport kostar 49 kr. En engångskostnad, ingen prenumeration.",
       },
     },
     {
@@ -84,7 +84,7 @@ const faqSchema = {
       name: "Vad är omgranskning?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Om arbetsgivaren ändrar avtalet efter din genomgång kan du ladda upp den reviderade versionen och få en ny fullständig rapport utan extra kostnad. Ingår i de 99 kronorna.",
+        text: "Om arbetsgivaren ändrar avtalet efter din genomgång kan du ladda upp den reviderade versionen och få en ny fullständig rapport utan extra kostnad. Ingår i de 49 kronorna.",
       },
     },
   ],

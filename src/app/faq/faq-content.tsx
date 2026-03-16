@@ -191,7 +191,7 @@ const sections: FaqSection[] = [
         question: "Vad kostar det?",
         answer: (
           <p>
-            Snabbkollen är gratis. Full rapport kostar 99 kr. En engångskostnad,
+            Snabbkollen är gratis. Full rapport kostar 49 kr. En engångskostnad,
             ingen prenumeration.
           </p>
         ),
@@ -205,7 +205,7 @@ const sections: FaqSection[] = [
               tillräckligt för att se om avtalet innehåller något som sticker ut.
             </p>
             <p>
-              Full rapport (99 kr): alla flaggor med lagrum, klarspråksförklaring
+              Full rapport (49 kr): alla flaggor med lagrum, klarspråksförklaring
               av varje klausul, marknadsjämförelse för din yrkesgrupp, saknade
               standardvillkor och förslag på frågor att ställa till
               arbetsgivaren. Plus omgranskning om avtalet revideras.
@@ -219,7 +219,7 @@ const sections: FaqSection[] = [
           <p>
             Om arbetsgivaren ändrar avtalet efter din genomgång kan du ladda
             upp den reviderade versionen och få en ny fullständig rapport utan
-            extra kostnad. Ingår i de 99 kronorna.
+            extra kostnad. Ingår i de 49 kronorna.
           </p>
         ),
       },
