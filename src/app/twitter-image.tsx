@@ -20,55 +20,49 @@ export default function Image() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
+          justifyContent: "center",
           padding: "80px 90px",
+          gap: "40px",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            fontSize: "28px",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          <span style={{ fontWeight: 400, color: "#88889A" }}>kolla</span>
-          <span style={{ fontWeight: 700, color: "#DC1E38" }}>/</span>
-          <span style={{ fontWeight: 700, color: "#F5F5F7" }}>avtalet</span>
+        <div style={{ display: "flex", fontSize: "28px" }}>
+          <span style={{ color: "#88889A" }}>kolla</span>
+          <span style={{ color: "#DC1E38" }}>/</span>
+          <span style={{ color: "#F5F5F7" }}>avtalet</span>
         </div>
 
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "20px",
+            gap: "16px",
           }}
         >
           <div
             style={{
-              fontSize: "68px",
-              fontWeight: 700,
+              display: "flex",
+              flexDirection: "column",
+              fontSize: "64px",
               color: "#F5F5F7",
-              lineHeight: 1.0,
-              letterSpacing: "-0.04em",
-              maxWidth: "900px",
+              lineHeight: 1.1,
             }}
           >
-            Grattis till jobbet.
-            <br />
-            <span style={{ color: "#DC1E38" }}>Vet du vad du tackar ja till?</span>
+            <span>Grattis till jobbet.</span>
+            <span style={{ color: "#DC1E38" }}>
+              Vet du vad du tackar ja till?
+            </span>
           </div>
+
           <div
             style={{
-              fontSize: "26px",
+              display: "flex",
+              fontSize: "24px",
               color: "#88889A",
               lineHeight: 1.4,
-              maxWidth: "720px",
-              fontWeight: 400,
             }}
           >
-            Varje klausul jämförs mot lag, marknadspraxis och lönedata.
-            Snabbkoll gratis. Full rapport 99 kr.
+            Varje klausul mot lag, marknadspraxis och lönedata. Snabbkoll
+            gratis.
           </div>
         </div>
 
@@ -79,12 +73,10 @@ export default function Image() {
             color: "#5C5C6A",
           }}
         >
-          <span>kollaavtalet.com</span>
+          kollaavtalet.com
         </div>
       </div>
     ),
-    {
-      ...size,
-    }
+    { ...size },
   );
 }
