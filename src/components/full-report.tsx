@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import type { AnalysisResult, Flagga, NästaSteg } from "@/lib/analysis-types";
 import { getRelevantResources, type Resource } from "@/lib/resources";
+import { parseLagrum } from "@/lib/lagrum-links";
 import { ReferralShare } from "./referral-share";
 
 interface FullReportProps {
@@ -1758,7 +1759,7 @@ function FlagCard({
             </div>
           )}
 
-          {/* Lagrum */}
+          {/* Lagrum — med länk till lagtext */}
           <p
             style={{
               fontFamily: "var(--font-mono)",
@@ -1767,7 +1768,27 @@ function FlagCard({
               letterSpacing: "0.02em",
             }}
           >
-            {flag.lagrum}
+            {parseLagrum(flag.lagrum).map((link, li) => (
+              <span key={li}>
+                {li > 0 && ", "}
+                {link.url ? (
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "inherit",
+                      textDecoration: "underline",
+                      textUnderlineOffset: "2px",
+                    }}
+                  >
+                    {link.text} ↗
+                  </a>
+                ) : (
+                  link.text
+                )}
+              </span>
+            ))}
           </p>
         </div>
       )}

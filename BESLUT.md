@@ -15,6 +15,38 @@
 
 ---
 
+## Öppna förslag
+
+### Förbättringsförslag — Legal Reviewer (2026-03-16)
+
+**Nuläge:** `saknade_villkor`-objektet i JSON-schemat (SPEC.md §5) saknar `allvarlighet`-falt. Allvarlighet sätts till "medel" som default för alla saknade villkor.
+
+**Problem:** Saknade villkor varierar kraftigt i juridisk tyngd. Att lön saknas är fundamentalt annorlunda än att semester saknas — semesterlagen gäller ändå per tvingande rätt, medan avsaknad av lönebelopp innebär ett reellt skyddsunderskott utan laglig fallback utanför kollektivavtal. En enhetlig allvarlighetsgrad missinformerar användaren och underminerar produktens kärnvärde.
+
+Genomgång visar att tre av fem vanliga saknade villkor är felklassificerade med "medel" som blankett-default:
+
+| Villkor | Default idag | Korrekt | Grund |
+|---|---|---|---|
+| Lön saknas | medel | hög | Inget lönebelopp + ingen lagstadgad miniminivå utanför KA |
+| Semester saknas | medel | info | Semesterlagen (SFS 1977:480) §4 gäller som tvingande rätt |
+| Tjänstepension saknas | medel | medel | Korrekt — ingen lag, men allvarlig branschavvikelse |
+| Uppsägningstid saknas | medel | info | LAS (SFS 1982:80) §11 gäller automatiskt som suppletiv rätt |
+| Övertid saknas | medel | medel | Korrekt för ren avsaknad |
+| Övertid "ingår i lön" | medel | hög | Aktiv klausul som kan undanröja rätt till ersättning — AD-praxis |
+
+Notera att övertid "ingår i lön" inte är ett saknat villkor utan en befintlig klausul — den bör hanteras som en flagga i `flaggor`-arrayen, inte i `saknade_villkor`.
+
+**Förslag:**
+1. Lägg till `allvarlighet`-fält i `saknade_villkor`-arrayens objekt i SPEC.md §5.
+2. Ge systemprompt-instruktioner om differentierad allvarlighetsgradering med tre kategorier: (a) lag gäller ändå = info, (b) oklar rättsställning utan lag = medel, (c) substantiellt skyddsunderskott utan lagsäkerhet = hög.
+3. Flytta "övertid ingår i lön"-scenariot till `flaggor`-logiken med allvarlighet hög.
+
+**Motivering:** Felgradering vid underskattat allvar ger användaren falsk trygghet. Det är den risk som skadar mest — och som är svårast att försvara om produkten granskas externt.
+
+**Påverkar:** SPEC.md §5 (JSON-schema), references/swedish-employment-law.md, systemprompt-fil, komponenter som renderar saknade villkor.
+
+---
+
 ## 2026-03-15 — Hero processlinje borttagen, pris integrerat i sub-label (Product Designer)
 
 **Kontext:** Processlinjen (01 Snabbkoll gratis / pil / 02 Full rapport 99 kr) såg ut som en pricing table trots att det är ett sekventiellt flöde. Skapade ett cognitiv objection-moment tidigt, asymmetrisk layout, svag pil-separator och typografisk inkoherens ("en gång, klart" i mono bredvid "99 kr" i display).
