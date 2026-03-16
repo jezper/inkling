@@ -89,6 +89,7 @@ export function FullReport({
         .then((result) => {
           if (result.paid) {
             sessionStorage.setItem("ce_unlocked", "true");
+            if (sessionId) sessionStorage.setItem("ce_session_id", sessionId);
             restoreFromStorage();
             const stored = sessionStorage.getItem("ce_analysis_result");
             if (!stored) {
@@ -905,14 +906,15 @@ export function FullReport({
             </div>
           )}
 
-          {/* Disclaimer */}
-          <footer style={{ paddingTop: "1.5rem", borderTop: "1px solid var(--color-surface-200)" }}>
+          {/* Disclaimer + refund */}
+          <footer className="no-print" style={{ paddingTop: "1.5rem", borderTop: "1px solid var(--color-surface-200)" }}>
             <p style={{ fontSize: "var(--text-sm)", color: "var(--color-text-muted)", lineHeight: 1.7 }}>
               Det här är information, inte juridisk rådgivning. Analysen jämför
               mot LAS, Semesterlagen, Arbetstidslagen, Diskrimineringslagen och
               Föräldraledighetslagen. Kollektivavtal ingår inte. Vid osäkerhet,
               kontakta ett fackförbund eller en arbetsrättsjurist.
             </p>
+            <RefundBlock />
           </footer>
         </div>
       </div>
@@ -1108,6 +1110,128 @@ function GranskningLista({
 // ---------------------------------------------------------------------------
 // Sub-components
 // ---------------------------------------------------------------------------
+
+function RefundBlock() {
+  const [open, setOpen] = useState(false);
+  const [reason, setReason] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+
+  const handleRefund = useCallback(async () => {
+    if (reason.trim().length < 10 || status === "sending") return;
+    setStatus("sending");
+    try {
+      const sessionId = sessionStorage.getItem("ce_session_id") ?? undefined;
+      const reportUrl = window.location.href;
+
+      const res = await fetch("/api/refund", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reason: reason.trim(), reportUrl, sessionId }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        setStatus("done");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }, [reason, status]);
+
+  if (status === "done") {
+    return (
+      <p style={{ marginTop: "1rem", fontSize: "var(--text-sm)", color: "var(--color-text-muted)", lineHeight: 1.6 }}>
+        Tack. Din förfrågan har skickats. Vi granskar den och återkommer inom 1-2 arbetsdagar.
+      </p>
+    );
+  }
+
+  if (!open) {
+    return (
+      <button
+        onClick={() => setOpen(true)}
+        style={{
+          marginTop: "0.75rem",
+          fontSize: "var(--text-xs)",
+          fontFamily: "var(--font-mono)",
+          color: "var(--color-text-muted)",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          padding: 0,
+          textDecoration: "underline",
+          textUnderlineOffset: "2px",
+          letterSpacing: "0.02em",
+        }}
+      >
+        Inte nöjd med rapporten?
+      </button>
+    );
+  }
+
+  return (
+    <div style={{ marginTop: "1rem", padding: "1rem", border: "1px solid var(--color-surface-200)", borderRadius: "var(--radius-md)" }}>
+      <p style={{ fontSize: "var(--text-sm)", color: "var(--color-text-primary)", marginBottom: "0.5rem" }}>
+        Beskriv vad som inte stämde eller saknades i analysen. Vi granskar rapporten och återkommer.
+      </p>
+      <textarea
+        value={reason}
+        onChange={(e) => setReason(e.target.value)}
+        placeholder="T.ex. analysen missade viktiga klausuler, rapporten var otydlig, fel lagrum..."
+        rows={3}
+        style={{
+          width: "100%",
+          padding: "0.5rem 0.75rem",
+          fontSize: "var(--text-sm)",
+          fontFamily: "var(--font-sans)",
+          color: "var(--color-text-primary)",
+          backgroundColor: "var(--color-surface-50)",
+          border: "1px solid var(--color-surface-200)",
+          borderRadius: "var(--radius-md)",
+          resize: "vertical",
+        }}
+      />
+      <div style={{ marginTop: "0.75rem", display: "flex", gap: "0.75rem", alignItems: "center" }}>
+        <button
+          onClick={handleRefund}
+          disabled={reason.trim().length < 10 || status === "sending"}
+          style={{
+            padding: "0.5rem 1rem",
+            fontSize: "var(--text-sm)",
+            fontFamily: "var(--font-display)",
+            fontWeight: 600,
+            color: "var(--color-text-primary)",
+            backgroundColor: "transparent",
+            border: "1px solid var(--color-text-primary)",
+            borderRadius: "var(--radius-md)",
+            cursor: reason.trim().length >= 10 ? "pointer" : "default",
+            opacity: reason.trim().length >= 10 ? 1 : 0.4,
+          }}
+        >
+          {status === "sending" ? "Skickar..." : "Skicka förfrågan"}
+        </button>
+        <button
+          onClick={() => setOpen(false)}
+          style={{
+            fontSize: "var(--text-sm)",
+            color: "var(--color-text-muted)",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Avbryt
+        </button>
+      </div>
+      {status === "error" && (
+        <p style={{ marginTop: "0.5rem", fontSize: "var(--text-xs)", color: "var(--color-severity-high-text)" }}>
+          Något gick fel. Kontakta support@kollaavtalet.com.
+        </p>
+      )}
+    </div>
+  );
+}
 
 function EmptyState({ message }: { message?: string }) {
   return (
