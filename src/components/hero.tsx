@@ -50,7 +50,7 @@ export function Hero() {
               letterSpacing: "0.04em",
             }}
           >
-            snabbkoll gratis · full rapport 99 kr
+            snabbkoll gratis · full rapport 49 kr
           </span>
         </div>
       </div>

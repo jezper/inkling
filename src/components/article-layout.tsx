@@ -364,7 +364,7 @@ export function InlineCTA() {
           letterSpacing: "0.03em",
         }}
       >
-        99 kr · inget konto · dokumentet lämnar aldrig din enhet
+        49 kr · inget konto · dokumentet lämnar aldrig din enhet
       </p>
     </aside>
   );
@@ -428,7 +428,7 @@ function SidebarCTA() {
           textAlign: "center",
         }}
       >
-        99 kr · ingen registrering
+        49 kr · ingen registrering
       </p>
     </div>
   );

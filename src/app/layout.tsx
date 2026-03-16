@@ -89,7 +89,7 @@ export default function RootLayout({
     name: "Kolla Avtalet",
     url: BASE_URL,
     description:
-      "Granska ditt anställningsavtal mot svensk arbetsrätt. Snabbkoll gratis, full rapport 99 kr.",
+      "Granska ditt anställningsavtal mot svensk arbetsrätt. Snabbkoll gratis, full rapport 49 kr.",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web browser",
     offers: {

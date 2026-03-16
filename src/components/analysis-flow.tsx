@@ -264,7 +264,7 @@ function ResultView({ result, previousResult, onReset, onReanalyze }: {
         {/* Paywall */}
         <div style={{ padding: "1.5rem", border: "2px solid var(--color-accent-500)", borderRadius: "var(--radius-lg)", backgroundColor: "var(--color-surface-0)" }}>
           <p style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-lg)", fontWeight: 700, color: "var(--color-text-primary)", letterSpacing: "-0.02em" }}>
-            Full genomgång, 99 kr
+            Full genomgång, 49 kr
           </p>
           <ul style={{ marginTop: "0.75rem", paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.375rem" }}>
             {[
