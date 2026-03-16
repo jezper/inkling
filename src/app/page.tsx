@@ -7,16 +7,16 @@ import { Footer } from "@/components/footer";
 import { ReferralCapture } from "@/components/referral-capture";
 
 export const metadata: Metadata = {
-  title: "Kolla Avtalet - Granska ditt anställningsavtal",
+  title: "Kolla Avtalet | Förstå ditt anställningsavtal innan du skriver under",
   description:
-    "Ladda upp ditt anställningsavtal och se hur det stämmer mot svensk arbetsrätt. Snabbkoll gratis, full rapport 99 kr. Dokumentet lämnar aldrig din enhet.",
+    "Grattis till jobbet. Vet du vad du tackar ja till? Vi jämför varje klausul mot lag, marknadspraxis och lönedata. Snabbkoll gratis.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Kolla Avtalet - Granska ditt anställningsavtal",
+    title: "Förstå ditt avtal innan du skriver under",
     description:
-      "Ladda upp ditt anställningsavtal och se hur det stämmer mot svensk arbetsrätt. Snabbkoll gratis, full rapport 99 kr.",
+      "Grattis till jobbet. Vet du vad du tackar ja till? Varje klausul jämförs mot lag, marknadspraxis och lönedata.",
     url: "/",
     type: "website",
   },
