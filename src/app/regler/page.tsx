@@ -4,7 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Arbetsrättsregler i Sverige | inkling",
+  title: "Arbetsrättsregler i Sverige | Kolla Avtalet",
   description:
     "Samlad information om svenska arbetsrättslagar — LAS, provanställning, uppsägningstider och mer.",
 };

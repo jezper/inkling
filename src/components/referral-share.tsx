@@ -12,10 +12,10 @@ export function ReferralShare({ referralToken }: ReferralShareProps) {
   const siteUrl =
     typeof window !== "undefined"
       ? window.location.origin
-      : "https://inkling.se";
+      : "https://kollaavtalet.com";
   const referralUrl = `${siteUrl}?ref=${referralToken}`;
 
-  const smsText = `Jag har precis granskat mitt anställningsavtal med inkling. Om du ska skriva under snart kan du testa gratis: ${referralUrl}`;
+  const smsText = `Jag har precis granskat mitt anställningsavtal med Kolla Avtalet. Om du ska skriva under snart kan du testa gratis: ${referralUrl}`;
   const smsHref = `sms:?body=${encodeURIComponent(smsText)}`;
 
   const handleCopy = useCallback(async () => {
@@ -55,7 +55,7 @@ export function ReferralShare({ referralToken }: ReferralShareProps) {
           lineHeight: 1.6,
         }}
       >
-        Dela inkling med en kollega eller vän. Den kostnadsfria snabbkollen tar
+        Dela Kolla Avtalet med en kollega eller vän. Den kostnadsfria snabbkollen tar
         under en minut.
       </p>
       <div

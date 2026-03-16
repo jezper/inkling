@@ -12,7 +12,7 @@ export function Header() {
       >
         <a
           href="/"
-          aria-label="inkling — startsida"
+          aria-label="Kolla Avtalet — startsida"
           className="inline-flex items-center"
           style={{ minHeight: "44px" }}
         >

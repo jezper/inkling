@@ -3,7 +3,7 @@ import { ArticleLayout, InlineCTA } from "@/components/article-layout";
 import { getRelatedPages } from "@/lib/seo-pages";
 
 export const metadata: Metadata = {
-  title: "LAS — Lagen om anställningsskydd | inkling",
+  title: "LAS — Lagen om anställningsskydd | Kolla Avtalet",
   description:
     "LAS reglerar din rätt till fast anställning, uppsägningstid och turordning. Här förklarar vi vad lagen säger och vad du ska leta efter i ditt avtal.",
 };
@@ -123,7 +123,7 @@ export default function LASPage() {
       </p>
       <div className="law-box">
         <p>
-          <strong>Vad inkling kontrollerar:</strong> Vi jämför
+          <strong>Vad Kolla Avtalet kontrollerar:</strong> Vi jämför
           anställningstid, uppsägningstider och anställningsform mot LAS
           minimikrav. Om något avviker flaggar vi det med lagstöd.
         </p>
@@ -137,7 +137,7 @@ export default function LASPage() {
         under ett visst golv.
       </p>
       <p>
-        inkling granskar mot lagtext. Kollektivavtal ingår inte i V1 av
+        Kolla Avtalet granskar mot lagtext. Kollektivavtal ingår inte i V1 av
         tjänsten.
       </p>
     </ArticleLayout>

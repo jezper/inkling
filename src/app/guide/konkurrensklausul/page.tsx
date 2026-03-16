@@ -3,7 +3,7 @@ import { ArticleLayout, InlineCTA } from "@/components/article-layout";
 import { getRelatedPages } from "@/lib/seo-pages";
 
 export const metadata: Metadata = {
-  title: "Konkurrensklausul i anställningsavtal — vad gäller? | inkling",
+  title: "Konkurrensklausul i anställningsavtal — vad gäller? | Kolla Avtalet",
   description:
     "En konkurrensklausul begränsar vad du får göra efter att du slutat. Här förklarar vi när de är giltiga, hur länge de gäller och vad du kan förhandla.",
 };
@@ -135,7 +135,7 @@ export default function KonkurrensklausulPage() {
       </ul>
       <div className="law-box">
         <p>
-          <strong>inkling kontrollerar:</strong> Vi identifierar
+          <strong>Kolla Avtalet kontrollerar:</strong> Vi identifierar
           konkurrensklausuler i ditt avtal och flaggar bindningstid,
           kompensationsskrivningar och geografisk räckvidd mot etablerad
           praxis.

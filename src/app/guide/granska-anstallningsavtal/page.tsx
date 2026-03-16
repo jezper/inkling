@@ -3,7 +3,7 @@ import { ArticleLayout, InlineCTA } from "@/components/article-layout";
 import { getRelatedPages } from "@/lib/seo-pages";
 
 export const metadata: Metadata = {
-  title: "Granska ditt anställningsavtal — steg-för-steg | inkling",
+  title: "Granska ditt anställningsavtal — steg-för-steg | Kolla Avtalet",
   description:
     "Vad ska du titta på innan du skriver under? Vi går igenom de viktigaste punkterna i ett anställningsavtal och förklarar vad som är standard och vad som är avvikande.",
 };
@@ -156,7 +156,7 @@ export default function GranskaAnstallningsavtalPage() {
       </p>
       <div className="law-box">
         <p>
-          <strong>inkling gör detta åt dig:</strong> Ladda upp ditt avtal.
+          <strong>Kolla Avtalet gör detta åt dig:</strong> Ladda upp ditt avtal.
           Vi identifierar alla sju punkterna ovan, jämför mot lag och
           flaggar formuleringar som avviker från det normala — med
           lagstöd och förklaring.

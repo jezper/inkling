@@ -3,7 +3,7 @@ import { ArticleLayout, InlineCTA } from "@/components/article-layout";
 import { getRelatedPages } from "@/lib/seo-pages";
 
 export const metadata: Metadata = {
-  title: "Provanställning — regler och rättigheter | inkling",
+  title: "Provanställning — regler och rättigheter | Kolla Avtalet",
   description:
     "Provanställning får vara högst 6 månader. Här förklarar vi vad som gäller, när den kan avbrytas och vad du ska kontrollera i ditt avtal.",
 };
@@ -110,7 +110,7 @@ export default function ProvanstallningPage() {
       </p>
       <div className="law-box">
         <p>
-          <strong>inkling kontrollerar:</strong> Vi identifierar om
+          <strong>Kolla Avtalet kontrollerar:</strong> Vi identifierar om
           prövotidens längd överstiger lagens gräns på sex månader, och
           flaggar formuleringar som kan innebära otillåten förlängning.
         </p>

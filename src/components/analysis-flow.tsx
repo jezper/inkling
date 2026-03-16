@@ -296,7 +296,7 @@ function ResultView({ result, previousResult, onReset, onReanalyze }: {
                   if (previousResult) {
                     sessionStorage.setItem("ce_previous_result", JSON.stringify(previousResult));
                   }
-                  const refToken = (() => { try { const r = localStorage.getItem("inkling_ref"); if (!r) return null; const p = JSON.parse(r); return Date.now() - p.ts < 72*3600000 ? p.token : null; } catch { return null; } })();
+                  const refToken = (() => { try { const r = localStorage.getItem("ka_ref"); if (!r) return null; const p = JSON.parse(r); return Date.now() - p.ts < 72*3600000 ? p.token : null; } catch { return null; } })();
                   const res = await fetch("/api/checkout", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -386,7 +386,7 @@ function ResultView({ result, previousResult, onReset, onReanalyze }: {
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div style={{ borderBottom: "2px solid var(--color-text-primary)", paddingBottom: "1rem", marginBottom: "1.5rem" }}>
           <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-xs)", letterSpacing: "0.10em", textTransform: "uppercase", color: "var(--color-text-muted)" }}>
-            inkling · Avtalsrapport · {new Date().toLocaleDateString("sv-SE")}
+            Kolla Avtalet · Avtalsrapport · {new Date().toLocaleDateString("sv-SE")}
           </p>
         </div>
 

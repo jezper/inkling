@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "inkling — Granska ditt anställningsavtal",
+  title: "Kolla Avtalet — Granska ditt anställningsavtal",
   description:
     "Ladda upp ditt anställningsavtal och se hur det stämmer mot svensk arbetsrätt. Ingen registrering, dokumentet lämnar inte din enhet.",
 };

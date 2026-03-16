@@ -188,7 +188,7 @@ export function FullReport({
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "inkling-rapport.pdf";
+      a.download = "kollaavtalet-rapport.pdf";
       a.click();
       URL.revokeObjectURL(url);
     } catch {
@@ -277,7 +277,7 @@ export function FullReport({
             }}
           >
             <ArrowLeft size={14} strokeWidth={1.5} aria-hidden="true" />
-            inkling.se
+            kollaavtalet.com
           </a>
 
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
@@ -334,7 +334,7 @@ export function FullReport({
               color: "var(--color-text-muted)",
             }}
           >
-            inkling · Avtalsrapport ·{" "}
+            Kolla Avtalet · Avtalsrapport ·{" "}
             {new Date().toLocaleDateString("sv-SE")}
           </p>
           {expiresAt && (

@@ -3,7 +3,7 @@ import { ArticleLayout, InlineCTA } from "@/components/article-layout";
 import { getRelatedPages } from "@/lib/seo-pages";
 
 export const metadata: Metadata = {
-  title: "Uppsägningstider — vad lagen kräver | inkling",
+  title: "Uppsägningstider — vad lagen kräver | Kolla Avtalet",
   description:
     "Uppsägningstiden beror på hur länge du jobbat. LAS anger minimigränser. Ditt avtal kan ge dig mer, men aldrig mindre. Här går vi igenom reglerna.",
 };
@@ -113,7 +113,7 @@ export default function UppsagningstidPage() {
       </ul>
       <div className="law-box">
         <p>
-          <strong>inkling kontrollerar:</strong> Vi identifierar
+          <strong>Kolla Avtalet kontrollerar:</strong> Vi identifierar
           uppsägningstiden i ditt avtal och jämför den mot LAS-tabellen.
           Om arbetsgivaren har kortare tid än lagen kräver flaggar vi det.
         </p>

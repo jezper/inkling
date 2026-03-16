@@ -86,7 +86,7 @@ export function Footer() {
           >
             Integritetspolicy
           </a>
-          <span>&copy; {new Date().getFullYear()} inkling</span>
+          <span>&copy; {new Date().getFullYear()} Kolla Avtalet</span>
         </div>
       </div>
     </footer>

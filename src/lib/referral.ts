@@ -19,7 +19,7 @@ export function generateReferralToken(reportToken: string): string {
  * Client-side helpers — körs i webbläsaren.
  */
 
-const STORAGE_KEY = "inkling_ref";
+const STORAGE_KEY = "ka_ref";
 const TTL_MS = 72 * 60 * 60 * 1000; // 72 timmar
 
 /** Spara referral-token från ?ref= i localStorage */
