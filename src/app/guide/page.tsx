@@ -4,7 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Guider om anställningsavtal | inkling",
+  title: "Guider om anställningsavtal | Kolla Avtalet",
   description:
     "Praktiska guider om konkurrensklausuler, uppsägningstider och hur du granskar ditt anställningsavtal.",
 };

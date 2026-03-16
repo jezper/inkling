@@ -6,23 +6,22 @@ export function Logo({
   size?: "default" | "large";
 }) {
   const fontSize = size === "large" ? "clamp(1.25rem, 3vw, 1.75rem)" : "0.9375rem";
-  const tracking = size === "large" ? "0.14em" : "0.12em";
+  const tracking = size === "large" ? "0.08em" : "0.06em";
 
   return (
     <span
       className={`select-none font-display ${className}`}
-      aria-label="inkling"
+      aria-label="Kolla Avtalet"
       style={{
         fontFamily: "var(--font-display)",
         fontSize,
         fontWeight: 700,
         letterSpacing: tracking,
         lineHeight: 1,
-        textTransform: "uppercase" as const,
         color: "var(--color-text-primary)",
       }}
     >
-      <span style={{ color: "var(--color-accent-text)" }}>ink</span>ling
+      Kolla<span style={{ color: "var(--color-accent-text)" }}>Avtalet</span>
     </span>
   );
 }

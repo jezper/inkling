@@ -89,7 +89,7 @@ function ReportPDF({ result }: { result: AnalysisResult }) {
         {/* Header */}
         <View style={s.header}>
           <Text style={s.logo}>
-            <Text style={s.logoAccent}>INK</Text>LING
+            KOLLA AVTALET
           </Text>
           <Text style={s.dateText}>Avtalsrapport · {date}</Text>
         </View>
@@ -231,7 +231,7 @@ export async function POST(req: NextRequest) {
     return new NextResponse(uint8, {
       headers: {
         "Content-Type": "application/pdf",
-        "Content-Disposition": 'attachment; filename="inkling-rapport.pdf"',
+        "Content-Disposition": 'attachment; filename="kollaavtalet-rapport.pdf"',
       },
     });
   } catch (err) {

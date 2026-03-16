@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
 
     // Skicka email
     const { error } = await resend.emails.send({
-      from: "inkling <onboarding@resend.dev>",
+      from: "Kolla Avtalet <onboarding@resend.dev>",
       to: email,
       subject: `Din avtalsrapport — ${result.helhetsbedömning?.rubrik ?? "Analys klar"}`,
       html: buildReportEmail(result, reportUrl),
