@@ -232,6 +232,17 @@ const sections: FaqSection[] = [
           </p>
         ),
       },
+      {
+        question: "Kan jag få pengarna tillbaka?",
+        answer: (
+          <p>
+            Om du inte är nöjd med rapporten kan du skicka en
+            återbetalningsförfrågan direkt från rapportsidan. Beskriv vad
+            som inte stämde så granskar vi det och återkommer inom 1-2
+            arbetsdagar.
+          </p>
+        ),
+      },
     ],
   },
   {
