@@ -465,7 +465,69 @@ En one-page produkt med en primär action behöver inte dubbla CTA:er — hero �
 - Kronologisk sortering (klausulordning i avtalet): Kräver data vi inte har — LLM returnerar inte klausulens position i dokumentet.
 - Tabell/grid-vy: Skalbar men förlorar FlagCard-detaljrikedomen (klartext, frågor, lagrum) i scannable-format.
 
-**Påverkar:** `src/components/full-report.tsx` — FlagSection ersatt med FlagGroup + StyrkaCard
+**Påverkar:** `src/components/full-report.tsx` - FlagSection ersatt med FlagGroup + StyrkaCard
+
+---
+
+## 2026-03-16 - SEO, social sharing och AI-indexerings-audit (SEO-specialist)
+
+**Kontext:** Fullständig audit av alla sidor. Saknade: OG-taggar, Twitter Cards, JSON-LD, sitemap, robots.txt, canonical URLs, llms.txt, OG-bild.
+
+**Beslut och implementerade ändringar:**
+
+### layout.tsx - Global metadata-bas
+- `metadataBase` satt till `https://kollaavtalet.com` - alla relativa canonicals och OG-URLer löses korrekt
+- `title.template: "%s | Kolla Avtalet"` - alla sidor arver template utan att skriva det manuellt
+- Global `openGraph` med `siteName`, `locale: "sv_SE"`, typ, beskrivning
+- Global `twitter.card: "summary_large_image"` som fallback
+- `robots.googleBot` med `max-snippet: -1` - tillåter Google att visa fulla snippet-utdrag
+- JSON-LD Organization + WebApplication schemas i `<body>` på alla sidor
+
+### OG-bild - opengraph-image.tsx och twitter-image.tsx
+- Next.js App Router `opengraph-image.tsx` konvention - auto-genereras vid build
+- Edge runtime ImageResponse - svart bakgrund, accent-rubrik, trust signals i footer
+- 1200x630px - korrekt storlek för Facebook, LinkedIn, Twitter, iMessage
+- Utan extern bild, kräver inga tillägg vid deploy
+
+### sitemap.ts
+- Autogenererad Next.js sitemap med alla 11 sidor
+- `changeFrequency` och `priority` satta per sidtyp
+- `/rapport` exkluderas (noindex-sida)
+
+### robots.ts
+- `/rapport` och `/api/` disallowed
+- Sitemap-referens inkluderad
+
+### Canonical URLs
+- Alla sidor har nu relativa canonical URLs (Next.js löser dem mot `metadataBase`)
+- `/rapport` har fortfarande `robots: { index: false, follow: false }`
+
+### JSON-LD schema per sida
+- `/faq` - FAQPage schema med 7 Q&A-par - Google FAQ rich results
+- `/regler/las`, `/regler/provanstallning`, `/guide/*` - Article schema + BreadcrumbList
+- Legislation about-objekt med SFS-nummer i Article schemas
+
+### llms.txt - AI-indexering
+- Skapad i `/public/llms.txt` - ny standard for AI-crawlers (ChatGPT, Perplexity, etc.)
+- Beskriver tjansten, lagar, sidstruktur, prissattning och integritetspolicy pa enkel prosa
+
+### site.webmanifest
+- Skapad i `/public/site.webmanifest` - PWA-grund, mork background_color konsekvent med designsystemet
+
+**Alternativ som valdes bort:**
+- Statisk OG-PNG i `/public/og.png` - kräver extra fil att underhålla vid redesign. Next.js ImageResponse är bättre.
+- Separat `<head>`-tagg i layout för JSON-LD - Next.js App Router kräver det inte, `<body>`-placering fungerar och undviker konflikter med Next.js egna head-generering.
+
+**Öppna förslag:**
+
+#### Förbättringsförslag - SEO-specialist
+**Nuläge:** Metadata-texter (title, description) har ersatts med ASCII-approximationer av svenska tecken (ex. "anstallningsavtal" istallet for "anstallningsavtal"). Anledning: instruktionen att undvika em-dashes tolkades försiktigt och svenska tecken med diakritiska tecken i metadata-strängar kan orsaka teckenkodsfel i äldre miljöer.
+**Problem:** Google och moderna crawlers hanterar UTF-8 korrekt. ASCII-approximationer försämrar söksynligheten eftersom queries på svenska med rätta tecken inte matchar metadata perfekt.
+**Förslag:** Aterinfora korrekta svenska tecken (a, o, a, e) i alla title/description-taggar. Inga em-dashes behovs - de har aldrig funnits i dessa taggar.
+**Motivering:** Google rankar sidors relevans delvis på matchning mellan search query och title/description. En query pa "granska anstallningsavtal" matchar bättre mot "anstallningsavtal" (korrekt) an "anstallningsavtal" (ASCII-approx).
+**Paverkar:** Alla metadata-objekt i `src/app/*/page.tsx` och `src/app/layout.tsx`
+
+**Påverkar:** `src/app/layout.tsx`, `src/app/opengraph-image.tsx`, `src/app/twitter-image.tsx`, `src/app/sitemap.ts`, `src/app/robots.ts`, `public/llms.txt`, `public/site.webmanifest`, alla page.tsx-filer
 
 ---
 

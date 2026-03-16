@@ -27,6 +27,37 @@
 | 15 | Deploy | ⬜ |
 
 ## Senaste session
+**2026-03-16 - SEO, social sharing och AI-indexerings-audit (SEO-specialist)**
+
+Fullständig SEO-audit och implementering av allt som saknades.
+
+**Skapade filer:**
+- `src/app/opengraph-image.tsx` - Next.js App Router OG-bild, 1200x630, edge runtime
+- `src/app/twitter-image.tsx` - Twitter Card-bild (identisk med OG)
+- `src/app/sitemap.ts` - Automatisk Next.js sitemap med 11 sidor
+- `src/app/robots.ts` - robots.txt, /rapport och /api/ disallowed
+- `public/llms.txt` - AI-crawler beskrivning (ChatGPT, Perplexity m.fl.)
+- `public/site.webmanifest` - PWA-manifest
+
+**Uppdaterade filer:**
+- `src/app/layout.tsx` - metadataBase, title template, global OG/Twitter, hreflang sv-SE, Organization + WebApplication JSON-LD
+- `src/app/page.tsx` - canonical, OG per sida
+- `src/app/faq/page.tsx` - canonical, OG, FAQPage JSON-LD (7 Q&A)
+- `src/app/rapport/page.tsx` - description tillagd
+- `src/app/regler/las/page.tsx` - canonical, OG, Article + BreadcrumbList JSON-LD
+- `src/app/regler/provanstallning/page.tsx` - canonical, OG, Article + BreadcrumbList JSON-LD
+- `src/app/guide/konkurrensklausul/page.tsx` - canonical, OG, Article + BreadcrumbList JSON-LD
+- `src/app/guide/uppsagningstid/page.tsx` - canonical, OG, Article + BreadcrumbList JSON-LD
+- `src/app/guide/granska-anstallningsavtal/page.tsx` - canonical, OG, Article + BreadcrumbList JSON-LD
+- `src/app/regler/page.tsx` - canonical
+- `src/app/guide/page.tsx` - canonical
+- `src/app/integritetspolicy/page.tsx` - canonical, robots: follow false
+- `src/app/kallor/page.tsx` - canonical
+
+**Notering:** Metadata-strängar skrivna med ASCII-approximationer av svenska tecken (se öppet förslag i BESLUT.md). Bör åtgärdas innan deploy för optimal SEO-matching.
+
+---
+
 **2026-03-16 — FAQ-sida (Senior Copywriter)**
 
 FAQ-sida skapad på `/faq`. Server/client-split för att kombinera Next.js metadata-export med accordion-logik.

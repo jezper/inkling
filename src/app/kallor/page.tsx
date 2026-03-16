@@ -3,9 +3,12 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Källor och data | Kolla Avtalet",
+  title: "Källor och data",
   description:
     "Alla lagar, datakällor och branschstatistik som Kolla Avtalet använder för att analysera ditt anställningsavtal.",
+  alternates: {
+    canonical: "/kallor",
+  },
 };
 
 /* ── Source data ────────────────────────────────────────────────────────────── */
@@ -269,7 +272,7 @@ export default function KallorPage() {
         >
           <div style={{ maxWidth: "48rem", margin: "0 auto" }}>
             <nav
-              aria-label="Brodsmuler"
+              aria-label="Brödsmulor"
               style={{
                 display: "flex",
                 alignItems: "center",

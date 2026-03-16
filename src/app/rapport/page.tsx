@@ -3,7 +3,8 @@ import { FullReport } from "@/components/full-report";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Din avtalsrapport — Kolla Avtalet",
+  title: "Din avtalsrapport",
+  description: "Din personliga avtalsrapport från Kolla Avtalet.",
   robots: { index: false, follow: false },
 };
 
@@ -15,7 +16,7 @@ export default async function RapportPage({ searchParams }: PageProps) {
   const params = await searchParams;
   const token = params.t;
 
-  // Token-baserad länk — dekryptera server-side
+  // Token-baserad länk - dekryptera server-side
   if (token) {
     const decrypted = decryptReportToken(token);
     if (!decrypted) {
