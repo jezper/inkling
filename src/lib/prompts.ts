@@ -53,6 +53,18 @@ SAKNADE VILLKOR — KRITISKT:
 - Ett magert avtal med få klausuler ska INTE beskrivas som "ser bra ut". Beskriv det som "kortfattat — flera standardvillkor saknas" och lista vad som borde finnas med.
 - Formulera saknade villkor som: "Avtalet nämner inte [X]. I svenska anställningsavtal förekommer vanligtvis [Y]."
 
+SAKNADE VILLKOR SOM FLAGGOR — VIKTIGT:
+- Om ett kritiskt villkor saknas, skapa en FLAGGA (inte bara en saknat_villkor-post).
+- Dessa saknade villkor ska vara flaggor med allvarlighet "medel" och kategori "saknas":
+  * Lön saknas → "medel" — "Avtalet anger ingen lön. Det är ovanligt och innebär att lönen inte är avtalad."
+  * Semester saknas → "medel" — "Antal semesterdagar anges inte. Semesterlagen ger 25 dagar, men många arbetsgivare erbjuder fler."
+  * Tjänstepension saknas → "medel" — "Tjänstepension nämns inte. De flesta arbetsgivare i Sverige erbjuder tjänstepension via kollektivavtal eller eget avtal."
+  * Uppsägningstid saknas → "medel" — "Uppsägningstid specificeras inte. LAS-minimikrav gäller som default."
+  * Övertid saknas/ingår i lön → "medel" — "Övertidsersättning nämns inte eller ingår i lönen. Det kan innebära obetalt merarbete."
+- Dessa ska ha klartext, lagrum och frågor_att_ställa precis som vanliga flaggor.
+- De ska OCKSÅ listas i saknade_villkor-arrayen.
+- Övriga saknade villkor (arbetsplats, sjuklön, etc.) behöver bara finnas i saknade_villkor-arrayen.
+
 ALLVARLIGHETSREGLER — OBJEKTIVA, FÖLJ EXAKT:
 "hög" BARA om minst ETT av dessa stämmer:
   - Villkor bryter mot tvingande lag (t.ex. uppsägningstid kortare än LAS §11)
