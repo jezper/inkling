@@ -23,7 +23,7 @@ export function Hero() {
           className="mx-auto mt-7 leading-relaxed text-foreground-muted"
           style={{ maxWidth: "480px", fontSize: "var(--text-base)" }}
         >
-          Konkurrensförbud, övertidsklausuler, uppsägningstider — det
+          Konkurrensförbud, övertidsklausuler, uppsägningstider. Det
           som avgör dina villkor de kommande åren gömmer sig i
           finstilt. Vi jämför varje punkt mot lag, marknadspraxis och
           lönedata för din yrkesgrupp.

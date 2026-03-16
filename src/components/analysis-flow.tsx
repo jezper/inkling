@@ -273,7 +273,7 @@ function ResultView({ result, previousResult, onReset, onReanalyze }: {
           </p>
           <ul style={{ marginTop: "0.75rem", paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.375rem" }}>
             {[
-              "Klartext för varje punkt — vad det faktiskt innebär för dig",
+              "Klartext för varje punkt, vad det faktiskt innebär för dig",
               "Vad som är standard och vad som sticker ut",
               "Jämförelse mot vad andra i din bransch har",
               "Frågor du kan ställa till arbetsgivaren",
@@ -569,7 +569,7 @@ function ResultView({ result, previousResult, onReset, onReanalyze }: {
       {/* Omgranskning */}
       <div style={{ padding: "1.25rem", border: "1px solid var(--color-surface-200)", borderRadius: "var(--radius-lg)" }}>
         <p style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-lg)", fontWeight: 600, color: "var(--color-text-primary)", letterSpacing: "-0.01em" }}>
-          Förhandlat fram ett nytt utkast?
+          Fått ett reviderat avtal?
         </p>
         <p style={{ marginTop: "0.5rem", fontSize: "var(--text-base)", color: "var(--color-text-muted)", lineHeight: 1.6 }}>
           Ladda upp det nya avtalet så granskar vi det utan extra kostnad. Du får se exakt vad som ändrats.

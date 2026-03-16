@@ -93,7 +93,7 @@ export function FullReport({
             const stored = sessionStorage.getItem("ce_analysis_result");
             if (!stored) {
               setError(
-                "Betalningen gick igenom men analysresultatet kunde inte hittas. Det kan hända om du öppnade länken i en ny flik. Ladda upp avtalet igen — det kostar inget extra.",
+                "Betalningen gick igenom men analysresultatet kunde inte hittas. Det kan hända om du öppnade länken i en ny flik. Ladda upp avtalet igen, det kostar inget extra.",
               );
             } else if (result.email) {
               // Auto-skicka rapport till Stripes kundmail
@@ -660,7 +660,7 @@ export function FullReport({
                 lineHeight: 1.5,
               }}
             >
-              Inte obligatoriskt — men kan ge dig ett bättre utgångsläge.
+              Inte obligatoriskt, men kan ge dig ett bättre utgångsläge.
             </p>
             <div
               style={{
@@ -779,7 +779,7 @@ export function FullReport({
                   letterSpacing: "-0.02em",
                 }}
               >
-                Förhandlat ett nytt utkast?
+                Fått ett reviderat avtal?
               </p>
               <p
                 style={{
@@ -789,7 +789,7 @@ export function FullReport({
                   lineHeight: 1.5,
                 }}
               >
-                Ladda upp det nya avtalet — omgranskning ingår utan extra kostnad.
+                Ladda upp den nya versionen så granskar vi den. Ingår i priset.
               </p>
             </div>
             <button
@@ -1143,7 +1143,7 @@ function EmptyState({ message }: { message?: string }) {
         }}
       >
         {message ??
-          "Länken kan ha gått ut eller så har sessionsdata rensats. Ladda upp avtalet igen — om du redan betalat kostar det inget extra."}
+          "Länken kan ha gått ut eller så har sessionsdata rensats. Ladda upp avtalet igen. Om du redan betalat kostar det inget extra."}
       </p>
       <a
         href="/"
