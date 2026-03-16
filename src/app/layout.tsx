@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const BASE_URL = "https://kollaavtalet.com";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kollaavtalet.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Kolla Avtalet - Granska ditt anställningsavtal",
+    default: "Kolla Avtalet | Förstå ditt anställningsavtal innan du skriver under",
     template: "%s | Kolla Avtalet",
   },
   description:
-    "Ladda upp ditt anställningsavtal och se hur det stämmer mot svensk arbetsrätt. Ingen registrering, dokumentet lämnar inte din enhet.",
+    "Grattis till jobbet. Vet du vad du tackar ja till? Vi jämför varje klausul mot lag, marknadspraxis och lönedata. Snabbkoll gratis.",
   applicationName: "Kolla Avtalet",
   authors: [{ name: "Kolla Avtalet", url: BASE_URL }],
   generator: "Next.js",
@@ -43,15 +43,15 @@ export const metadata: Metadata = {
     locale: "sv_SE",
     url: BASE_URL,
     siteName: "Kolla Avtalet",
-    title: "Kolla Avtalet - Granska ditt anställningsavtal",
+    title: "Kolla Avtalet | Förstå ditt avtal innan du skriver under",
     description:
-      "Ladda upp ditt anställningsavtal och se hur det stämmer mot svensk arbetsrätt. Ingen registrering, dokumentet lämnar inte din enhet.",
+      "Grattis till jobbet. Vet du vad du tackar ja till? Varje klausul jämförs mot lag, marknadspraxis och lönedata.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kolla Avtalet - Granska ditt anställningsavtal",
+    title: "Kolla Avtalet | Förstå ditt avtal innan du skriver under",
     description:
-      "Ladda upp ditt anställningsavtal och se hur det stämmer mot svensk arbetsrätt. Ingen registrering.",
+      "Grattis till jobbet. Vet du vad du tackar ja till? Varje klausul jämförs mot lag och lönedata.",
   },
   alternates: {
     canonical: BASE_URL,

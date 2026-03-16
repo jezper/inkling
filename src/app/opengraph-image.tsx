@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const runtime = "edge";
 
 export const alt =
-  "Kolla Avtalet - Granska ditt anställningsavtal mot svensk arbetsrätt";
+  "Kolla Avtalet | Förstå ditt anställningsavtal innan du skriver under";
 export const size = {
   width: 1200,
   height: 630,
@@ -15,7 +15,7 @@ export default function Image() {
     (
       <div
         style={{
-          background: "#0D0D0F",
+          background: "#0A0A0C",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -23,80 +23,69 @@ export default function Image() {
           alignItems: "flex-start",
           justifyContent: "space-between",
           padding: "80px 90px",
-          fontFamily: "serif",
         }}
       >
-        {/* Top: eyebrow */}
+        {/* Logo */}
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            fontFamily: "monospace",
-            fontSize: "18px",
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            color: "#C8922A",
-            fontWeight: 500,
+            fontSize: "28px",
+            letterSpacing: "-0.02em",
           }}
         >
-          kollaavtalet.com
+          <span style={{ fontWeight: 400, color: "#88889A" }}>kolla</span>
+          <span style={{ fontWeight: 700, color: "#DC1E38" }}>/</span>
+          <span style={{ fontWeight: 700, color: "#F5F5F7" }}>avtalet</span>
         </div>
 
-        {/* Middle: main headline */}
+        {/* Headline */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "24px",
+            gap: "20px",
           }}
         >
           <div
             style={{
-              fontSize: "72px",
+              fontSize: "68px",
               fontWeight: 700,
-              color: "#F2EDE8",
+              color: "#F5F5F7",
               lineHeight: 1.0,
               letterSpacing: "-0.04em",
               maxWidth: "900px",
             }}
           >
-            Granska ditt
+            Grattis till jobbet.
             <br />
-            <span style={{ color: "#E63E1E" }}>anställningsavtal.</span>
+            <span style={{ color: "#DC1E38" }}>Vet du vad du tackar ja till?</span>
           </div>
           <div
             style={{
-              fontSize: "28px",
-              color: "#9E9EA8",
+              fontSize: "26px",
+              color: "#88889A",
               lineHeight: 1.4,
               maxWidth: "720px",
               fontWeight: 400,
-              letterSpacing: "-0.01em",
             }}
           >
-            Vi jämför varje punkt mot lag, marknadspraxis och lönedata.
+            Varje klausul jämförs mot lag, marknadspraxis och lönedata.
             Snabbkoll gratis. Full rapport 99 kr.
           </div>
         </div>
 
-        {/* Bottom: trust signals */}
+        {/* Footer */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "32px",
-            fontFamily: "monospace",
+            gap: "28px",
             fontSize: "16px",
             color: "#5C5C6A",
-            letterSpacing: "0.04em",
+            letterSpacing: "0.02em",
           }}
         >
-          <span>Dokumentet lämnar aldrig din enhet</span>
-          <span style={{ color: "#2B2B30" }}>|</span>
-          <span>Ingen registrering</span>
-          <span style={{ color: "#2B2B30" }}>|</span>
-          <span>LAS + 5 arbetsrättslagar</span>
+          <span>kollaavtalet.com</span>
         </div>
       </div>
     ),
