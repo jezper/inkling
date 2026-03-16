@@ -186,7 +186,8 @@ async function runOcrOnPdf(
       const page: any = await ocrPdf.getPage(pageNum);
 
       try {
-        const viewport = page.getViewport({ scale: 2.0 });
+        // Scale 4x for better OCR quality (typical scanned A4 = ~1150x1630 at this scale)
+        const viewport = page.getViewport({ scale: 4.0 });
 
         const canvas = document.createElement("canvas");
         canvas.width = viewport.width;
@@ -199,13 +200,32 @@ async function runOcrOnPdf(
           continue;
         }
 
+        // Vit bakgrund (skannade PDF:er kan ha transparent bakgrund)
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
         await page.render({ canvasContext: ctx, viewport }).promise;
 
-        // Verify canvas has actual content (not blank)
         // eslint-disable-next-line no-console
         console.warn(`[ocr] Page ${pageNum} rendered: ${canvas.width}x${canvas.height}`);
 
-        // Convert canvas to Blob for Tesseract (more memory efficient than data URL)
+        // Konvertera till gråskala + höj kontrast (förbättrar OCR-precision)
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+        for (let i = 0; i < data.length; i += 4) {
+          const gray = data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
+          // Threshold: gör ljusa pixlar vitare, mörka svartare
+          const val = gray < 140 ? 0 : 255;
+          data[i] = val;
+          data[i + 1] = val;
+          data[i + 2] = val;
+        }
+        ctx.putImageData(imageData, 0, 0);
+
+        // eslint-disable-next-line no-console
+        console.warn(`[ocr] Page ${pageNum} preprocessed (grayscale + threshold)`);
+
+        // PNG blob för Tesseract
         const blob = await new Promise<Blob>((resolve, reject) => {
           canvas.toBlob((b) => {
             if (b) resolve(b);
@@ -213,7 +233,6 @@ async function runOcrOnPdf(
           }, "image/png");
         });
 
-        // Release canvas memory immediately after creating blob
         canvas.width = 0;
         canvas.height = 0;
 
