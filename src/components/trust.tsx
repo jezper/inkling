@@ -17,7 +17,7 @@ const points = [
     icon: Scale,
     title: "Information, inte juridik",
     description:
-      "Vi jämför ditt avtal mot vad lagen faktiskt anger — och visar vad som stämmer, vad som avviker och var du kan läsa mer.",
+      "Vi jämför ditt avtal mot vad lagen faktiskt anger och visar vad som stämmer, vad som avviker och var du kan läsa mer.",
   },
 ] as const;
 

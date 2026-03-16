@@ -151,7 +151,7 @@ export function ConsentStep({
                     letterSpacing: "-0.01em",
                   }}
                 >
-                  0 personuppgifter hittades — dubbelkolla gärna
+                  0 personuppgifter hittades, dubbelkolla gärna
                 </p>
                 <p
                   style={{
@@ -190,8 +190,8 @@ export function ConsentStep({
                     opacity: 0.85,
                   }}
                 >
-                  Vi skickar enbart avtalstexten — utan de uppgifter som listats
-                  nedan — för analys. Texten sparas inte efter att svaret returnerats.
+                  Vi skickar enbart avtalstexten, utan de uppgifter som listats
+                  nedan, för analys. Texten sparas inte efter att svaret returnerats.
                 </p>
 
                 {/* Typlista */}
@@ -245,7 +245,7 @@ export function ConsentStep({
         }}
       >
         Det här är en informationsanalys. Den citerar vad lagen anger och vad
-        avtalet anger — dra inga juridiska slutsatser utan att rådgöra med en
+        avtalet anger. Dra inga juridiska slutsatser utan att rådgöra med en
         jurist om du är osäker.
       </p>
 
@@ -263,7 +263,7 @@ export function ConsentStep({
           onClick={onConfirm}
           className="btn-accent group"
         >
-          Jag förstår — starta analysen
+          Jag förstår, starta analysen
           <ArrowRight
             size={16}
             strokeWidth={2.5}

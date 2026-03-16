@@ -350,7 +350,7 @@ export function InlineCTA() {
         }}
       >
         Ladda upp ditt anställningsavtal. Vi jämför det mot LAS och andra
-        arbetsrättslagar — direkt i webbläsaren.
+        arbetsrättslagar. Direkt i webbläsaren.
       </p>
       <a href="/#upload" className="btn-accent" style={{ display: "inline-flex" }}>
         Granska mitt avtal →
