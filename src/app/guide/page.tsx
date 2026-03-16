@@ -4,9 +4,12 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Guider om anställningsavtal | Kolla Avtalet",
+  title: "Guider om anställningsavtal",
   description:
     "Praktiska guider om konkurrensklausuler, uppsägningstider och hur du granskar ditt anställningsavtal.",
+  alternates: {
+    canonical: "/guide",
+  },
 };
 
 const PAGES = [

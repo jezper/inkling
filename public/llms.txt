@@ -1,0 +1,52 @@
+# Kolla Avtalet
+
+> Kolla Avtalet (kollaavtalet.com) är en webbtjänst för granskning av svenska anställningsavtal.
+> Användarens PDF-dokument analyseras direkt i webbläsaren. Originaldokumentet lämnar aldrig användarenheten.
+> Tjänsten jämför avtalets villkor mot svensk arbetsrättslagstiftning och marknadspraxis.
+
+## Vad tjänsten gör
+
+Kolla Avtalet tar emot ett anställningsavtal i PDF-format, strippar personuppgifter på klientsidan,
+och jämför de anonymiserade villkoren mot relevanta lagar och branschpraxis. Resultatet är en
+strukturerad rapport som identifierar avvikelser, styrkor och förhandlingspunkter.
+
+## Lagar som tjänsten granskar mot
+
+- Lagen om anställningsskydd (LAS), SFS 1982:80
+- Semesterlagen, SFS 1977:480
+- Arbetstidslagen, SFS 1982:673
+- Diskrimineringslagen, SFS 2008:567
+- Föräldraledighetslagen, SFS 1995:584
+- Avtalslagen, SFS 1915:218 (paragraferna 36 och 38 vid konkurrensklausuler)
+
+## Informationsstruktur
+
+- / - Startsida med uppladdning
+- /faq - Vanliga frågor om tjänsten
+- /regler/las - Guide om Lagen om anställningsskydd
+- /regler/provanstallning - Guide om provanställning
+- /guide/granska-anstallningsavtal - Steg-för-steg-genomgång
+- /guide/konkurrensklausul - Guide om konkurrensklausuler
+- /guide/uppsagningstid - Guide om uppsägningstider
+- /kallor - Alla lagtexter, datakällor och branschstatistik tjänsten använder
+- /integritetspolicy - Dataskyddspolicy
+
+## Prissättning
+
+- Snabbkoll (första flaggan): gratis
+- Full rapport med alla fynd: 99 kr (engångskostnad, inkluderar omgranskning)
+
+## Integritet och säkerhet
+
+PDF-dokumentet tolkas av webbläsaren lokalt. Personuppgifter (namn, personnummer, adress, e-post,
+telefonnummer) rensas automatiskt innan något skickas till servern. Inga avtal lagras.
+
+## Om tjänsten
+
+Kolla Avtalet är ett verktyg, inte juridisk rådgivning. Informationen är avsedd att hjälpa
+anställda förstå sina avtal och identifiera punkter värda att utforska vidare, inte att ersätta
+konsultation med en arbetsrättsjurist.
+
+## Kontakt
+
+privacy@kollaavtalet.com

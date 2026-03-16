@@ -3,9 +3,16 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Integritetspolicy | Kolla Avtalet",
+  title: "Integritetspolicy",
   description:
     "Hur Kolla Avtalet hanterar dina uppgifter. Originaldokumentet lämnar aldrig din enhet. Ingen databas, inga konton.",
+  alternates: {
+    canonical: "/integritetspolicy",
+  },
+  robots: {
+    index: true,
+    follow: false,
+  },
 };
 
 export default function Integritetspolicy() {

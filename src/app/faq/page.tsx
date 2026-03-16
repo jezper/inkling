@@ -4,22 +4,103 @@ import { Footer } from "@/components/footer";
 import { FaqContent } from "./faq-content";
 
 // ---------------------------------------------------------------------------
-// SEO metadata (title ≤60, description ≤155)
+// SEO metadata
 // ---------------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: "Vanliga frågor | Kolla Avtalet",
+  title: "Vanliga frågor om avtalsgranskning",
   description:
-    "Hur fungerar avtalgranskningen? Sparas mitt avtal? Vad ingår? Svar på det viktigaste om Kolla Avtalet.",
+    "Hur fungerar avtalsgranskningen? Sparas mitt avtal? Vad ingår? Svar på det viktigaste om Kolla Avtalet.",
+  alternates: {
+    canonical: "/faq",
+  },
+  openGraph: {
+    title: "Vanliga frågor | Kolla Avtalet",
+    description:
+      "Hur fungerar avtalsgranskningen? Sparas mitt avtal? Vad ingår? Svar på det viktigaste om Kolla Avtalet.",
+    url: "/faq",
+    type: "website",
+  },
 };
 
 // ---------------------------------------------------------------------------
-// Page — server component
+// FAQ JSON-LD schema (Google FAQ rich result)
+// ---------------------------------------------------------------------------
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Hur fungerar granskningen?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ladda upp din PDF. Texten i avtalet läses direkt i din webbläsare och all identifierbar information tas bort innan något lämnar din enhet. Sedan jämförs varje klausul mot gällande lag (LAS, Semesterlagen, Arbetstidslagen och fler) och du får en rapport med vad som är standard, vad som avviker, och vad som saknas.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Sparar ni mitt avtal?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nej. Varken originaldokumentet eller avtalstexten sparas. Det finns ingen databas i tjänsten. Ingenting lagras efter att rapporten genererats.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Är det här juridisk rådgivning?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nej. Det är juridisk information. Rapporten jämför avtalets villkor mot lag och marknadspraxis. Den drar inga slutsatser om vad du ska göra. Behöver du ett juridiskt ombud är Arbetsdomstolen och lokala fackförbund bra utgångspunkter.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Vad kostar det?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Snabbkollen är gratis. Full rapport kostar 99 kr. En engångskostnad, ingen prenumeration.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Vilka lagar granskas avtalet mot?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "LAS (SFS 1982:80), Semesterlagen (SFS 1977:480), Arbetstidslagen (SFS 1982:673), Diskrimineringslagen (SFS 2008:567), Föräldraledighetslagen (SFS 1995:584) och 38 paragraf Avtalslagen vid konkurrensklausuler.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Hur lång tid tar det?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Vanligtvis under en minut. Enkla avtal går snabbare, komplexa avtal med många klausuler kan ta lite längre.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Vad är omgranskning?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Om arbetsgivaren ändrar avtalet efter din genomgång kan du ladda upp den reviderade versionen och få en ny fullständig rapport utan extra kostnad. Ingår i de 99 kronorna.",
+      },
+    },
+  ],
+};
+
+// ---------------------------------------------------------------------------
+// Page
 // ---------------------------------------------------------------------------
 
 export default function FaqPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
       <main
         style={{
@@ -77,7 +158,7 @@ export default function FaqPage() {
             </p>
           </div>
 
-          {/* Accordion sections — client component */}
+          {/* Accordion sections */}
           <FaqContent />
 
           {/* Bottom CTA */}
