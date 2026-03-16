@@ -111,8 +111,8 @@ export function buildReportEmail(result: AnalysisResult, reportUrl: string): str
 
         <!-- Header -->
         <tr><td style="padding:24px 32px;border-bottom:2px solid #0A0A0C;">
-          <span style="font-family:'Space Grotesk',Helvetica,sans-serif;font-size:13px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#0A0A0C;">
-            <span style="color:#DC1E38;">ink</span>ling
+          <span style="font-family:'Space Grotesk',Helvetica,Arial,sans-serif;font-size:18px;letter-spacing:-0.3px;color:#0A0A0C;">
+            <span style="font-weight:400;color:#47474F;">kolla</span><span style="font-weight:700;color:#DC1E38;">/</span><span style="font-weight:700;">avtalet</span>
           </span>
           <span style="float:right;font-size:12px;color:#47474F;">Avtalsrapport · ${new Date().toLocaleDateString("sv-SE")}</span>
         </td></tr>
