@@ -161,11 +161,6 @@ export function AnalysisFlow() {
             <div style={{ marginTop: "1.5rem" }}>
               <UploadStep onParsed={handleParsed} onError={(msg) => { setErrorMessage(msg); setState("upload"); }} isProcessing={state === "processing"} />
             </div>
-            {/* Consent-info visas innan man väljer fil */}
-            <p style={{ marginTop: "1rem", fontFamily: "var(--font-mono)", fontSize: "var(--text-xs)", color: "var(--color-text-muted)", letterSpacing: "0.04em", lineHeight: 1.6 }}>
-              Dokumentet bearbetas i din webbläsare. Personuppgifter rensas automatiskt.
-              Bara anonymiserad text skickas för analys och sparas inte efteråt.
-            </p>
           </>
         )}
 

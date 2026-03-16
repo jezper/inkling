@@ -287,7 +287,8 @@ export function UploadStep({ onParsed, onError, isProcessing }: UploadStepProps)
             letterSpacing: "0.04em",
           }}
         >
-          Dokumentet bearbetas i webbläsaren. Det lämnar aldrig din enhet.
+          Ditt avtal stannar på din enhet. Namn, personnummer och andra personuppgifter rensas automatiskt innan analysen körs.{" "}
+          <a href="/faq#privacy-och-säkerhet" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "2px" }}>Läs mer</a>
         </p>
       )}
     </div>

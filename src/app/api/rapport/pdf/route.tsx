@@ -23,7 +23,7 @@ Font.register({
 const s = StyleSheet.create({
   page: { padding: 48, fontFamily: "Inter", fontSize: 10, color: "#2C2C34", lineHeight: 1.6 },
   header: { flexDirection: "row", justifyContent: "space-between", borderBottomWidth: 2, borderBottomColor: "#0A0A0C", paddingBottom: 12, marginBottom: 24 },
-  logo: { fontSize: 11, fontWeight: 700, letterSpacing: 1.2, textTransform: "uppercase", color: "#0A0A0C" },
+  logo: { fontSize: 14, letterSpacing: -0.3, color: "#0A0A0C" },
   logoAccent: { color: "#DC1E38" },
   dateText: { fontSize: 9, color: "#47474F" },
 
@@ -89,7 +89,9 @@ function ReportPDF({ result }: { result: AnalysisResult }) {
         {/* Header */}
         <View style={s.header}>
           <Text style={s.logo}>
-            KOLLA AVTALET
+            <Text style={{ fontWeight: 400, color: "#47474F" }}>kolla</Text>
+            <Text style={{ fontWeight: 700, color: "#DC1E38" }}>/</Text>
+            <Text style={{ fontWeight: 700 }}>avtalet</Text>
           </Text>
           <Text style={s.dateText}>Avtalsrapport · {date}</Text>
         </View>

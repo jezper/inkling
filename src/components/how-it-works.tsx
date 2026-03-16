@@ -20,12 +20,12 @@ export function HowItWorks() {
           {[
             {
               n: "01",
-              title: "Släpp PDF:en",
+              title: "Ladda upp PDF",
               desc: "Ladda upp ditt anställningsavtal. Analysen tar under en minut.",
             },
             {
               n: "02",
-              title: "Se hela bilden",
+              title: "Genomgång av avtalet",
               desc: "Varje klausul jämförs mot lag och lönedata. Du ser direkt vad som är rimligt, vad som sticker ut och vad du kan fråga om.",
             },
             {

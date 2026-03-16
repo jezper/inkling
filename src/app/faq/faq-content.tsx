@@ -351,7 +351,10 @@ function FaqSectionBlock({ section }: { section: FaqSection }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section style={{ marginBottom: "3rem" }}>
+    <section
+      id={section.label.toLowerCase().replace(/[^a-zåäö0-9]+/g, "-").replace(/-+$/, "")}
+      style={{ marginBottom: "3rem" }}
+    >
       <h2
         style={{
           fontFamily: "var(--font-mono)",
