@@ -17,6 +17,31 @@
 
 ## Öppna förslag
 
+### Förbättringsförslag — Copywriter (2026-03-16) — FAQ-sida: footer-länk och tonregel
+
+**Nuläge:** Footer saknar länk till `/faq`. BRAND.md anger "max 20 ord per mening" som en universell regel utan undantag för FAQ-svar.
+
+**Problem:**
+1. FAQ är nu en levande sida men är oupptäckbar via navigationen — det enda stödet är organisk sökning eller direkt URL.
+2. FAQ-svar som täcker lagrum och avtalsjuridik behöver ibland 22-24 ord per mening för att vara korrekta utan att bli fragmentariska. Formateringen löser detta i de flesta fall, men regeln behöver ett explicit undantag för strukturerat innehåll (listor, tekniska termer).
+
+**Förslag:**
+1. Lägg till FAQ-länk i `src/components/footer.tsx` under en lämplig kolumn (exempelvis en ny "Mer"-kolumn eller under befintligt navigationsblock).
+2. Lägg till undantag i BRAND.md: "FAQ-svar och listor med tekniska termer är undantagna från 20-ordsregeln. Faktaprecision prioriteras."
+
+**Motivering:** En FAQ som inte är länkad från navigation eller footer löser inte sitt syfte — att minska support-friction och öka förtroende. Tonregeln är en hypotes som fungerar utmärkt för UI-copy och hero-text, men begränsar faktainnehåll utan att förbättra tydligheten.
+
+**Påverkar:** `src/components/footer.tsx`, `BRAND.md`
+
+---
+
+### Förbättringsförslag — Copywriter (2026-03-16)
+**Nuläge:** BRAND.md §Tonalitet beskriver rösten som "Kunnig kollega som förklarar utan jargong."
+**Problem:** "Kollega" signalerar intern, neutral, försiktig. Hero-texten ("Grattis till jobbet. Vet du vad du tackar ja till?") och de granskade step-texterna fungerar bättre med en röst som har *kant* och adresserar användaren som en jämlike, inte som en förklaringsobjekt. Regeln är tillräcklig idag men riskerar att begränsa när fler skribenter arbetar i projektet — "kollega" inbjuder till en mildare, mer institutionell ton som inte är vad vi vill åt.
+**Förslag:** Ändra röstkortets rubrik från "Kunnig kollega som förklarar utan jargong" till "Kunnig kompis med edge — rak, respektfull, aldrig nedlåtande." Behåll alla gör/gör-inte-regler som de är.
+**Motivering:** "Kompis med edge" är ett tätare instruktionellt begrepp. Det tillåter kortare meningar, direktare adressering och lätt attityd i rubriker, utan att öppna för skämtsamhet i analystext. Distinktionen är viktig: analysen är alltid lugn och precis, men UI-copy i marknadsföringsskikt kan ha mer personlighet.
+**Påverkar:** BRAND.md §Tonalitet
+
 ### Förbättringsförslag — Legal Reviewer (2026-03-16)
 
 **Nuläge:** `saknade_villkor`-objektet i JSON-schemat (SPEC.md §5) saknar `allvarlighet`-falt. Allvarlighet sätts till "medel" som default för alla saknade villkor.
@@ -44,6 +69,40 @@ Notera att övertid "ingår i lön" inte är ett saknat villkor utan en befintli
 **Motivering:** Felgradering vid underskattat allvar ger användaren falsk trygghet. Det är den risk som skadar mest — och som är svårast att försvara om produkten granskas externt.
 
 **Påverkar:** SPEC.md §5 (JSON-schema), references/swedish-employment-law.md, systemprompt-fil, komponenter som renderar saknade villkor.
+
+### Förbättringsförslag — Legal Reviewer (2026-03-16)
+
+**Nuläge:** Integritetspolicyn refererar till "det bolag som driver Kolla Avtalet" utan att ange organisationsnummer eller faktiskt bolagsnamn.
+
+**Problem:** GDPR art. 13.1 a kräver att den personuppgiftsansvariges identitet och kontaktuppgifter framgår. "Det bolag som driver..." uppfyller inte kravet. IMY har i tillsynsbeslut (t.ex. DI-2019-5534) påtalat att vag identifiering av personuppgiftsansvarig är en formell brist.
+
+**Förslag:** Fyll i faktiskt bolagsnamn och organisationsnummer i policyn under sektionen "Ansvarig för behandlingen" när bolaget är registrerat, alternativt innan produktionsläggning.
+
+**Motivering:** Formell GDPR-compliance kräver identifierad personuppgiftsansvarig. Risken är låg medan ingen PII lagras persistent, men den bör åtgärdas innan tjänsten sätts i produktion.
+
+**Påverkar:** `/src/app/integritetspolicy/page.tsx`
+
+---
+
+## 2026-03-16 — Logotypbehandling: slash-separator (Product Designer)
+
+**Kontext:** Nuvarande logo "KollaAvtalet" i enhetlig bold med "Avtalet" i accent löser tvåordsproblemet men ordgränsen är otydlig vid 15px. CamelCase-känslan passar inte Space Grotesk (geometrisk grotesque, inte kodtypografi). Uppdragsgivaren bad om 2-3 varianter och rekommendation.
+
+**Beslut:**
+- Slash-separator: `kolla/avtalet` — "kolla" i weight 500, "/" i krimson-accent, "avtalet" i weight 700.
+- Gemener genomgående. Letter-spacing reducerad från 0.06em till 0.02em (versaler kräver spacing, gemener gör det inte).
+- Hierarkin avsiktlig: tyngden sitter på substantivet (avtalet), inte verbet (kolla).
+- Slash-marginal: `0.05em` på varje sida — optiskt centrerad utan att kännas luftig.
+
+**Motivering:**
+Slash är ett etablerat separator-tecken i verktyg av Bloomberg Terminal-karaktär (path-notation, kategori/underkategori). Det löser ordgränsen utan att se ut som en domän-URL (punkt-separator förbjudet av uppdragsgivaren). Viktkontrasten medium/bold kommunicerar att det är _avtalet_ som är det centrala objektet — tjänsten granskar avtalet, inte tvärtom. Versalkontrasten (KOLLA avtalet) övervägdes men associerar med myndighetsvarning snarare än ett produktnamn.
+
+**Alternativ som valdes bort:**
+- Versalkontrast `KOLLA avtalet` — akronymkänsla vid 15px, myndighetston
+- Nuläget `KollaAvtalet` — CamelCase passar inte Space Grotesk, ordgräns otydlig
+- Gemener utan separator `kollaavtalet` — ett ord, noll distinktion
+
+**Påverkar:** `src/components/logo.tsx`
 
 ---
 
