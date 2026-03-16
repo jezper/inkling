@@ -15,6 +15,26 @@
 
 ---
 
+## 2026-03-15 — Hero processlinje borttagen, pris integrerat i sub-label (Product Designer)
+
+**Kontext:** Processlinjen (01 Snabbkoll gratis / pil / 02 Full rapport 99 kr) såg ut som en pricing table trots att det är ett sekventiellt flöde. Skapade ett cognitiv objection-moment tidigt, asymmetrisk layout, svag pil-separator och typografisk inkoherens ("en gång, klart" i mono bredvid "99 kr" i display).
+
+**Beslut:**
+- Hela processkort-blocket borttaget (`mt-12`-sektionen med border och grid).
+- Prisinformation och privacy-rad sammanslagna till en enda sub-label under CTA-knappen i mono: "snabbkoll gratis · full rapport 99 kr · din fil stannar hos dig".
+- `hero-price-grid` och `hero-price-separator` CSS-klasser borttagna från globals.css.
+
+**Motivering:** I hero:n ska användaren agera, inte processa prisinformation. En processlinje i hero skapar ett objection-moment vid fel tidpunkt — priset hör hemma precis vid beslutsögonblicket (paywall). Men transparent prissättning bygger förtroende, därför behålls "99 kr" men i minsta möjliga form: en enda informationsrad i mono under knappen, samma visuella tyngd som privacy-texten. Tre punkter av kontext på en rad är den lägsta möjliga kognitiva kostnaden.
+
+**Alternativ som valdes bort:**
+- Behålla processlinjen men redesigna (vertikal) — löser inte grundproblemet att det är fel plats för prisinformation
+- Ta bort prisinformation helt — undergräver transparens, kan sänka förtroende
+- Separata rader för pris och privacy — ökar visuell tyngd utan proportionerligt informationsvärde
+
+**Påverkar:** `src/components/hero.tsx`, `src/app/globals.css`
+
+---
+
 ## 2026-03-15 — Landing page layout: centrerad komposition (Product Designer)
 
 **Kontext:** Användaren flaggade: för mycket vitt, för lite innehåll i förhållande till layout, hero tar hela viewporten men innehållet är kompakt, vänsterställning skapar tom högerhalva, chapter label "— Anställningsavtal" ska tas bort.

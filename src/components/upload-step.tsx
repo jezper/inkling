@@ -10,7 +10,7 @@ export interface UploadStepProps {
   isProcessing: boolean;
 }
 
-const MAX_FILE_SIZE_MB = 10;
+const MAX_FILE_SIZE_MB = 25;
 const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
 
 function validateFile(file: File): string | null {
@@ -27,6 +27,7 @@ export function UploadStep({ onParsed, onError, isProcessing }: UploadStepProps)
   const [isDragging, setIsDragging] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [validationError, setValidationError] = useState<string | null>(null);
+  const [progressMessage, setProgressMessage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const errorId = useId();
 
@@ -43,7 +44,8 @@ export function UploadStep({ onParsed, onError, isProcessing }: UploadStepProps)
       // Dynamisk import för att undvika SSR-problem med pdf.js
       try {
         const { parsePdf } = await import("@/lib/pdf-parser");
-        const result = await parsePdf(file);
+        const result = await parsePdf(file, (msg) => setProgressMessage(msg));
+        setProgressMessage(null);
         onParsed({ ...result, fileName: file.name });
       } catch (err) {
         const message =
@@ -197,7 +199,7 @@ export function UploadStep({ onParsed, onError, isProcessing }: UploadStepProps)
                   marginTop: "0.25rem",
                 }}
               >
-                {(selectedFile.size / 1024 / 1024).toFixed(1)} MB
+                {progressMessage ?? `${(selectedFile.size / 1024 / 1024).toFixed(1)} MB`}
               </p>
             </div>
           </>

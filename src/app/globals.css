@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 /* ============================================================
@@ -225,28 +225,6 @@ a.btn-accent:visited {
   .hidden-mobile { display: none !important; }
 }
 
-/* Hero price grid — 2-kolonner på ≥400px, staplad på smalare skärmar */
-.hero-price-grid {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: stretch;
-}
-@media (max-width: 519px) {
-  .hero-price-grid {
-    grid-template-columns: 1fr;
-  }
-  .hero-price-grid .hero-price-separator {
-    border-left: none;
-    border-right: none;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 0.5rem 1.5rem;
-    justify-content: flex-start;
-  }
-  .hero-price-grid .hero-price-separator svg {
-    transform: rotate(90deg);
-  }
-}
 
 /* Marknadsjämförelse-grid och Avtal-vs-lag-grid — staplad under 480px */
 .comparison-grid-2col {

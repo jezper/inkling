@@ -12,6 +12,7 @@ interface ParsedData {
   text: string;
   pageCount: number;
   fileName: string;
+  usedOcr?: boolean;
 }
 
 export function AnalysisFlow() {
