@@ -80,6 +80,20 @@ export function Footer() {
           }}
         >
           <a
+            href="/faq"
+            className="transition-colors duration-100"
+            style={{ textDecorationLine: "underline", textUnderlineOffset: "3px" }}
+          >
+            Vanliga frågor
+          </a>
+          <a
+            href="/kallor"
+            className="transition-colors duration-100"
+            style={{ textDecorationLine: "underline", textUnderlineOffset: "3px" }}
+          >
+            Källor
+          </a>
+          <a
             href="/integritetspolicy"
             className="transition-colors duration-100"
             style={{ textDecorationLine: "underline", textUnderlineOffset: "3px" }}

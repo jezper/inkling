@@ -20,18 +20,18 @@ export function HowItWorks() {
           {[
             {
               n: "01",
-              title: "Du laddar upp",
-              desc: "Ditt avtal läses direkt i webbläsaren. Namn och personnummer rensas automatiskt. Ingenting lämnar din enhet.",
+              title: "Släpp PDF:en",
+              desc: "Ladda upp ditt anställningsavtal. Analysen tar under en minut.",
             },
             {
               n: "02",
-              title: "Vi dissekerar",
-              desc: "Varje klausul jämförs mot lag och marknadspraxis. Du ser vad som är standard, vad som avviker och vad allt faktiskt betyder i klartext.",
+              title: "Se hela bilden",
+              desc: "Varje klausul jämförs mot lag och lönedata. Du ser direkt vad som är rimligt, vad som sticker ut och vad du kan fråga om.",
             },
             {
               n: "03",
-              title: "Du äger bilden",
-              desc: "Ingen rådgivning, bara fakta. Vad som står, vad lagen säger, vad marknaden gör. Resten är upp till dig.",
+              title: "Skriv under med ro",
+              desc: "Inga överraskningar. Du vet vad avtalet innebär, vad marknaden ger och vilka frågor som är värda att ställa.",
             },
           ].map((step) => (
             <div

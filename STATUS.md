@@ -27,6 +27,21 @@
 | 15 | Deploy | ⬜ |
 
 ## Senaste session
+**2026-03-16 — FAQ-sida (Senior Copywriter)**
+
+FAQ-sida skapad på `/faq`. Server/client-split för att kombinera Next.js metadata-export med accordion-logik.
+
+**Skapade filer:**
+- `src/app/faq/page.tsx` — Server Component: metadata, sidhuvud, CTA-sektion, importerar FaqContent
+- `src/app/faq/faq-content.tsx` — Client Component: accordion, fem sektioner, 19 frågor
+
+**Innehåll:** 5 sektioner — Hur det fungerar, Privacy och säkerhet, Juridiskt, Betalning och pris, Övrigt. 19 frågor totalt inkl. alla beställda plus "Kan jag lita på analysen?".
+
+**Förbättringsförslag loggat i BESLUT.md:** Se "Öppna förslag — FAQ-sida: footer-länk".
+
+---
+
+**Föregående session:**
 **2026-03-15 — QA: pdf-parser.ts OCR-validering och buggfixar (Senior QA)**
 
 Tre buggar identifierade och fixade i `src/lib/pdf-parser.ts`:
