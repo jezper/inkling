@@ -136,23 +136,36 @@ async function runOcrOnPdf(
   // Skapa en ny pdfjs-instans UTAN restriktiva options för bättre bildrendering
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const pdfjsLib = (await import("pdfjs-dist")) as any;
+
+  // eslint-disable-next-line no-console
+  console.warn("[ocr] Loading PDF for OCR...");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const ocrPdf: any = await pdfjsLib.getDocument({
     data: new Uint8Array(arrayBuffer),
     isEvalSupported: false,
   }).promise;
+  // eslint-disable-next-line no-console
+  console.warn(`[ocr] PDF loaded, ${numPages} pages`);
 
   const Tesseract = await import("tesseract.js");
 
   onProgress?.("Laddar OCR-motor...");
 
   // Skapa worker — prova svenska+engelska, fallback till bara engelska
+  // eslint-disable-next-line no-console
+  console.warn("[ocr] Creating Tesseract worker...");
   let worker: Tesseract.Worker;
   try {
     worker = await Tesseract.createWorker("swe+eng");
-  } catch {
+    // eslint-disable-next-line no-console
+    console.warn("[ocr] Worker created with swe+eng");
+  } catch (sweErr) {
+    // eslint-disable-next-line no-console
+    console.warn("[ocr] swe+eng failed, trying eng only:", sweErr);
     try {
       worker = await Tesseract.createWorker("eng");
+      // eslint-disable-next-line no-console
+      console.warn("[ocr] Worker created with eng");
     } catch (e) {
       throw new Error(`OCR-motorn kunde inte startas: ${e instanceof Error ? e.message : "okänt fel"}`);
     }
@@ -161,6 +174,9 @@ async function runOcrOnPdf(
   const ocrTexts: string[] = [];
   // Begränsa till max 20 sidor för att inte frysa webbläsaren
   const maxPages = Math.min(numPages, 20);
+
+  // eslint-disable-next-line no-console
+  console.warn(`[ocr] Starting OCR on ${maxPages} pages`);
 
   for (let pageNum = 1; pageNum <= maxPages; pageNum++) {
     onProgress?.(`Läser sida ${pageNum} av ${maxPages}...`);
@@ -185,12 +201,25 @@ async function runOcrOnPdf(
 
         await page.render({ canvasContext: ctx, viewport }).promise;
 
-        const dataUrl = canvas.toDataURL("image/png");
-        // Release canvas memory immediately after converting to data URL
+        // Verify canvas has actual content (not blank)
+        // eslint-disable-next-line no-console
+        console.warn(`[ocr] Page ${pageNum} rendered: ${canvas.width}x${canvas.height}`);
+
+        // Convert canvas to Blob for Tesseract (more memory efficient than data URL)
+        const blob = await new Promise<Blob>((resolve, reject) => {
+          canvas.toBlob((b) => {
+            if (b) resolve(b);
+            else reject(new Error("Canvas toBlob returned null"));
+          }, "image/png");
+        });
+
+        // Release canvas memory immediately after creating blob
         canvas.width = 0;
         canvas.height = 0;
 
-        const { data: { text } } = await worker.recognize(dataUrl);
+        const { data: { text } } = await worker.recognize(blob);
+        // eslint-disable-next-line no-console
+        console.warn(`[ocr] Page ${pageNum} OCR result: ${text.length} chars`);
         ocrTexts.push(text);
       } finally {
         // Release pdfjs page resources regardless of success or failure
