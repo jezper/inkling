@@ -61,9 +61,7 @@
 
 ---
 
-### 2026-03-15 — Skannade PDF:er (bild-PDF) ger felmeddelande utan vägledning
+### 2026-03-15 — Skannade PDF:er (bild-PDF) OCR-stöd tillagt (LÖST 2026-03-15)
 
-**Allvarlighet:** Låg
-**Beskrivning:** Skannade avtal i PDF-format (utan sökbar text) hanteras med felmeddelandet "Vi kunde inte läsa dokumentet — det verkar inte innehålla sökbar text. PDF:en kan vara skannad som bild." Det finns ingen OCR-funktion och felmeddelandet ger ingen konkret alternativ väg framåt.
-**Workaround:** Användaren uppmanas prova annan PDF.
-**Fix:** V2: lägg till OCR-stöd (t.ex. Tesseract.js) eller tydligare vägledning om hur man konverterar bildpdf till text-pdf.
+**Allvarlighet:** Låg → Löst
+**Beskrivning:** Tesseract.js OCR-stöd implementerat i pdf-parser.ts. Skannade PDF:er renderas page-by-page till canvas (scale 2.0) och processas av Tesseract worker med swe+eng (fallback: eng). Max 20 sidor. Tre buggfixar gjorda under QA: double-destroy av pdfjs-objekt vid tom OCR-output, saknad page.cleanup() per sida, och debug console.log i produktion.

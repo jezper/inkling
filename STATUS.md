@@ -27,6 +27,23 @@
 | 15 | Deploy | ⬜ |
 
 ## Senaste session
+**2026-03-15 — QA: pdf-parser.ts OCR-validering och buggfixar (Senior QA)**
+
+Tre buggar identifierade och fixade i `src/lib/pdf-parser.ts`:
+
+1. **Double-destroy bug**: `pdf.destroy()` anropades två gånger när OCR returnerade tom text (första gången vid rad 107, andra vid rad 117 i catch-blocket). Refaktorerat till separat try/catch för `runOcrOnPdf`, med `pdf.destroy()` exakt en gång per kodväg.
+2. **Saknad `page.cleanup()`**: pdfjs-sidor rendes vid scale 2.0 men frigjordes aldrig — operator list och bilddata låg kvar i minnet för alla 20 sidor. Åtgärdat med inner `try/finally { page.cleanup() }` per sida.
+3. **`console.log` i produktion**: Två debug-loggar (rendered WxH, extracted N chars) i strid med projektkonventionen. Borttagna.
+
+Stale eslint-disable-kommentar borttagen från `runOcrOnPdf`-deklarationen.
+
+**Ändrade filer:**
+- `src/lib/pdf-parser.ts` — double-destroy fix, page.cleanup(), debug logs borttagna
+- `PROBLEM.md` — OCR-posten uppdaterad till löst
+
+---
+
+**Senaste session (föregående)**
 **2026-03-15 — Landing page layout: centrerad komposition (Product Designer)**
 
 Hero omskriven till centrerad layout. Chapter label borttagen. Header centrerad. Pris-grid och CTA centrerade. `min-h-dvh` ersatt med tight padding. Vertikal dekorationslinje borttagen. HowItWorks-rubrik centrerad.
