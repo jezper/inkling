@@ -88,7 +88,7 @@
      #A82E14 = 7.1:1 på vit — uppfyller AAA. */
   --color-accent-text:   #DC1E38;   /* 4.9:1 på vit — AA stor text. Medvetet undantag från AAA för visuell identitet. */
 
-  --focus-ring: var(--color-accent-500);
+  --focus-ring: var(--color-accent-700);
 
   /* Typo */
   --font-display: 'Space Grotesk', system-ui, sans-serif;
@@ -128,7 +128,7 @@
 
   --focus-outline-width: 2px;
   --focus-outline-offset: 3px;
-  --focus-outline-color: var(--color-accent-500);
+  --focus-outline-color: var(--color-accent-700);
 }
 
 @media (prefers-reduced-motion: reduce) {

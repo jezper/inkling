@@ -53,6 +53,13 @@ SAKNADE VILLKOR — KRITISKT:
 - Ett magert avtal med få klausuler ska INTE beskrivas som "ser bra ut". Beskriv det som "kortfattat — flera standardvillkor saknas" och lista vad som borde finnas med.
 - Formulera saknade villkor som: "Avtalet nämner inte [X]. I svenska anställningsavtal förekommer vanligtvis [Y]."
 
+ALLVARLIGHET FÖR SAKNADE VILLKOR — varje saknat villkor ska ha ett "allvarlighet"-fält:
+- "hög": Substantiellt skyddsunderskott utan lagsäkerhet. Exempel: lön saknas (inget lagstadgat minimibelopp utanför kollektivavtal), tjänstepension saknas (stor ekonomisk förlust).
+- "medel": Oklar rättsställning utan lagligt stöd. Exempel: anställningsform inte angiven, arbetstid inte specificerad.
+- "info": Tvingande lag gäller ändå — avsaknaden är inte farlig. Exempel: semester saknas (Semesterlagen §4 ger 25 dagar oavsett), uppsägningstid saknas (LAS §11 gäller som default).
+
+OBS: "Övertid ingår i lönen" är INTE ett saknat villkor — det är en aktiv klausul som ska hanteras som en flagga i flaggor-arrayen med allvarlighet "hög" (kan undanröja rätt till övertidsersättning).
+
 SAKNADE VILLKOR SOM FLAGGOR — VIKTIGT:
 - Om ett kritiskt villkor saknas, skapa en FLAGGA (inte bara en saknat_villkor-post).
 - Allvarligheten beror på konsekvensen för arbetstagaren:
@@ -201,6 +208,7 @@ JSON-SCHEMA:
   "saknade_villkor": [
     {
       "villkor": "string",
+      "allvarlighet": "hög | medel | info",
       "relevans": "string",
       "referens": "string"
     }

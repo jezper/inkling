@@ -6,6 +6,7 @@ import { checkRateLimit } from "@/lib/rate-limit";
 import { resolveSSYK } from "@/lib/jobtech";
 import { getSalaryBySSYK, formatSalaryForPrompt } from "@/lib/scb-salary";
 import type { AnalysisResult } from "@/lib/analysis-types";
+import { validateAnalysisResult } from "@/lib/analysis-validation";
 
 const MAX_TEXT_LENGTH = 50_000;
 
@@ -134,6 +135,13 @@ export async function POST(req: NextRequest) {
         { error: "Analysen kunde inte genomföras korrekt. Försök igen." },
         { status: 500 }
       );
+    }
+
+    // Strukturell validering — logga avvikelser men blockera inte
+    const validation = validateAnalysisResult(result);
+    if (!validation.valid) {
+      // eslint-disable-next-line no-console
+      console.error("[analyze] Validation errors:", validation.errors);
     }
 
     return NextResponse.json({ result });

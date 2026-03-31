@@ -17,59 +17,6 @@
 
 ## Öppna förslag
 
-### Förbättringsförslag — Copywriter (2026-03-16) — FAQ-sida: footer-länk och tonregel
-
-**Nuläge:** Footer saknar länk till `/faq`. BRAND.md anger "max 20 ord per mening" som en universell regel utan undantag för FAQ-svar.
-
-**Problem:**
-1. FAQ är nu en levande sida men är oupptäckbar via navigationen — det enda stödet är organisk sökning eller direkt URL.
-2. FAQ-svar som täcker lagrum och avtalsjuridik behöver ibland 22-24 ord per mening för att vara korrekta utan att bli fragmentariska. Formateringen löser detta i de flesta fall, men regeln behöver ett explicit undantag för strukturerat innehåll (listor, tekniska termer).
-
-**Förslag:**
-1. Lägg till FAQ-länk i `src/components/footer.tsx` under en lämplig kolumn (exempelvis en ny "Mer"-kolumn eller under befintligt navigationsblock).
-2. Lägg till undantag i BRAND.md: "FAQ-svar och listor med tekniska termer är undantagna från 20-ordsregeln. Faktaprecision prioriteras."
-
-**Motivering:** En FAQ som inte är länkad från navigation eller footer löser inte sitt syfte — att minska support-friction och öka förtroende. Tonregeln är en hypotes som fungerar utmärkt för UI-copy och hero-text, men begränsar faktainnehåll utan att förbättra tydligheten.
-
-**Påverkar:** `src/components/footer.tsx`, `BRAND.md`
-
----
-
-### Förbättringsförslag — Copywriter (2026-03-16)
-**Nuläge:** BRAND.md §Tonalitet beskriver rösten som "Kunnig kollega som förklarar utan jargong."
-**Problem:** "Kollega" signalerar intern, neutral, försiktig. Hero-texten ("Grattis till jobbet. Vet du vad du tackar ja till?") och de granskade step-texterna fungerar bättre med en röst som har *kant* och adresserar användaren som en jämlike, inte som en förklaringsobjekt. Regeln är tillräcklig idag men riskerar att begränsa när fler skribenter arbetar i projektet — "kollega" inbjuder till en mildare, mer institutionell ton som inte är vad vi vill åt.
-**Förslag:** Ändra röstkortets rubrik från "Kunnig kollega som förklarar utan jargong" till "Kunnig kompis med edge — rak, respektfull, aldrig nedlåtande." Behåll alla gör/gör-inte-regler som de är.
-**Motivering:** "Kompis med edge" är ett tätare instruktionellt begrepp. Det tillåter kortare meningar, direktare adressering och lätt attityd i rubriker, utan att öppna för skämtsamhet i analystext. Distinktionen är viktig: analysen är alltid lugn och precis, men UI-copy i marknadsföringsskikt kan ha mer personlighet.
-**Påverkar:** BRAND.md §Tonalitet
-
-### Förbättringsförslag — Legal Reviewer (2026-03-16)
-
-**Nuläge:** `saknade_villkor`-objektet i JSON-schemat (SPEC.md §5) saknar `allvarlighet`-falt. Allvarlighet sätts till "medel" som default för alla saknade villkor.
-
-**Problem:** Saknade villkor varierar kraftigt i juridisk tyngd. Att lön saknas är fundamentalt annorlunda än att semester saknas — semesterlagen gäller ändå per tvingande rätt, medan avsaknad av lönebelopp innebär ett reellt skyddsunderskott utan laglig fallback utanför kollektivavtal. En enhetlig allvarlighetsgrad missinformerar användaren och underminerar produktens kärnvärde.
-
-Genomgång visar att tre av fem vanliga saknade villkor är felklassificerade med "medel" som blankett-default:
-
-| Villkor | Default idag | Korrekt | Grund |
-|---|---|---|---|
-| Lön saknas | medel | hög | Inget lönebelopp + ingen lagstadgad miniminivå utanför KA |
-| Semester saknas | medel | info | Semesterlagen (SFS 1977:480) §4 gäller som tvingande rätt |
-| Tjänstepension saknas | medel | medel | Korrekt — ingen lag, men allvarlig branschavvikelse |
-| Uppsägningstid saknas | medel | info | LAS (SFS 1982:80) §11 gäller automatiskt som suppletiv rätt |
-| Övertid saknas | medel | medel | Korrekt för ren avsaknad |
-| Övertid "ingår i lön" | medel | hög | Aktiv klausul som kan undanröja rätt till ersättning — AD-praxis |
-
-Notera att övertid "ingår i lön" inte är ett saknat villkor utan en befintlig klausul — den bör hanteras som en flagga i `flaggor`-arrayen, inte i `saknade_villkor`.
-
-**Förslag:**
-1. Lägg till `allvarlighet`-fält i `saknade_villkor`-arrayens objekt i SPEC.md §5.
-2. Ge systemprompt-instruktioner om differentierad allvarlighetsgradering med tre kategorier: (a) lag gäller ändå = info, (b) oklar rättsställning utan lag = medel, (c) substantiellt skyddsunderskott utan lagsäkerhet = hög.
-3. Flytta "övertid ingår i lön"-scenariot till `flaggor`-logiken med allvarlighet hög.
-
-**Motivering:** Felgradering vid underskattat allvar ger användaren falsk trygghet. Det är den risk som skadar mest — och som är svårast att försvara om produkten granskas externt.
-
-**Påverkar:** SPEC.md §5 (JSON-schema), references/swedish-employment-law.md, systemprompt-fil, komponenter som renderar saknade villkor.
-
 ### Förbättringsförslag — Legal Reviewer (2026-03-16)
 
 **Nuläge:** Integritetspolicyn refererar till "det bolag som driver Kolla Avtalet" utan att ange organisationsnummer eller faktiskt bolagsnamn.
@@ -81,6 +28,27 @@ Notera att övertid "ingår i lön" inte är ett saknat villkor utan en befintli
 **Motivering:** Formell GDPR-compliance kräver identifierad personuppgiftsansvarig. Risken är låg medan ingen PII lagras persistent, men den bör åtgärdas innan tjänsten sätts i produktion.
 
 **Påverkar:** `/src/app/integritetspolicy/page.tsx`
+
+---
+
+### 2026-03-17 — Accepterade förbättringsförslag (3 st)
+
+**Kontext:** Tre öppna förbättringsförslag accepterade och implementerade.
+
+**Beslut 1 — Röst och tonregel (Copywriter):**
+- BRAND.md: Röst ändrad från "Kunnig kollega som förklarar utan jargong" till "Kunnig kompis med edge — rak, respektfull, aldrig nedlåtande".
+- BRAND.md: Undantag tillagt för FAQ-svar, listor och redaktionellt innehåll från 20-ordsregeln. FAQ-länk fanns redan i footer.
+
+**Beslut 2 — Differentierad allvarlighet för saknade villkor (Legal Reviewer):**
+- `allvarlighet`-fält tillagt i `saknade_villkor` (SPEC.md, analysis-types.ts, prompts.ts).
+- Tre kategorier: hög (skyddsunderskott utan lag), medel (oklar rättsställning), info (tvingande lag gäller ändå).
+- "Övertid ingår i lön" dirigeras till flaggor-arrayen istället för saknade_villkor.
+- UI visar severity-pill för hög/medel i full-report.tsx och analysis-flow.tsx.
+
+**Beslut 3 — Bolagsnamn/org.nr i integritetspolicy (Legal Reviewer):**
+- Accepterat men avvaktar tills bolaget är registrerat. Kvarstår som öppet förslag.
+
+**Påverkar:** BRAND.md, SPEC.md, src/lib/analysis-types.ts, src/lib/prompts.ts, src/components/full-report.tsx, src/components/analysis-flow.tsx
 
 ---
 

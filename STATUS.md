@@ -4,7 +4,7 @@
 
 ## Övergripande status
 **Fas:** 14 av 15 steg klara. Kvar: Deploy (avvaktar)
-**Senast uppdaterad:** 2026-03-15
+**Senast uppdaterad:** 2026-03-31
 
 ## Arbetsordning
 
@@ -27,6 +27,68 @@
 | 15 | Deploy | ⬜ |
 
 ## Senaste session
+**2026-03-31 — 22-skill audit: testinfra, tillgänglighet, CI, E2E, docs**
+
+Fullständig audit mot 22 expertroller (skills). Alla identifierade förbättringar implementerade.
+
+**Testinfrastruktur (nytt):**
+- Vitest uppsatt med jsdom + @testing-library
+- 22 unit tests för PII-strippern (alla mönster)
+- 10 unit tests för analysresultat-validering
+- Ny `analysis-validation.ts` — strukturell validering av Claude-output, integrerad i analyze-routen (loggar, blockerar inte)
+
+**Tillgänglighetsfixar:**
+- AnalyzingOverlay: `<div role="dialog">` → nativt `<dialog>` + `showModal()` — fokus-trap löst (PROBLEM.md: hög → löst)
+- Focus ring: `accent-500` → `accent-700` (#941228, 8.5:1 kontrast) — AAA-compliant (PROBLEM.md: medel → löst)
+
+**Felhantering:**
+- Ny `ErrorBoundary`-komponent med svenskt fallback-UI, insvept i layout.tsx
+
+**CI/CD:**
+- GitHub Actions workflow: lint, typecheck, unit tests, build, PDF worker-check
+
+**E2E-tester (nytt):**
+- Playwright uppsatt med 9 smoke tests: landing, FAQ, 5 SEO-sidor, integritetspolicy, källsidor
+- Alla 9 E2E-tester passerar
+
+**Dokumentation:**
+- `docs/api-routes.md` — alla 7 API-endpoints dokumenterade
+- `docs/superpowers/plans/2026-03-31-skill-audit-improvements.md` — implementationsplan
+
+**Ändrade filer:**
+- `vitest.config.ts` (ny), `tests/setup.ts` (ny), `tests/lib/pii-stripper.test.ts` (ny), `tests/lib/analysis-validation.test.ts` (ny)
+- `src/lib/analysis-validation.ts` (ny), `src/components/error-boundary.tsx` (ny)
+- `playwright.config.ts` (ny), `e2e/smoke.spec.ts` (ny)
+- `.github/workflows/ci.yml` (ny), `docs/api-routes.md` (ny)
+- `src/components/analysis-flow.tsx` — AnalyzingOverlay dialog-refaktorering
+- `src/app/globals.css` — focus ring contrast fix
+- `src/app/layout.tsx` — ErrorBoundary wrapper
+- `src/app/api/analyze/route.ts` — validation integration
+- `package.json` — test/e2e scripts + devDependencies
+- `PROBLEM.md` — 2 problem markerade som lösta
+- `STATUS.md` — denna uppdatering
+
+---
+
+**Föregående session:**
+**2026-03-17 — Accepterade förbättringsförslag (3 st)**
+
+Tre öppna förslag implementerade:
+
+1. **BRAND.md röst + tonregel:** "Kunnig kollega" → "Kunnig kompis med edge". Undantag från 20-ordsregeln för FAQ/redaktionellt innehåll. FAQ-länk fanns redan i footer.
+2. **Differentierad allvarlighet för saknade villkor:** `allvarlighet`-fält tillagt i schema, TypeScript-typer, systemprompt och UI. Hög/medel visas som severity-pill. "Övertid ingår i lön" dirigeras till flaggor istället.
+3. **Bolagsnamn/org.nr:** Accepterat men avvaktar registrering.
+
+**Ändrade filer:**
+- `BRAND.md` — Röst + tonregelundantag
+- `SPEC.md` — allvarlighet i saknade_villkor-schema
+- `src/lib/analysis-types.ts` — SaknatVillkor-interface
+- `src/lib/prompts.ts` — Systemprompt: allvarlighetsregler + "övertid ingår i lön" → flagga
+- `src/components/full-report.tsx` — Severity-pill för saknade villkor
+- `src/components/analysis-flow.tsx` — Severity-pill för saknade villkor
+
+---
+
 **2026-03-16 - SEO, social sharing och AI-indexerings-audit (SEO-specialist)**
 
 Fullständig SEO-audit och implementering av allt som saknades.

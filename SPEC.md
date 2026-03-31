@@ -126,6 +126,7 @@ Originaldokumentet lämnar ALDRIG användarens enhet.
   "saknade_villkor": [
     {
       "villkor": "string",
+      "allvarlighet": "hög | medel | info — differentierad: lag gäller ändå = info, oklar rättsställning utan lag = medel, substantiellt skyddsunderskott utan lagsäkerhet = hög",
       "relevans": "string — formuleras som 'standardvillkor som typiskt förekommer i svenska anställningsavtal'",
       "referens": "string"
     }

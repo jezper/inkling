@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { ErrorBoundary } from "@/components/error-boundary";
 import "./globals.css";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kollaavtalet.com";
@@ -123,7 +124,9 @@ export default function RootLayout({
             __html: JSON.stringify(webApplicationSchema),
           }}
         />
-        {children}
+        <ErrorBoundary>
+          {children}
+        </ErrorBoundary>
         <Analytics />
       </body>
     </html>

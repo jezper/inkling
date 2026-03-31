@@ -611,16 +611,33 @@ export function FullReport({
                     borderRadius: "var(--radius-md)",
                   }}
                 >
-                  <p
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "var(--text-base)",
-                      fontWeight: 600,
-                      color: "var(--color-text-primary)",
-                    }}
-                  >
-                    {sv.villkor}
-                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "var(--text-base)",
+                        fontWeight: 600,
+                        color: "var(--color-text-primary)",
+                      }}
+                    >
+                      {sv.villkor}
+                    </p>
+                    {sv.allvarlighet && sv.allvarlighet !== "info" && (
+                      <span
+                        style={{
+                          fontFamily: "var(--font-mono)",
+                          fontSize: "var(--text-xs)",
+                          fontWeight: 500,
+                          padding: "0.125rem 0.5rem",
+                          borderRadius: "var(--radius-full, 9999px)",
+                          backgroundColor: sv.allvarlighet === "hög" ? "var(--color-severity-high-bg, #FEE2E2)" : "var(--color-severity-medium-bg, #FEF3C7)",
+                          color: sv.allvarlighet === "hög" ? "var(--color-severity-high-text, #991B1B)" : "var(--color-severity-medium-text, #92400E)",
+                        }}
+                      >
+                        {sv.allvarlighet}
+                      </span>
+                    )}
+                  </div>
                   <p
                     style={{
                       marginTop: "0.375rem",

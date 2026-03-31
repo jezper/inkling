@@ -48,8 +48,8 @@ Aldrig alarmistisk, aldrig säljig. Aldrig dekorativ på bekostnad av klarhet.
 
 ## Tonalitet i copy
 
-### Röst: "Kunnig kollega som förklarar utan jargong"
-- Korta meningar. Max 20 ord per mening i UI-text (undantag: hero och paywall-intro tillåter upp till 25 ord om tonen vinner på det).
+### Röst: "Kunnig kompis med edge — rak, respektfull, aldrig nedlåtande"
+- Korta meningar. Max 20 ord per mening i UI-text (undantag: hero och paywall-intro tillåter upp till 25 ord om tonen vinner på det). FAQ-svar, listor med tekniska termer och redaktionellt innehåll är undantagna — faktaprecision prioriteras.
 - Klarspråk. "Uppsägningstid" inte "kontraktuell terminering."
 - Lugn. Aldrig alarmistisk, aldrig säljig.
 - Respektfull. Användaren är intelligent men inte arbetsrättsjurist.

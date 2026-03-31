@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { AlertCircle } from "lucide-react";
 import { UploadStep } from "./upload-step";
 import { stripPii } from "@/lib/pii-stripper";
@@ -525,7 +525,24 @@ function ResultView({ result, previousResult, onReset, onReanalyze }: {
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {result.saknade_villkor.map((sv, i) => (
                 <div key={i} style={{ padding: "1rem", border: "1px solid var(--color-surface-200)", borderRadius: "var(--radius-md)" }}>
-                  <p style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-base)", fontWeight: 600, color: "var(--color-text-primary)" }}>{sv.villkor}</p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <p style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-base)", fontWeight: 600, color: "var(--color-text-primary)" }}>{sv.villkor}</p>
+                    {sv.allvarlighet && sv.allvarlighet !== "info" && (
+                      <span
+                        style={{
+                          fontFamily: "var(--font-mono)",
+                          fontSize: "var(--text-xs)",
+                          fontWeight: 500,
+                          padding: "0.125rem 0.5rem",
+                          borderRadius: "var(--radius-full, 9999px)",
+                          backgroundColor: sv.allvarlighet === "hög" ? "var(--color-severity-high-bg, #FEE2E2)" : "var(--color-severity-medium-bg, #FEF3C7)",
+                          color: sv.allvarlighet === "hög" ? "var(--color-severity-high-text, #991B1B)" : "var(--color-severity-medium-text, #92400E)",
+                        }}
+                      >
+                        {sv.allvarlighet}
+                      </span>
+                    )}
+                  </div>
                   <p style={{ marginTop: "0.375rem", fontSize: "var(--text-base)", color: "var(--color-text-muted)", lineHeight: 1.5 }}>{sv.relevans}</p>
                 </div>
               ))}
@@ -608,8 +625,10 @@ function ResultView({ result, previousResult, onReset, onReanalyze }: {
   );
 }
 
-// Analyzing overlay med roterande statusrader
+// Analyzing overlay med roterande statusrader — native <dialog> för fokus-trap
 function AnalyzingOverlay() {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
   const steps = [
     "Läser avtalstext",
     "Identifierar anställningsform",
@@ -629,6 +648,13 @@ function AnalyzingOverlay() {
   const [currentStep, setCurrentStep] = useState(0);
 
   useEffect(() => {
+    const dialog = dialogRef.current;
+    if (dialog && !dialog.open) {
+      dialog.showModal();
+    }
+  }, []);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       setCurrentStep((prev) => (prev + 1) % steps.length);
     }, 2800);
@@ -636,46 +662,55 @@ function AnalyzingOverlay() {
   }, [steps.length]);
 
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="analyzing-heading"
+    <dialog
+      ref={dialogRef}
+      aria-label="Analyserar ditt avtal"
+      aria-busy="true"
+      onCancel={(e) => e.preventDefault()}
       style={{
         position: "fixed",
         inset: 0,
-        zIndex: 50,
+        width: "100vw",
+        height: "100vh",
+        maxWidth: "100vw",
+        maxHeight: "100vh",
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "rgba(245, 245, 247, 0.97)",
+        backgroundColor: "rgba(10, 10, 12, 0.92)",
+        border: "none",
+        padding: 0,
+        margin: 0,
+        zIndex: 50,
       }}
     >
-      <div style={{ width: "240px", height: "2px", backgroundColor: "var(--color-surface-200)", borderRadius: "var(--radius-full)", overflow: "hidden" }} aria-hidden="true">
-        <div style={{ height: "100%", backgroundColor: "var(--color-accent-500)", width: "60%", animation: "slideProgress 1.8s ease-in-out infinite" }} />
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ width: "240px", height: "2px", backgroundColor: "var(--color-surface-200)", borderRadius: "var(--radius-full)", overflow: "hidden" }} aria-hidden="true">
+          <div style={{ height: "100%", backgroundColor: "var(--color-accent-500)", width: "60%", animation: "slideProgress 1.8s ease-in-out infinite" }} />
+        </div>
+
+        <p id="analyzing-heading" style={{ marginTop: "2rem", fontFamily: "var(--font-display)", fontSize: "var(--text-lg)", fontWeight: 600, color: "#FFFFFF" }}>
+          Analyserar ditt avtal
+        </p>
+
+        <p
+          key={currentStep}
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          style={{
+            marginTop: "0.75rem",
+            fontFamily: "var(--font-mono)",
+            fontSize: "var(--text-xs)",
+            color: "var(--color-surface-400)",
+            letterSpacing: "0.04em",
+            animation: "fadeStep 2.8s ease-in-out",
+            minHeight: "1.25rem",
+          }}
+        >
+          {steps[currentStep]}
+        </p>
       </div>
-
-      <p id="analyzing-heading" style={{ marginTop: "2rem", fontFamily: "var(--font-display)", fontSize: "var(--text-lg)", fontWeight: 600, color: "var(--color-text-primary)" }}>
-        Analyserar ditt avtal
-      </p>
-
-      <p
-        key={currentStep}
-        role="status"
-        aria-live="polite"
-        aria-atomic="true"
-        style={{
-          marginTop: "0.75rem",
-          fontFamily: "var(--font-mono)",
-          fontSize: "var(--text-xs)",
-          color: "var(--color-text-muted)",
-          letterSpacing: "0.04em",
-          animation: "fadeStep 2.8s ease-in-out",
-          minHeight: "1.25rem",
-        }}
-      >
-        {steps[currentStep]}
-      </p>
 
       <style>{`
         @keyframes slideProgress { 0% { transform: translateX(-100%); } 50% { transform: translateX(0%); } 100% { transform: translateX(200%); } }
@@ -684,8 +719,9 @@ function AnalyzingOverlay() {
           @keyframes slideProgress { 0%, 100% { transform: none; opacity: 1; } 50% { opacity: 0.5; } }
           @keyframes fadeStep { 0%, 100% { opacity: 1; transform: none; } }
         }
+        dialog::backdrop { background: transparent; }
       `}</style>
-    </div>
+    </dialog>
   );
 }
 

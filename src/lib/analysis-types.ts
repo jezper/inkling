@@ -13,6 +13,7 @@ export interface Flagga {
 
 export interface SaknatVillkor {
   villkor: string;
+  allvarlighet: "hög" | "medel" | "info";
   relevans: string;
   referens: string;
 }

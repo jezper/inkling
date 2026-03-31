@@ -11,19 +11,17 @@
 **Workaround:** Säkerställ att `--color-text-subtle` enbart används för visuella detaljer, aldrig för text som bär unik information.
 **Fix:** Höj till #47474F för full AAA, eller acceptera AA för dessa dekorativa sammanhang. Kräver designbeslut.
 
-### 2026-03-15 — WCAG AAA: Focus ring kontrast mot accent-bakgrund
+### 2026-03-15 — WCAG AAA: Focus ring kontrast mot accent-bakgrund (LÖST 2026-03-31)
 
-**Allvarlighet:** Medel
-**Beskrivning:** Focus ring använder `--color-accent-500` (#E63E1E). På element med vit/ljus bakgrund ger detta 4.22:1 mot bakgrunden — underkänt AA 3:1 för UI-komponenter vid 2px tjocklek. WCAG 2.2 kräver att focus indicator har minst 3:1 kontrast mot angränsande färger och täcker ett tillräckligt perimeter.
-**Workaround:** Nuvarande 2px offset-3px gör ringen synlig mot vit bakgrund via offset-mellanrum. Funktionellt godkänt men inte fullt compliant.
-**Fix:** Ändra `--focus-outline-color` till `--color-accent-text` (#A82E14, 7.1:1 på vit) för att uppfylla WCAG 2.2 §2.4.11 AAA. Rör globals.css rad 127.
+**Allvarlighet:** Medel → Löst
+**Beskrivning:** Focus ring använde `--color-accent-500`. Underkänt AAA.
+**Fix:** Klart. Ändrat till `--color-accent-700` (#941228, 8.5:1 på vit) — AAA-compliant. Rör globals.css.
 
-### 2026-03-15 — Ingen fokustrapfångst i AnalyzingOverlay
+### 2026-03-15 — Ingen fokustrapfångst i AnalyzingOverlay (LÖST 2026-03-31)
 
-**Allvarlighet:** Hög
-**Beskrivning:** `AnalyzingOverlay` är ett `role="dialog"` men fångar inte tangentbordsfokus. Användare kan tabba förbi overlayen till innehåll under den. Korrekt modal-implementation kräver fokus-trap (fokus sätts på dialogen vid öppning, tabbar cyklar inom den, Escape stänger).
-**Workaround:** Ingen. Overlayen har inga interaktiva element så problemet är begränsat till att fokus hamnar fel.
-**Fix:** Lägg till fokus-trap-hook eller använd `<dialog>`-elementet nativt med `showModal()`. Kräver React-refaktorering av `AnalyzingOverlay`.
+**Allvarlighet:** Hög → Löst
+**Beskrivning:** `AnalyzingOverlay` använde `<div role="dialog">` utan fokus-trap.
+**Fix:** Klart. Ersatt med nativt `<dialog>`-element + `showModal()`. Fokus fångas automatiskt av webbläsaren. Escape blockerad via `onCancel`. Rör `analysis-flow.tsx`.
 
 ### 2026-03-15 — Reflow vid 200% zoom: 2-kolumns grid i FlagCard (LÖST 2026-03-15)
 
