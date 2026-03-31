@@ -11,8 +11,7 @@ type FlowState = "upload" | "processing" | "consent" | "analyzing" | "result";
 interface ParsedData {
   text: string;
   pageCount: number;
-  fileName: string;
-  usedOcr?: boolean;
+  fileNames: string[];
 }
 
 export function AnalysisFlow() {
@@ -29,7 +28,7 @@ export function AnalysisFlow() {
   // Kolla om användaren redan betalat (omgranskning)
   const isUnlocked = typeof window !== "undefined" && sessionStorage.getItem("ce_unlocked") === "true";
 
-  const handleParsed = useCallback((result: ParsedData) => {
+  const handleAnalyze = useCallback((result: ParsedData) => {
     setParsedData(result);
     setErrorMessage(null);
     try {
@@ -150,7 +149,7 @@ export function AnalysisFlow() {
         )}
 
         {/* Upload */}
-        {(state === "upload" || state === "processing") && (
+        {(state === "upload" || state === "processing" || state === "analyzing") && (
           <>
             <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-xs)", letterSpacing: "0.10em", textTransform: "uppercase", color: "var(--color-text-muted)", marginBottom: "0.5rem" }}>
               Analys
@@ -159,7 +158,7 @@ export function AnalysisFlow() {
               Ladda upp avtalet
             </h2>
             <div style={{ marginTop: "1.5rem" }}>
-              <UploadStep onParsed={handleParsed} onError={(msg) => { setErrorMessage(msg); setState("upload"); }} isProcessing={state === "processing"} />
+              <UploadStep onAnalyze={handleAnalyze} onError={(msg) => { setErrorMessage(msg); setState("upload"); }} isProcessing={state === "analyzing"} />
             </div>
           </>
         )}
