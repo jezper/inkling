@@ -27,6 +27,20 @@
 | 15 | Deploy | ⬜ |
 
 ## Senaste session
+**2026-03-31 — Multi-fil-uppladdning**
+
+Upload-steget omskrivet för att stödja 1-5 PDF-filer. Fillista med parse-status, explicit "Analysera"-knapp, max 5 filer, 50k-teckengräns. Inga API-ändringar.
+
+**Ändrade filer:**
+- `src/components/upload-step.tsx` — Ny multi-fil-logik, fillista, analysera-knapp
+- `src/components/analysis-flow.tsx` — `handleParsed` → `handleAnalyze`, uppdaterad ParsedData
+- `tests/components/upload-step.test.tsx` (ny) — 8 tester
+- `e2e/smoke.spec.ts` — Nytt test för flerfilstext
+- `BESLUT.md` — Beslut dokumenterat
+
+---
+
+**Tidigare session:**
 **2026-03-31 — 22-skill audit: testinfra, tillgänglighet, CI, E2E, docs**
 
 Fullständig audit mot 22 expertroller (skills). Alla identifierade förbättringar implementerade.

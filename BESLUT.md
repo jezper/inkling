@@ -15,6 +15,23 @@
 
 ---
 
+### 2026-03-31 — Multi-fil-uppladdning (UX)
+
+**Kontext:** Anställningsavtal kommer ofta som 2-4 separata PDF:er (rollbrev + policy + förmåner). Enfilsuppladdning tvingade användare att välja en och missa viktiga klausuler.
+
+**Beslut:**
+- Upload-steget accepterar 1-5 PDF-filer (drag-and-drop eller filväljare, en eller flera åt gången)
+- Varje fil parsas oberoende vid tillägg och visas i en fillista med status
+- Användaren klickar explicit "Analysera" — ingen automatisk analys
+- Texter konkateneras i uppladdningsordning, separerade med `---`
+- Befintlig 50k-teckengräns gäller för kombinerad text
+
+**Motivering:** Enklaste UX:en som löser flerfilsbehovet. Explicit "Analysera"-knapp ger kontroll. Ingen ändring av API eller backend — allt hanteras i klienten.
+
+**Påverkar:** `src/components/upload-step.tsx`, `src/components/analysis-flow.tsx`
+
+---
+
 ## Öppna förslag
 
 ### Förbättringsförslag — Legal Reviewer (2026-03-16)
