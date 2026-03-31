@@ -7,6 +7,12 @@ test.describe("Landing page", () => {
     const uploadSection = page.locator("#upload");
     await expect(uploadSection).toBeVisible();
   });
+
+  test("shows multi-file upload hint", async ({ page }) => {
+    await page.goto("/");
+    // Client component — wait for hydration
+    await expect(page.getByText(/upp till 5 filer/i)).toBeVisible({ timeout: 10000 });
+  });
 });
 
 test.describe("FAQ page", () => {
