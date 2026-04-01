@@ -37,7 +37,13 @@ Helhetsbedömningen ("bra"/"godkänt"/"risk") ersatt med en tre-segments horison
 - `src/components/analysis-flow.tsx` — Två helhetsbedömning-boxar ersatta med OverallGauge
 - `src/components/full-report.tsx` — OverallAssessment borttagen, ersatt med OverallGauge
 
+**Uppföljning:** Gauge-segmenten fick labels ("Bra"/"Notera"/"Risk") och vänsterställdes efter visuell feedback — baren såg ut som ett dekorativt element utan labels.
+
 **Designbeslut:** Se BESLUT.md. Gauge synlig i gratisvy (konverteringsverktyg — grönt = trygghet, orange/rött = incitament att betala för detaljer).
+
+**Nästa steg (deploy):**
+- Byt Stripe till produktionsmiljö (production-nycklar + rätt produkt/pris)
+- Koppla egen domän i Vercel
 
 ---
 
