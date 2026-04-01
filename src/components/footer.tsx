@@ -107,6 +107,13 @@ export function Footer() {
           >
             Användarvillkor
           </a>
+          <a
+            href="mailto:hej@kollaavtalet.nu"
+            className="transition-colors duration-100"
+            style={{ textDecorationLine: "underline", textUnderlineOffset: "3px" }}
+          >
+            hej@kollaavtalet.nu
+          </a>
           <span>&copy; {new Date().getFullYear()} Kolla Avtalet</span>
         </div>
       </div>
