@@ -27,7 +27,42 @@
 | 15 | Deploy | ⬜ |
 
 ## Senaste session
-**2026-04-01 — Visuell helhetsbedömning (gauge)**
+**2026-04-01 — Email-redesign: kvitto + rapport-PDF + rate limiting + gauge**
+
+Tre features implementerade:
+
+**1. Visuell helhetsbedömning (gauge)**
+Tre-segments bar (grön/orange/röd) med labels. Ersätter färgade textrutor i gratisvy och rapport. Visuell feedback ledde till labels + vänsterjustering.
+
+**2. Rate limiting + säkerhetsheaders**
+In-memory rate limiter ersatt med Vercel KV-backad lösning (in-memory fallback). Rate limiting på /api/analyze (5/h), email (10/h), checkout (10/h), refund (5/h). Middleware med CSP, HSTS, X-Frame-Options etc.
+
+**3. Email-redesign: kvitto + rapport-PDF**
+Mejlet omskrivet till minimal kvittomall (lagkrav förenklad faktura). Avtalsrapporten bifogas som PDF genererad med @react-pdf/renderer. Klienten skickar sessionId som kvittonummer.
+
+**Ändrade filer:**
+- `src/components/overall-gauge.tsx` (ny) — Gauge-komponent
+- `src/lib/report-pdf.tsx` (ny) — @react-pdf/renderer Document-komponent
+- `src/lib/pdf-fonts.ts` (ny) — Font-registrering för PDF
+- `src/lib/email-template.ts` — Omskriven: buildReportEmail → buildReceiptEmail
+- `src/lib/rate-limit.ts` — Omskriven: async, KV-backad, tiers
+- `src/middleware.ts` (ny) — Säkerhetsheaders
+- `src/app/api/email/route.ts` — PDF-generering + attachment
+- `src/app/api/analyze/route.ts` — await checkRateLimit
+- `src/app/api/checkout/route.ts` — Rate limiting tillagt
+- `src/app/api/refund/route.ts` — Rate limiting tillagt
+- `src/components/analysis-flow.tsx` — OverallGauge
+- `src/components/full-report.tsx` — OverallGauge + sessionId i email-anrop
+
+**Nästa steg (deploy):**
+- Byt Stripe till produktionsmiljö (live-nycklar + rätt produkt/pris)
+- Koppla egen domän i Vercel
+- Sätt BUSINESS_ORG_NR i Vercel env vars
+- Byt Resend from-adress till egen domän
+
+---
+
+**Tidigare session:**
 
 Helhetsbedömningen ("bra"/"godkänt"/"risk") ersatt med en tre-segments horisontell bar (grön/orange/röd). Aktiv segment markerat, inaktiva nedtonade. Synlig i både gratisvy och betald rapport.
 
