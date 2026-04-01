@@ -4,7 +4,7 @@
 
 ## Övergripande status
 **Fas:** 14 av 15 steg klara. Kvar: Deploy (avvaktar)
-**Senast uppdaterad:** 2026-03-31
+**Senast uppdaterad:** 2026-04-01
 
 ## Arbetsordning
 
@@ -27,6 +27,21 @@
 | 15 | Deploy | ⬜ |
 
 ## Senaste session
+**2026-04-01 — Visuell helhetsbedömning (gauge)**
+
+Helhetsbedömningen ("bra"/"godkänt"/"risk") ersatt med en tre-segments horisontell bar (grön/orange/röd). Aktiv segment markerat, inaktiva nedtonade. Synlig i både gratisvy och betald rapport.
+
+**Ändrade filer:**
+- `src/components/overall-gauge.tsx` (ny) — OverallGauge-komponent + getGaugeConfig
+- `tests/components/overall-gauge.test.ts` (ny) — 3 tester för getGaugeConfig
+- `src/components/analysis-flow.tsx` — Två helhetsbedömning-boxar ersatta med OverallGauge
+- `src/components/full-report.tsx` — OverallAssessment borttagen, ersatt med OverallGauge
+
+**Designbeslut:** Se BESLUT.md. Gauge synlig i gratisvy (konverteringsverktyg — grönt = trygghet, orange/rött = incitament att betala för detaljer).
+
+---
+
+**Tidigare session:**
 **2026-03-31 — Multi-fil-uppladdning**
 
 Upload-steget omskrivet för att stödja 1-5 PDF-filer. Fillista med parse-status, explicit "Analysera"-knapp, max 5 filer, 50k-teckengräns. Inga API-ändringar.

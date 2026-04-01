@@ -15,6 +15,26 @@
 
 ---
 
+### 2026-04-01 — Visuell helhetsbedömning: tre-segments gauge
+
+**Kontext:** Helhetsbedömningen (bra/godkänt/risk) visades som en färgad textruta. Användaren önskade en mer visuell, omedelbart avläsbar indikator.
+
+**Beslut:**
+- Tre-segments horisontell bar (grön/orange/röd), aktiv segment markerat, inaktiva nedtonade
+- Synlig i både gratisvy och betald rapport
+- Ingen ändring av datamodell eller LLM-prompt — använder befintlig `helhetsbedömning.nivå`
+
+**Motivering:**
+- Diskreta segment kommunicerar "kategori, inte poäng" — ärligt mot hur datan fungerar
+- Semicirkulär gauge (speedometer) avvisad — implicerar kontinuerlig skala, gamifierat intryck krockar med "kunnig kompis"-tonen
+- Gauge i gratisvy fungerar som konverteringsverktyg: gröna avtal ger trygghet (lågvärdiga konverteringar oavsett), orange/röda skapar incitament att betala för detaljer
+
+**Alternativ:** Semicirkulär gauge (för gamifierat), enbart ikon+badge (för subtilt)
+
+**Påverkar:** `overall-gauge.tsx`, `analysis-flow.tsx`, `full-report.tsx`
+
+---
+
 ### 2026-03-31 — Multi-fil-uppladdning (UX)
 
 **Kontext:** Anställningsavtal kommer ofta som 2-4 separata PDF:er (rollbrev + policy + förmåner). Enfilsuppladdning tvingade användare att välja en och missa viktiga klausuler.
