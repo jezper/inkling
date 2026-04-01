@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { renderToBuffer } from "@react-pdf/renderer";
 import { resend } from "@/lib/resend";
 import { createReportToken } from "@/lib/report-token";
-import { buildReportEmail } from "@/lib/email-template";
+import { buildReceiptEmail } from "@/lib/email-template";
+import { ReportPdfDocument } from "@/lib/report-pdf";
 import { checkRateLimit } from "@/lib/rate-limit";
 import type { AnalysisResult } from "@/lib/analysis-types";
 
@@ -16,9 +18,10 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { email, result } = (await req.json()) as {
+    const { email, result, sessionId } = (await req.json()) as {
       email?: string;
       result?: AnalysisResult;
+      sessionId?: string;
     };
 
     if (!email || !result || !Array.isArray(result.flaggor)) {
@@ -28,7 +31,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Validera email-format (basic)
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
         { error: "Ogiltig emailadress." },
@@ -36,18 +38,36 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Skapa delbar rapport-länk
+    // Create report link
     const token = createReportToken(result);
-    const siteUrl =
-      process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
     const reportUrl = `${siteUrl}/rapport?t=${token}`;
 
-    // Skicka email
+    // Generate report PDF
+    const pdfBuffer = await renderToBuffer(
+      ReportPdfDocument({ data: result }),
+    );
+
+    // Build receipt email
+    const date = new Date().toLocaleDateString("sv-SE");
+    const html = buildReceiptEmail({
+      reportUrl,
+      sessionId: sessionId ?? "N/A",
+      date,
+    });
+
+    // Send email with PDF attachment
     const { error } = await resend.emails.send({
       from: "Kolla Avtalet <onboarding@resend.dev>",
       to: email,
-      subject: `Din avtalsrapport - ${result.helhetsbedömning?.rubrik ?? "Analys klar"}`,
-      html: buildReportEmail(result, reportUrl),
+      subject: `Kvitto och avtalsrapport — Kolla Avtalet`,
+      html,
+      attachments: [
+        {
+          filename: "Avtalsrapport.pdf",
+          content: Buffer.from(pdfBuffer),
+        },
+      ],
     });
 
     if (error) {

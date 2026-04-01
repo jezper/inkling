@@ -102,7 +102,7 @@ export function FullReport({
               fetch("/api/email", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email: result.email, result: JSON.parse(stored) }),
+                body: JSON.stringify({ email: result.email, result: JSON.parse(stored), sessionId }),
               }).catch(() => {}); // tyst fel — rapporten visas ändå
               setEmailSent(result.email);
             }
