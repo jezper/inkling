@@ -5,6 +5,7 @@ import { AlertCircle } from "lucide-react";
 import { UploadStep } from "./upload-step";
 import { stripPii } from "@/lib/pii-stripper";
 import type { AnalysisResult } from "@/lib/analysis-types";
+import { OverallGauge } from "@/components/overall-gauge";
 
 type FlowState = "upload" | "processing" | "consent" | "analyzing" | "result";
 
@@ -226,33 +227,9 @@ function ResultView({ result, previousResult, onReset, onReanalyze }: {
 
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-        {/* Helhetsbedömning */}
+        {/* Helhetsbedömning — gauge */}
         {result.helhetsbedömning && (
-          <div style={{
-            padding: "1.25rem",
-            borderRadius: "var(--radius-lg)",
-            border: `2px solid ${
-              result.helhetsbedömning.nivå === "bra" ? "var(--color-status-ok-border)"
-              : result.helhetsbedömning.nivå === "risk" ? "var(--color-severity-high-border)"
-              : "var(--color-surface-300)"
-            }`,
-            backgroundColor:
-              result.helhetsbedömning.nivå === "bra" ? "var(--color-status-ok-bg)"
-              : result.helhetsbedömning.nivå === "risk" ? "var(--color-severity-high-bg)"
-              : "var(--color-surface-0)",
-          }}>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-xs)", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem",
-              color: result.helhetsbedömning.nivå === "bra" ? "var(--color-status-ok-text)" : result.helhetsbedömning.nivå === "risk" ? "var(--color-severity-high-text)" : "var(--color-text-muted)",
-            }}>
-              {result.helhetsbedömning.nivå === "bra" ? "Ser bra ut" : result.helhetsbedömning.nivå === "risk" ? "Värt att granska noga" : "Några saker att notera"}
-            </p>
-            <p style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-lg)", fontWeight: 600, color: "var(--color-text-primary)", letterSpacing: "-0.01em" }}>
-              {result.helhetsbedömning.rubrik}
-            </p>
-            <p style={{ marginTop: "0.5rem", fontSize: "var(--text-base)", color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
-              {result.helhetsbedömning.beskrivning}
-            </p>
-          </div>
+          <OverallGauge assessment={result.helhetsbedömning} />
         )}
 
         {/* Sammanfattande rad */}
@@ -385,18 +362,7 @@ function ResultView({ result, previousResult, onReset, onReanalyze }: {
         </div>
 
         {result.helhetsbedömning && (
-          <div style={{
-            padding: "1.25rem", borderRadius: "var(--radius-lg)", marginBottom: "1.5rem",
-            border: `2px solid ${result.helhetsbedömning.nivå === "bra" ? "var(--color-status-ok-border)" : result.helhetsbedömning.nivå === "risk" ? "var(--color-severity-high-border)" : "var(--color-surface-300)"}`,
-            backgroundColor: result.helhetsbedömning.nivå === "bra" ? "var(--color-status-ok-bg)" : result.helhetsbedömning.nivå === "risk" ? "var(--color-severity-high-bg)" : "var(--color-surface-0)",
-          }}>
-            <p style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-xl)", fontWeight: 600, color: "var(--color-text-primary)", letterSpacing: "-0.01em" }}>
-              {result.helhetsbedömning.rubrik}
-            </p>
-            <p style={{ marginTop: "0.5rem", fontSize: "var(--text-base)", color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
-              {result.helhetsbedömning.beskrivning}
-            </p>
-          </div>
+          <OverallGauge assessment={result.helhetsbedömning} />
         )}
 
         {/* Jämförelse mot föregående vid omgranskning */}
