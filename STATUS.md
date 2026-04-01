@@ -54,11 +54,48 @@ Mejlet omskrivet till minimal kvittomall (lagkrav förenklad faktura). Avtalsrap
 - `src/components/analysis-flow.tsx` — OverallGauge
 - `src/components/full-report.tsx` — OverallGauge + sessionId i email-anrop
 
-**Nästa steg (deploy):**
-- Byt Stripe till produktionsmiljö (live-nycklar + rätt produkt/pris)
-- Koppla egen domän i Vercel
-- Sätt BUSINESS_ORG_NR i Vercel env vars
-- Byt Resend from-adress till egen domän
+**Ytterligare ändringar denna session:**
+
+**Rate limiting + säkerhetsheaders:**
+- `rate-limit.ts` omskriven: async, Vercel KV-backad, in-memory fallback, tiers
+- Rate limiting på analyze (5/h), email (10/h), checkout (10/h), refund (5/h)
+- `middleware.ts` (ny): CSP, HSTS, X-Frame-Options etc.
+
+**Email-redesign: kvitto + rapport-PDF:**
+- `email-template.ts` omskriven till minimal kvittomall (lagkrav förenklad faktura)
+- `report-pdf.tsx` (ny): @react-pdf/renderer, full rapport som PDF-bilaga
+- `pdf-fonts.ts` (ny): Space Grotesk + Inter för PDF
+- Klienten skickar sessionId som kvittonummer
+
+**Lansering + deploy:**
+- Domän: kollaavtalet.nu (Vercel + Loopia DNS)
+- Stripe: live-produkt (49 kr), promotion codes aktiverade
+- Resend: domän verifieras (DNS-poster tillagda), from-adress → hej@kollaavtalet.nu
+- E-postvidarebefordring: hej@kollaavtalet.nu → personlig e-post via Loopia
+- Google Search Console + Bing Webmaster Tools verifierade
+- Villkor-sida (/villkor) skapad
+- ESLint config för CI
+
+**Legal audit (11 fynd åtgärdade):**
+- Ansvarsbegränsning med beloppstak (49 kr) i villkor
+- Ångerrätt: rätt lagrum (16 § konsumentavtalslagen)
+- Disclaimers: "automatiserad, inte granskad av människa" på alla platser
+- Disclaimer synlig i PDF-export (no-print borttagen)
+- Integritetspolicy: fullständig identitet + rättslig grund för Stripe/Resend
+- Systemprompt: anti-injection-instruktion + kollektivavtalsvarning
+- Prompt injection-disclaimer i villkor
+- Momsreg.nr till env var
+- 30-dagars länk kvalificerad
+
+**Buggfixar:**
+- Betalningslås (`ce_unlocked`) rensas vid ny uppladdning — förhindrar gratis omanalys
+- CSP: Tesseract.js OCR-worker + språkdata tillåtna (cdn.jsdelivr.net i script-src + connect-src)
+- Domänreferenser: kollaavtalet.com → kollaavtalet.nu överallt
+
+**Nästa steg:**
+- Väntar på Resend domänverifiering (DNS-poster tillagda)
+- Testa fullständigt flöde med TEST100 promo code när Resend är klart
+- Artikel 30-register (internt dokument, inte kod)
 
 ---
 
