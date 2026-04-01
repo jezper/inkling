@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
 
     // Skicka email till dig med all info
     const { error } = await resend.emails.send({
-      from: "Kolla Avtalet <onboarding@resend.dev>",
+      from: "Kolla Avtalet <hej@kollaavtalet.nu>",
       to: "jezper@jezper.se",
       subject: `Återbetalningsförfrågan`,
       html: `

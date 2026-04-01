@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
 
     // Send email with PDF attachment
     const { error } = await resend.emails.send({
-      from: "Kolla Avtalet <onboarding@resend.dev>",
+      from: "Kolla Avtalet <hej@kollaavtalet.nu>",
       to: email,
       subject: `Kvitto och avtalsrapport — Kolla Avtalet`,
       html,
