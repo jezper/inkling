@@ -32,6 +32,10 @@ export function AnalysisFlow() {
   const handleAnalyze = useCallback((result: ParsedData) => {
     setParsedData(result);
     setErrorMessage(null);
+    // Nytt avtal = ny betalning krävs
+    sessionStorage.removeItem("ce_unlocked");
+    sessionStorage.removeItem("ce_analysis_result");
+    sessionStorage.removeItem("ce_previous_result");
     try {
       const strip = stripPii(result.text);
       setStrippedText(strip.strippedText);
