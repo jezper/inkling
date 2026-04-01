@@ -13,7 +13,7 @@ const MAX_TEXT_LENGTH = 50_000;
 export async function POST(req: NextRequest) {
   // Rate limiting — max 5 analyser per IP per timme
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  const { allowed, remaining } = checkRateLimit(ip);
+  const { allowed, remaining } = await checkRateLimit(ip, "analyze");
   if (!allowed) {
     return NextResponse.json(
       { error: "Du har nått gränsen för antal analyser. Försök igen om en timme." },

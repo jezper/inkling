@@ -1,7 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resend } from "@/lib/resend";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const { allowed } = await checkRateLimit(ip, "refund");
+  if (!allowed) {
+    return NextResponse.json(
+      { error: "Du har gjort för många förfrågningar. Försök igen senare." },
+      { status: 429, headers: { "Retry-After": "3600" } },
+    );
+  }
+
   try {
     const { reason, reportUrl, sessionId } = (await req.json()) as {
       reason?: string;

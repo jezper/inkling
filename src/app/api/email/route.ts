@@ -2,9 +2,19 @@ import { NextRequest, NextResponse } from "next/server";
 import { resend } from "@/lib/resend";
 import { createReportToken } from "@/lib/report-token";
 import { buildReportEmail } from "@/lib/email-template";
+import { checkRateLimit } from "@/lib/rate-limit";
 import type { AnalysisResult } from "@/lib/analysis-types";
 
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const { allowed } = await checkRateLimit(ip, "general");
+  if (!allowed) {
+    return NextResponse.json(
+      { error: "Du har gjort för många förfrågningar. Försök igen senare." },
+      { status: 429, headers: { "Retry-After": "3600" } },
+    );
+  }
+
   try {
     const { email, result } = (await req.json()) as {
       email?: string;
