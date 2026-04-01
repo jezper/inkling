@@ -23,6 +23,7 @@ import type { AnalysisResult, Flagga, NästaSteg } from "@/lib/analysis-types";
 import { getRelevantResources, type Resource } from "@/lib/resources";
 import { parseLagrum } from "@/lib/lagrum-links";
 import { ReferralShare } from "./referral-share";
+import { OverallGauge } from "@/components/overall-gauge";
 
 interface FullReportProps {
   result?: AnalysisResult;
@@ -368,7 +369,7 @@ export function FullReport({
           {/* Helhetsbedömning */}
           {data.helhetsbedömning && (
             <div style={{ marginBottom: "1.5rem" }}>
-              <OverallAssessment assessment={data.helhetsbedömning} />
+              <OverallGauge assessment={data.helhetsbedömning} />
             </div>
           )}
 
@@ -1372,81 +1373,6 @@ function BandHeading({ children, label }: { children: React.ReactNode; label: st
       >
         {children}
       </h2>
-    </div>
-  );
-}
-
-function OverallAssessment({
-  assessment,
-}: {
-  assessment: AnalysisResult["helhetsbedömning"];
-}) {
-  const styles =
-    assessment.nivå === "bra"
-      ? {
-          border: "var(--color-status-ok-border)",
-          bg: "var(--color-status-ok-bg)",
-          label: "Ser bra ut",
-          labelColor: "var(--color-status-ok-text)",
-        }
-      : assessment.nivå === "risk"
-        ? {
-            border: "var(--color-severity-high-border)",
-            bg: "var(--color-severity-high-bg)",
-            label: "Värt att granska noga",
-            labelColor: "var(--color-severity-high-text)",
-          }
-        : {
-            border: "var(--color-surface-300)",
-            bg: "var(--color-surface-0)",
-            label: "Några saker att notera",
-            labelColor: "var(--color-text-muted)",
-          };
-
-  return (
-    <div
-      style={{
-        padding: "1.5rem",
-        borderRadius: "var(--radius-lg)",
-        border: `2px solid ${styles.border}`,
-        backgroundColor: styles.bg,
-      }}
-    >
-      <p
-        style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: "var(--text-xs)",
-          fontWeight: 600,
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
-          color: styles.labelColor,
-          marginBottom: "0.5rem",
-        }}
-      >
-        {styles.label}
-      </p>
-      <p
-        style={{
-          fontFamily: "var(--font-display)",
-          fontSize: "var(--text-2xl)",
-          fontWeight: 700,
-          color: "var(--color-text-primary)",
-          letterSpacing: "-0.03em",
-          lineHeight: 1.2,
-        }}
-      >
-        {assessment.rubrik}
-      </p>
-      <p
-        style={{
-          marginTop: "0.5rem",
-          fontSize: "var(--text-base)",
-          color: "var(--color-text-secondary)",
-          lineHeight: 1.7,
-        }}
-      >
-        {assessment.beskrivning}
-      </p>
     </div>
   );
 }
