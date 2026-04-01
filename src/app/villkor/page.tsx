@@ -108,7 +108,10 @@ export default function Villkor() {
               </p>
               <p>
                 Rapporten levereras direkt i webbläsaren, som PDF via e-post
-                och via en delbar länk giltig i 30 dagar.
+                och via en delbar länk. Vi strävar efter att länken ska vara
+                giltig i 30 dagar, men tekniska förändringar kan göra att den
+                upphör att fungera tidigare. Ladda alltid ner PDF-rapporten
+                för permanent sparande.
               </p>
             </Section>
 
@@ -124,12 +127,13 @@ export default function Villkor() {
               </p>
             </Section>
 
-            <Section title="Återbetalning">
+            <Section title="Återbetalning och ångerrätt">
               <p>
-                Eftersom resultatet levereras digitalt omedelbart efter
-                betalning gäller inte ångerrätten enligt distansavtalslagen
-                (3 kap. 13 § konsumentlagen). Du godkänner detta genom att
-                genomföra köpet.
+                Eftersom resultatet är digitalt innehåll som levereras
+                omedelbart efter betalning gäller inte ångerrätten, förutsatt
+                att du uttryckligen samtyckt till omedelbar leverans och
+                bekräftat att du är medveten om att ångerrätten upphör
+                (16 § konsumentavtalslagen, SFS 2005:59).
               </p>
               <p>
                 Om tjänsten inte fungerar som utlovat — till exempel om
@@ -142,13 +146,29 @@ export default function Villkor() {
             <Section title="Vad tjänsten inte är">
               <p>
                 Kolla Avtalet är inte en advokatbyrå, ett fackförbund eller en
-                myndighet. Analysen är automatiserad och baserad på AI. Den kan
-                innehålla fel. Kollektivavtal ingår inte i analysen.
+                myndighet. Analysen är automatiserad och inte granskad av
+                människa. Den kan innehålla fel. Kollektivavtal ingår inte i
+                analysen.
+              </p>
+              <p>
+                Tjänsten kan inte garantera att analysresultatet inte påverkas
+                av avtalstextens utformning. Ovanliga eller manipulerade
+                dokumentformat kan ge opålitliga resultat.
               </p>
               <p>
                 Vi ansvarar inte för beslut du fattar baserat på analysen. Vid
                 osäkerhet, kontakta alltid en arbetsrättsjurist eller ditt
                 fackförbund.
+              </p>
+            </Section>
+
+            <Section title="Ansvarsbegränsning">
+              <p>
+                Kolla Avtalets ansvar är under alla omständigheter begränsat
+                till det belopp du betalat för den aktuella analysen (49 kr).
+                Vi ansvarar inte för indirekta förluster, utebliven inkomst
+                eller förluster till följd av beslut fattade med analysen som
+                underlag.
               </p>
             </Section>
 

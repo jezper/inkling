@@ -198,6 +198,9 @@ export default function Integritetspolicy() {
                 betalningsuppgifter. De hanteras uteslutande av Stripe.
               </p>
               <p>
+                Rättslig grund: avtalets fullgörande (GDPR art. 6.1 b) —
+                betalningsuppgifterna behövs för att genomföra köpet.
+                Stripe är databiträde med tecknat databehandlingsavtal (DPA).
                 Stripe är ett amerikanskt bolag. Överföringen sker inom ramen
                 för standardavtalsklausuler. Stripes integritetspolicy finns på{" "}
                 <ExternalLink href="https://stripe.com/privacy">
@@ -216,6 +219,8 @@ export default function Integritetspolicy() {
                 sker inom ramen för standardavtalsklausuler.
               </p>
               <p>
+                Rättslig grund: avtalets fullgörande (GDPR art. 6.1 b) —
+                e-postadressen behövs för att leverera den köpta tjänsten.
                 Din e-postadress används enbart för att leverera rapporten. Den
                 sparas inte av oss, och vi skickar inga marknadsföringsutskick.
               </p>
@@ -335,15 +340,20 @@ export default function Integritetspolicy() {
             {/* ------------------------------------------------------------------ */}
             <Section title="Ansvarig för behandlingen">
               <p>
-                Personuppgiftsansvarig är det bolag som driver Kolla Avtalet
-                (kollaavtalet.nu). Kontakta oss på{" "}
+                Personuppgiftsansvarig är Jezper Lorné (enskild firma).
+              </p>
+              <p>
+                Gamla Kilandavägen 9, 44930 Nödinge, Sweden
+              </p>
+              <p>
+                Kontakta oss på{" "}
                 <a
                   href="mailto:hej@kollaavtalet.nu"
                   style={{ color: "var(--color-accent-text)", textDecoration: "underline", textUnderlineOffset: "3px" }}
                 >
                   hej@kollaavtalet.nu
                 </a>{" "}
-                vid frågor.
+                vid frågor om personuppgiftsbehandling.
               </p>
             </Section>
 

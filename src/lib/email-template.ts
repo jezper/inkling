@@ -16,6 +16,7 @@ interface ReceiptEmailOpts {
  */
 export function buildReceiptEmail(opts: ReceiptEmailOpts): string {
   const orgNr = process.env.BUSINESS_ORG_NR ?? "[org.nr saknas]";
+  const vatNr = process.env.BUSINESS_VAT_NR ?? "SE800827491501";
 
   return `<!DOCTYPE html>
 <html lang="sv">
@@ -64,7 +65,7 @@ export function buildReceiptEmail(opts: ReceiptEmailOpts): string {
             <p style="margin:2px 0 0;">Jezper Lorné</p>
             <p style="margin:2px 0 0;">Gamla Kilandavägen 9, 44930 Nödinge, Sweden</p>
             <p style="margin:2px 0 0;">Org.nr: ${escapeHtml(orgNr)}</p>
-            <p style="margin:2px 0 0;">Momsreg.nr: SE800827491501</p>
+            <p style="margin:2px 0 0;">Momsreg.nr: ${escapeHtml(vatNr)}</p>
           </div>
         </td></tr>
 
@@ -74,8 +75,9 @@ export function buildReceiptEmail(opts: ReceiptEmailOpts): string {
         <!-- Disclaimer -->
         <tr><td style="padding:20px 32px;">
           <p style="margin:0;font-size:11px;color:#47474F;line-height:1.5;">
-            Det här är information, inte juridisk rådgivning. Analysen jämför mot LAS, Semesterlagen,
-            Arbetstidslagen, Diskrimineringslagen och Föräldraledighetslagen. Kollektivavtal ingår inte.
+            Det här är information, inte juridisk rådgivning. Analysen är automatiserad och kan innehålla fel.
+            Den jämför mot LAS, Semesterlagen, Arbetstidslagen, Diskrimineringslagen och Föräldraledighetslagen.
+            Kollektivavtal ingår inte.
           </p>
           <p style="margin:8px 0 0;font-size:11px;color:#A8A8B4;">
             Detta mejl skickades av Kolla Avtalet. Svara inte på detta mejl.

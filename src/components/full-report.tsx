@@ -924,15 +924,18 @@ export function FullReport({
             </div>
           )}
 
-          {/* Disclaimer + refund */}
-          <footer className="no-print" style={{ paddingTop: "1.5rem", borderTop: "1px solid var(--color-surface-200)" }}>
+          {/* Disclaimer — visible in print/PDF */}
+          <footer style={{ paddingTop: "1.5rem", borderTop: "1px solid var(--color-surface-200)" }}>
             <p style={{ fontSize: "var(--text-sm)", color: "var(--color-text-muted)", lineHeight: 1.7 }}>
-              Det här är information, inte juridisk rådgivning. Analysen jämför
-              mot LAS, Semesterlagen, Arbetstidslagen, Diskrimineringslagen och
+              Det här är information, inte juridisk rådgivning. Analysen är
+              automatiserad och inte granskad av människa. Den jämför mot LAS,
+              Semesterlagen, Arbetstidslagen, Diskrimineringslagen och
               Föräldraledighetslagen. Kollektivavtal ingår inte. Vid osäkerhet,
               kontakta ett fackförbund eller en arbetsrättsjurist.
             </p>
-            <RefundBlock />
+            <div className="no-print">
+              <RefundBlock />
+            </div>
           </footer>
         </div>
       </div>

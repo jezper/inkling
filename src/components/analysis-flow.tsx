@@ -297,7 +297,7 @@ function ResultView({ result, previousResult, onReset, onReanalyze }: {
         </button>
 
         <p style={{ marginTop: "0.75rem", fontSize: "var(--text-xs)", fontFamily: "var(--font-mono)", color: "var(--color-text-muted)", lineHeight: 1.6, letterSpacing: "0.02em" }}>
-          Information, inte juridisk rådgivning. Vid osäkerhet, kontakta ett fackförbund eller en arbetsrättsjurist.
+          Automatiserad analys, inte juridisk rådgivning. Inte granskad av människa. Vid osäkerhet, kontakta ett fackförbund eller en arbetsrättsjurist.
         </p>
       </div>
     );
@@ -577,8 +577,9 @@ function ResultView({ result, previousResult, onReset, onReanalyze }: {
       {/* Disclaimer */}
       <div style={{ padding: "1rem", borderTop: "1px solid var(--color-surface-200)" }}>
         <p style={{ fontSize: "var(--text-sm)", color: "var(--color-text-muted)", lineHeight: 1.6 }}>
-          Det här är information, inte juridisk rådgivning. Analysen jämför mot LAS, Semesterlagen,
-          Arbetstidslagen, Diskrimineringslagen och Föräldraledighetslagen. Kollektivavtal ingår inte.
+          Det här är information, inte juridisk rådgivning. Analysen är automatiserad och inte
+          granskad av människa. Den jämför mot LAS, Semesterlagen, Arbetstidslagen,
+          Diskrimineringslagen och Föräldraledighetslagen. Kollektivavtal ingår inte.
           Vid osäkerhet, kontakta ett fackförbund eller en arbetsrättsjurist.
         </p>
       </div>

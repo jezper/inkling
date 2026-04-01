@@ -317,9 +317,10 @@ export function ReportPdfDocument({ data }: { data: AnalysisResult }) {
 
         {/* Disclaimer */}
         <Text style={s.disclaimer}>
-          Det här är information, inte juridisk rådgivning. Analysen jämför mot LAS, Semesterlagen,
-          Arbetstidslagen, Diskrimineringslagen och Föräldraledighetslagen. Kollektivavtal ingår inte.
-          Vid osäkerhet, kontakta ett fackförbund eller en arbetsrättsjurist.
+          Det här är information, inte juridisk rådgivning. Analysen är automatiserad och inte granskad
+          av människa. Den jämför mot LAS, Semesterlagen, Arbetstidslagen, Diskrimineringslagen och
+          Föräldraledighetslagen. Kollektivavtal ingår inte. Vid osäkerhet, kontakta ett fackförbund
+          eller en arbetsrättsjurist.
         </Text>
 
         {/* Page footer */}
