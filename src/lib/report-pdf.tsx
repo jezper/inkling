@@ -19,7 +19,7 @@ const OK_COLOR = { bg: "#EEFAF0", text: "#0A3A18", border: "#80C890" };
 
 const s = StyleSheet.create({
   page: {
-    fontFamily: "Inter",
+    fontFamily: "Helvetica",
     fontSize: 10,
     color: "#2C2C34",
     paddingTop: 48,
@@ -27,7 +27,7 @@ const s = StyleSheet.create({
     paddingHorizontal: 48,
   },
   header: {
-    fontFamily: "Space Grotesk",
+    fontFamily: "Helvetica-Bold",
     fontSize: 9,
     letterSpacing: 1,
     color: "#47474F",
@@ -38,7 +38,7 @@ const s = StyleSheet.create({
   gaugeRow: { flexDirection: "row", gap: 2, marginBottom: 8, maxWidth: 200 },
   gaugeSegment: { flex: 1, height: 8, borderRadius: 2 },
   gaugeLabel: {
-    fontFamily: "Space Grotesk",
+    fontFamily: "Helvetica-Bold",
     fontSize: 7,
     letterSpacing: 0.5,
     textTransform: "uppercase",
@@ -46,7 +46,7 @@ const s = StyleSheet.create({
     marginTop: 3,
   },
   sectionTitle: {
-    fontFamily: "Space Grotesk",
+    fontFamily: "Helvetica-Bold",
     fontSize: 12,
     fontWeight: 600,
     color: "#0A0A0C",
