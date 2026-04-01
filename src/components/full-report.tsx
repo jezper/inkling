@@ -279,7 +279,7 @@ export function FullReport({
             }}
           >
             <ArrowLeft size={14} strokeWidth={1.5} aria-hidden="true" />
-            kollaavtalet.com
+            kollaavtalet.nu
           </a>
 
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
@@ -1244,7 +1244,7 @@ function RefundBlock() {
       </div>
       {status === "error" && (
         <p style={{ marginTop: "0.5rem", fontSize: "var(--text-xs)", color: "var(--color-severity-high-text)" }}>
-          Något gick fel. Kontakta support@kollaavtalet.com.
+          Något gick fel. Kontakta hej@kollaavtalet.nu.
         </p>
       )}
     </div>

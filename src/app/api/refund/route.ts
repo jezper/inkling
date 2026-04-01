@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
       // eslint-disable-next-line no-console
       console.error("[refund] Email error:", error);
       return NextResponse.json(
-        { error: "Kunde inte skicka förfrågan. Kontakta support@kollaavtalet.com." },
+        { error: "Kunde inte skicka förfrågan. Kontakta hej@kollaavtalet.nu." },
         { status: 500 },
       );
     }
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
     // eslint-disable-next-line no-console
     console.error("[refund] Error:", err);
     return NextResponse.json(
-      { error: "Något gick fel. Kontakta support@kollaavtalet.com." },
+      { error: "Något gick fel. Kontakta hej@kollaavtalet.nu." },
       { status: 500 },
     );
   }

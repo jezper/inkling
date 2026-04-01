@@ -317,10 +317,10 @@ export default function Integritetspolicy() {
                 utöva dina rättigheter enligt GDPR (tillgång, rättelse, radering,
                 invändning), kan du kontakta oss på{" "}
                 <a
-                  href="mailto:privacy@kollaavtalet.com"
+                  href="mailto:hej@kollaavtalet.nu"
                   style={{ color: "var(--color-accent-text)", textDecoration: "underline", textUnderlineOffset: "3px" }}
                 >
-                  privacy@kollaavtalet.com
+                  hej@kollaavtalet.nu
                 </a>
                 .
               </p>
@@ -336,12 +336,12 @@ export default function Integritetspolicy() {
             <Section title="Ansvarig för behandlingen">
               <p>
                 Personuppgiftsansvarig är det bolag som driver Kolla Avtalet
-                (kollaavtalet.com). Kontakta oss på{" "}
+                (kollaavtalet.nu). Kontakta oss på{" "}
                 <a
-                  href="mailto:privacy@kollaavtalet.com"
+                  href="mailto:hej@kollaavtalet.nu"
                   style={{ color: "var(--color-accent-text)", textDecoration: "underline", textUnderlineOffset: "3px" }}
                 >
-                  privacy@kollaavtalet.com
+                  hej@kollaavtalet.nu
                 </a>{" "}
                 vid frågor.
               </p>

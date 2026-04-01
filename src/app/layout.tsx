@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { ErrorBoundary } from "@/components/error-boundary";
 import "./globals.css";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kollaavtalet.com";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kollaavtalet.nu";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -79,7 +79,7 @@ export default function RootLayout({
       "Tjänst för granskning av anställningsavtal mot svensk arbetsrätt.",
     contactPoint: {
       "@type": "ContactPoint",
-      email: "privacy@kollaavtalet.com",
+      email: "hej@kollaavtalet.nu",
       contactType: "customer service",
       availableLanguage: "Swedish",
     },

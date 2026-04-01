@@ -12,7 +12,7 @@ export function ReferralShare({ referralToken }: ReferralShareProps) {
   const siteUrl =
     typeof window !== "undefined"
       ? window.location.origin
-      : "https://kollaavtalet.com";
+      : "https://kollaavtalet.nu";
   const referralUrl = `${siteUrl}?ref=${referralToken}`;
 
   const smsText = `Jag har precis granskat mitt anställningsavtal med Kolla Avtalet. Om du ska skriva under snart kan du testa gratis: ${referralUrl}`;

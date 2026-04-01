@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ArticleLayout, InlineCTA } from "@/components/article-layout";
 import { getRelatedPages } from "@/lib/seo-pages";
 
-const SITE = "https://kollaavtalet.com";
+const SITE = "https://kollaavtalet.nu";
 
 export const metadata: Metadata = {
   title: "Granska ditt anställningsavtal - steg för steg",

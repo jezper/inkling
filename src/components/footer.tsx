@@ -100,6 +100,13 @@ export function Footer() {
           >
             Integritetspolicy
           </a>
+          <a
+            href="/villkor"
+            className="transition-colors duration-100"
+            style={{ textDecorationLine: "underline", textUnderlineOffset: "3px" }}
+          >
+            Användarvillkor
+          </a>
           <span>&copy; {new Date().getFullYear()} Kolla Avtalet</span>
         </div>
       </div>
