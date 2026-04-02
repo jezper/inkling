@@ -12,7 +12,7 @@ export const contentType = "image/png";
 
 async function loadFont() {
   const res = await fetch(
-    "https://fonts.gstatic.com/s/spacegrotek/v16/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.ttf",
+    new URL("../../public/fonts/SpaceGrotesk-Regular.ttf", import.meta.url),
   );
   return res.arrayBuffer();
 }
