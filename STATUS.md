@@ -3,7 +3,7 @@
 > Läs FÖRST vid varje session.
 
 ## Övergripande status
-**Fas:** 14 av 15 steg klara. Kvar: Deploy (avvaktar)
+**Fas:** V1 LANSERAD — alla 15 steg klara
 **Senast uppdaterad:** 2026-04-01
 
 ## Arbetsordning
@@ -24,12 +24,55 @@
 | 12 | Plausible analytics | — (skippad) |
 | 13 | WCAG-audit | ✅ |
 | 14 | Responsiv-test | ✅ |
-| 15 | Deploy | ⬜ |
+| 15 | Deploy | ✅ |
 
 ## Senaste session
-**2026-04-01 — Email-redesign: kvitto + rapport-PDF + rate limiting + gauge**
+**2026-04-01/02 — V1 LANSERAD**
 
-Tre features implementerade:
+Allt från gauge-feature till produktionsdeploy. kollaavtalet.nu är live.
+
+**Nya features:**
+- Visuell helhetsbedömning (tre-segments gauge med labels)
+- Rate limiting (Vercel KV-backad, 4 endpoints)
+- Säkerhetsheaders (CSP, HSTS, X-Frame-Options via middleware)
+- Email-redesign: mobilanpassad kvittomall + rapport-PDF-bilaga
+- Korta rapportlänkar i email (/r/[id] via KV)
+- CTA-knapp i email istället för rå URL
+- Villkor-sida (/villkor)
+- Stripe promotion codes aktiverade
+- ESLint config för CI
+
+**Legal audit (11 fynd åtgärdade):**
+- Ansvarsbegränsning med beloppstak (49 kr)
+- Ångerrätt: rätt lagrum (16 § konsumentavtalslagen)
+- Disclaimers: "automatiserad, inte granskad av människa" överallt
+- Disclaimer synlig i PDF-export
+- Integritetspolicy: fullständig identitet + rättslig grund Stripe/Resend
+- Anti-injection i systemprompt + kollektivavtalsvarning
+- Momsreg.nr till env var
+
+**Buggfixar:**
+- Betalningslås rensas vid ny uppladdning (förhindrar gratis omanalys)
+- CSP: Tesseract.js OCR tillåten (cdn.jsdelivr.net)
+- PDF-fonts: built-in Helvetica istället för 404:ande Google Fonts URLs
+
+**Deploy & infrastruktur:**
+- Domän: kollaavtalet.nu (Loopia DNS → Vercel)
+- Stripe: live-produkt (49 kr), promotion codes
+- Resend: domän verifierad, from-adress hej@kollaavtalet.nu
+- E-postvidarebefordring via Loopia
+- Google Search Console + Bing Webmaster Tools verifierade
+
+**Domänreferenser:** kollaavtalet.com → kollaavtalet.nu överallt
+
+**Kvarstår (post-V1):**
+- Artikel 30-register (internt GDPR-dokument, inte kod)
+- Ångerrätt-samtycke i checkout-flödet (checkbox före betalning)
+- Plausible analytics (skippad i V1)
+
+---
+
+**Tidigare session:**
 
 **1. Visuell helhetsbedömning (gauge)**
 Tre-segments bar (grön/orange/röd) med labels. Ersätter färgade textrutor i gratisvy och rapport. Visuell feedback ledde till labels + vänsterjustering.
