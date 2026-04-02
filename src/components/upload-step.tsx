@@ -415,7 +415,7 @@ export function UploadStep({ onAnalyze, onError, isProcessing }: UploadStepProps
           }}
         >
           Ditt avtal stannar på din enhet. Namn, personnummer och andra personuppgifter rensas automatiskt innan analysen körs.{" "}
-          <a href="/faq#privacy-och-säkerhet" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "2px" }}>Läs mer</a>
+          <a href="/faq#privacy-och-säkerhet" style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "2px" }}>Läs mer om integritet och datasäkerhet</a>
         </p>
       )}
     </div>
