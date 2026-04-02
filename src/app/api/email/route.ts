@@ -38,10 +38,17 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Create report link
-    const token = createReportToken(result);
+    // Create report link — try short link first, fall back to long token
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-    const reportUrl = `${siteUrl}/rapport?t=${token}`;
+    let reportUrl: string;
+    try {
+      const { createShortLink } = await import("@/lib/short-links");
+      const shortId = await createShortLink(result);
+      reportUrl = `${siteUrl}/r/${shortId}`;
+    } catch {
+      const token = createReportToken(result);
+      reportUrl = `${siteUrl}/rapport?t=${token}`;
+    }
 
     // Generate report PDF
     const pdfBuffer = await renderToBuffer(
