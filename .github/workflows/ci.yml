@@ -39,3 +39,4 @@ jobs:
           STRIPE_SECRET_KEY: dummy-for-build
           STRIPE_PUBLISHABLE_KEY: dummy-for-build
           STRIPE_PRICE_ID: dummy-for-build
+          RESEND_API_KEY: re_dummy-for-build
