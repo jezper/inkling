@@ -22,20 +22,10 @@ Anställningsavtalsgranskning — en webbapp där användare laddar upp sitt ans
 
 > Alla spec-filer utom GUARDRAILS.md är utgångspunkt, inte tak.
 > Varje expertroll har mandat att föreslå förbättringar inom sitt område.
-> Se §Förbättringsmandat nedan.
 
-## FÖRBÄTTRINGSMANDAT — GÄLLER ALLA AGENTER
+## Förbättringsförslag — format
 
-Varje agent förväntas använda sin expertis för att aktivt förbättra produkten,
-inte bara följa instruktioner.
-
-**Det innebär:**
-- Om BRAND.md begränsar en bättre lösning → föreslå förändringen
-- Om SPEC.md beskriver ett suboptimalt flöde → föreslå alternativet
-- Om en designregel hindrar tillgänglighet → rätta direkt och dokumentera
-- Om copy-regler ger sämre UX → föreslå bättre formuleringar
-
-**Format för förbättringsförslag:**
+Beteendemandatet (föreslå bättre, följ inte bara instruktioner) ärvs från globala ~/.claude/CLAUDE.md. Projektspecifikt: lägg förslag i BESLUT.md under `## Öppna förslag` med formatet:
 ```
 ## Förbättringsförslag — [din roll]
 **Nuläge:** [vad som gäller idag]
@@ -45,27 +35,12 @@ inte bara följa instruktioner.
 **Påverkar:** [vilka filer/beslut]
 ```
 
-Lägg i BESLUT.md under `## Öppna förslag`. Blockera inte arbetet —
-fortsätt med uppgiften som om förslaget är under övervägande.
+## Sessionsprotokoll (projektfiler)
 
-## SESSIONSPROTOKOLL — FÖLJ ALLTID
-
-### Vid sessionens START
-1. Läs STATUS.md
-2. Läs BESLUT.md (beslut + öppna förslag)
-3. Läs PROBLEM.md
-4. Sammanfatta kort innan du fortsätter
-
-### Under sessionen
-- Avslutat steg → STATUS.md direkt
-- Fattat beslut → BESLUT.md direkt
-- Hittat problem → PROBLEM.md direkt
-- Förbättringsförslag → BESLUT.md `## Öppna förslag`
-
-Skriv `✅ Checkpoint sparad` efter varje uppdatering.
-
-### Vid sessionens SLUT
-Uppdatera alla tre filer + handoff-not i STATUS.md `## Senaste session`.
+Sessionsritualen (läs statusfil först, uppdatera efter arbete) ärvs från globala ~/.claude/CLAUDE.md. Projektspecifikt gäller dessa tre levande filer:
+- **START:** läs STATUS.md, sedan BESLUT.md (beslut + öppna förslag), sedan PROBLEM.md. Sammanfatta kort.
+- **Under:** avslutat steg → STATUS.md, beslut → BESLUT.md, problem → PROBLEM.md. Skriv `✅ Checkpoint sparad` efter varje uppdatering.
+- **SLUT:** uppdatera alla tre + handoff-not i STATUS.md `## Senaste session`.
 
 ## Teknik
 - **Framework:** Next.js (App Router)
@@ -82,9 +57,7 @@ Uppdatera alla tre filer + handoff-not i STATUS.md `## Senaste session`.
 - TypeScript strict mode
 - Funktionella React-komponenter
 - Server Components default, Client Components vid behov
-- Filnamn: kebab-case, Komponentnamn: PascalCase
 - All UI-text på svenska
-- Ingen `console.log` i produktion
 - Miljövariabler i `.env.local` alltid
 
 ## Miljövariabler
