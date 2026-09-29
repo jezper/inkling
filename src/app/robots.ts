@@ -1,17 +1,8 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kollaavtalet.nu";
-
+// Nedlagd tjänst: håll den utanför sökresultaten.
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-        disallow: ["/rapport", "/api/"],
-      },
-    ],
-    sitemap: `${BASE_URL}/sitemap.xml`,
-    host: BASE_URL,
+    rules: [{ userAgent: "*", disallow: "/" }],
   };
 }

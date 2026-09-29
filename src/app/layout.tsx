@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { ErrorBoundary } from "@/components/error-boundary";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -25,73 +23,13 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kollaavtalet.nu";
-
+// Tjänsten är nedlagd: ingen indexering, ingen strukturerad data,
+// ingen analytics. Bara en sida som förklarar vad som hänt.
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
-  title: {
-    default: "Kolla Avtalet | Förstå ditt anställningsavtal innan du skriver under",
-    template: "%s | Kolla Avtalet",
-  },
+  title: "Kolla Avtalet är nedlagt",
   description:
-    "Grattis till jobbet. Vet du vad du tackar ja till? Vi jämför varje klausul mot lag, marknadspraxis och lönedata. Snabbkoll gratis.",
-  applicationName: "Kolla Avtalet",
-  authors: [{ name: "Kolla Avtalet", url: BASE_URL }],
-  generator: "Next.js",
-  keywords: [
-    "anställningsavtal",
-    "granska avtal",
-    "arbetsrätt",
-    "LAS",
-    "uppsägningstid",
-    "konkurrensklausul",
-    "provanställning",
-    "anställningsskydd",
-  ],
-  referrer: "origin-when-cross-origin",
-  creator: "Kolla Avtalet",
-  publisher: "Kolla Avtalet",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  openGraph: {
-    type: "website",
-    locale: "sv_SE",
-    url: BASE_URL,
-    siteName: "Kolla Avtalet",
-    title: "Kolla Avtalet | Förstå ditt avtal innan du skriver under",
-    description:
-      "Grattis till jobbet. Vet du vad du tackar ja till? Varje klausul jämförs mot lag, marknadspraxis och lönedata.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Kolla Avtalet | Förstå ditt avtal innan du skriver under",
-    description:
-      "Grattis till jobbet. Vet du vad du tackar ja till? Varje klausul jämförs mot lag och lönedata.",
-  },
-  alternates: {
-    canonical: BASE_URL,
-    languages: {
-      "sv-SE": BASE_URL,
-    },
-  },
-  icons: {
-    icon: [
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
-    ],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
-  },
-  manifest: "/manifest.webmanifest",
-  category: "technology",
+    "Kolla Avtalet stängde i september 2026. Tjänsten granskar inte längre anställningsavtal.",
+  robots: { index: false, follow: false },
 };
 
 export default function RootLayout({
@@ -99,66 +37,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Kolla Avtalet",
-    url: BASE_URL,
-    logo: `${BASE_URL}/og-image.png`,
-    description:
-      "Tjänst för granskning av anställningsavtal mot svensk arbetsrätt.",
-    contactPoint: {
-      "@type": "ContactPoint",
-      email: "hej@kollaavtalet.nu",
-      contactType: "customer service",
-      availableLanguage: "Swedish",
-    },
-  };
-
-  const webApplicationSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Kolla Avtalet",
-    url: BASE_URL,
-    description:
-      "Granska ditt anställningsavtal mot svensk arbetsrätt. Snabbkoll gratis, full rapport 49 kr.",
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web browser",
-    offers: {
-      "@type": "Offer",
-      price: "99",
-      priceCurrency: "SEK",
-      description: "Full avtalsanalys mot svensk arbetsrätt",
-    },
-    inLanguage: "sv-SE",
-    accessibilityFeature: ["highContrast", "largePrint", "structuredNavigation"],
-    availableLanguage: {
-      "@type": "Language",
-      name: "Swedish",
-      alternateName: "sv",
-    },
-  };
-
   return (
-    <html lang="sv" className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
-      <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(webApplicationSchema),
-          }}
-        />
-        <ErrorBoundary>
-          {children}
-        </ErrorBoundary>
-        <Analytics />
-      </body>
+    <html
+      lang="sv"
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+    >
+      <body>{children}</body>
     </html>
   );
 }

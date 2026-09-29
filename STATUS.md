@@ -3,8 +3,8 @@
 > Läs FÖRST vid varje session.
 
 ## Övergripande status
-**Fas:** V1 LANSERAD — alla 15 steg klara
-**Senast uppdaterad:** 2026-04-01
+**Fas:** NEDLAGD — tjänsten är avvecklad
+**Senast uppdaterad:** 2026-09-29
 
 ## Arbetsordning
 
@@ -27,6 +27,31 @@
 | 15 | Deploy | ✅ |
 
 ## Senaste session
+**2026-09-29 — NEDLÄGGNING**
+
+Beslut: projektet pensioneras. Inga köp de senaste 30 dagarna, så ingen
+väntetid för kvarvarande rapportlänkar eller återbetalningar behövdes.
+
+**Gjort i koden (branch chore/sunset → main):**
+- Hela appen ersatt av en statisk avskedssida på `/`
+- Alla API-routes borttagna (Anthropic, Stripe, Resend, KV anropas inte längre)
+- Alla innehålls- och SEO-sidor, sitemap, OG-bilder och tester borttagna
+- `robots.txt` blockerar allt, sidan är `noindex`
+- Beroenden nedskalade till next/react, CSP nedskalad till `self`
+- tsconfig: `_ref` exkluderad (bröt bygget sedan förra committen)
+
+**Kvar att göra manuellt (dashboards):**
+1. Stripe: avaktivera produkt/pris, exportera betalnings-CSV till bokföringen,
+   lämna kontot öppet (räkenskapsinformation sparas 7 år)
+2. Återkalla nycklar: Anthropic, Resend, Stripe live
+3. Vercel: ta bort projektet (rensar KV) när domänen släppts
+4. Resend: ta bort domänen kollaavtalet.nu
+5. Loopia: domän + e-postvidarebefordring (övervägd: parkera 1 år till)
+6. GitHub: arkivera repot när Vercel är borta
+
+---
+
+**Tidigare session:**
 **2026-04-01/02 — V1 LANSERAD**
 
 Allt från gauge-feature till produktionsdeploy. kollaavtalet.nu är live.

@@ -15,14 +15,14 @@ export function middleware(_req: NextRequest) {
   res.headers.set(
     "Content-Security-Policy",
     [
+      // Statisk avskedssida: inga tredjepartsskript, inga API-anrop.
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://va.vercel-scripts.com https://cdn.jsdelivr.net blob:",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: https:",
-      "connect-src 'self' https://api.stripe.com https://vitals.vercel-insights.com https://cdn.jsdelivr.net",
-      "frame-src https://js.stripe.com",
-      "worker-src 'self' blob:",
+      "script-src 'self'",
+      "style-src 'self' 'unsafe-inline'",
+      "font-src 'self'",
+      "img-src 'self' data:",
+      "connect-src 'self'",
+      "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
     ].join("; "),

@@ -15,6 +15,32 @@
 
 ---
 
+### 2026-09-29 — Tjänsten läggs ned
+
+**Kontext:** Projektet pensioneras och domänen kollaavtalet.nu sägs upp. Sajten
+låg live med gratis snabbkoll, vilket innebar att vem som helst (och bottar)
+kunde bränna Anthropic-krediter så länge den stod uppe.
+
+**Beslut:** Hela appen ersätts av en statisk avskedssida. Alla API-routes,
+innehållssidor och beroenden mot Anthropic, Stripe, Resend och KV tas bort.
+Stripe-kontot behålls öppet, nycklarna återkallas.
+
+**Motivering:** Noll köp de senaste 30 dagarna, alltså inga kvarvarande kunder
+med levande rapportlänkar eller öppna återbetalningsärenden. Då finns ingen
+anledning till en 30-dagars nedtrappning. En statisk sida kostar ingenting,
+stoppar API-spenderingen direkt och svarar den som landar här via gammal länk.
+Stripe-kontot måste leva kvar eftersom betalningarna är räkenskapsinformation
+som ska sparas i sju år (bokföringslagen).
+
+**Alternativ:** Radera Vercel-projektet direkt (ger DNS-fel istället för
+förklaring så länge domänen lever). Låta sajten rulla vidare (löpande API-kostnad
+och kvarstående ansvar för en tjänst ingen underhåller).
+
+**Påverkar:** Hela `src/`, `package.json`, `tsconfig.json`, STATUS.md.
+Kvar manuellt: Stripe, Anthropic, Resend, Vercel, Loopia, GitHub-arkivering.
+
+---
+
 ### 2026-04-01 — Visuell helhetsbedömning: tre-segments gauge
 
 **Kontext:** Helhetsbedömningen (bra/godkänt/risk) visades som en färgad textruta. Användaren önskade en mer visuell, omedelbart avläsbar indikator.
