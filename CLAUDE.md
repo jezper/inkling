@@ -1,5 +1,7 @@
 # CLAUDE.md — Projektinstruktioner
 
+Granskning av anställningsavtal. Webbapp där man laddar upp sitt avtal.
+
 ## Projekt
 Anställningsavtalsgranskning — en webbapp där användare laddar upp sitt anställningsavtal (PDF) och får analys mot svensk arbetsrätt.
 
